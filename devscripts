@@ -1,0 +1,7 @@
+# For more info see /etc/devscripts.conf
+
+# Add source.
+DEBUILD_DPKG_BUILDPACKAGE_OPTS="-rfakeroot -sa"
+
+# Without source.
+#DEBUILD_DPKG_BUILDPACKAGE_OPTS="-rfakeroot"

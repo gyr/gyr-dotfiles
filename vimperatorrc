@@ -1,0 +1,71 @@
+"2.3.1 (created: 2010/04/07 18:25:13)
+
+" http://code.google.com/p/vimperator-labs/source/browse/vimperator/vimperatorrc.example
+
+" useful for command-line completion
+set wildoptions=auto
+set wildmode=list:longest,full
+
+" automatic pass-through mode on certain pages (do ':h autocommands' for details)
+autocmd LocationChange .* :js modes.passAllKeys = /(mail\.google\.com|www\.google\.com\/reader)/.test(buffer.URL)
+
+" embedded JavaScript is possible:
+" move the RSS icon from the now-hidden location bar to the status bar instead
+javascript <<EOF
+(function(){
+    var feedPanel = document.createElement("statusbarpanel");
+    feedPanel.setAttribute("id", "feed-panel-clone");
+    feedPanel.appendChild(document.getElementById("feed-button"));
+    feedPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
+    document.getElementById("status-bar")
+            .insertBefore(feedPanel, document.getElementById("security-button"));
+})();
+EOF
+
+" you can even add new functions which are then available to the :js command
+js <<EOF
+    toggle_element = function (name) {
+        document.getElementById(name).collapsed ^= 1;
+    }
+EOF
+" and now use it in mappings (':h key-notation'):
+map <silent> <F8> :js toggle_element('toolbar-menubar')<CR>
+map <silent> <F9> :js toggle_element('nav-bar')<CR>
+
+map "\\b" :emenu<Space>Bookmarks.Organize<Space>Bookmarks…<Return>
+map "\\p" :emenu<Space>Edit.Preferences<Return>
+map "\\d" :emenu<Space>Tools.Downloads<Return>
+map "\\a" :emenu<Space>Tools.Add-ons<Return>
+map "\\g" :emenu<Space>View.Sidebar.GMarks<Return>
+map <S-j> gT
+map <S-k> gt
+
+set runtimepath=/home/gyr/.vimperator
+source! /home/gyr/.vimperatorrc.local
+
+" ;s      => save element on page
+" ;?      => show information of an element on page
+" ;y      => yank a link on a page
+" H/L     => go backward/foward in history
+" A       => add/remove page from bookmark
+" Mx      => create x quickbookmark for the current page
+" gox     => go to x quickbookmark
+" gi      => go to the first input field on page
+" C-a/C-x => increase/decrease last number in the URL (index?q=a321 -> index?q=a322)
+" gu      => goes to parent address
+" C-i     => when focused on text form (such as reddit comment) edits the form using (g)vim
+" gt      => go to the next tab
+" gT      => go to the previous tab
+" g0      => go to the first tab
+" g$      => go to the last tab
+" C-6     => toggle to the previously visited tab
+" ]]/[[   => follow any "Next"/"Previous" link on the page
+" gt      => go to the next tab
+" gt      => go to the next tab
+" gt      => go to the next tab
+" gt      => go to the next tab
+" create a quickbookmark from several URL:
+" :qmark a http://www.linux-mag.com/, http://lwn.net/, http://news.google.com/
+" bx      => go to tab number x
+
+" vim: set ft=vimperator:

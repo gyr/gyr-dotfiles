@@ -1,0 +1,490 @@
+! Author: Gustavo Yokoyama Ribeiro
+! Update: 20091031 01:10:27
+! (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+! Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+! http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+
+!xrdb -merge ~/.gyr.d/dotfiles/Xdefaults
+!xrdb -load ~/.gyr.d/dotfiles/Xdefaults
+!Query resources
+!xrdb -query | grep
+!Reload .Xdefaults
+!xrdb -override ~/.gyr.d/dotfiles/Xdefaults
+
+#ifndef HOME
+#define HOME /home/gyr
+#endif
+
+*international: true
+
+! terminal colors ------------------------------------------------------------
+
+!! Solarized color scheme for the X Window System
+!!
+!! http://ethanschoonover.com/solarized
+!
+!
+!! Common
+!
+!#define S_yellow        #b58900
+!#define S_orange        #cb4b16
+!#define S_red           #dc322f
+!#define S_magenta       #d33682
+!#define S_violet        #6c71c4
+!#define S_blue          #268bd2
+!#define S_cyan          #2aa198
+!#define S_green         #859900
+!
+!
+!! Dark
+!
+!#define S_base03        #002b36
+!#define S_base02        #073642
+!#define S_base01        #586e75
+!#define S_base00        #657b83
+!#define S_base0         #839496
+!#define S_base1         #93a1a1
+!#define S_base2         #eee8d5
+!#define S_base3         #fdf6e3
+!
+!
+!! Light
+!
+!! #define S_base03        #fdf6e3
+!! #define S_base02        #eee8d5
+!! #define S_base01        #93a1a1
+!! #define S_base00        #839496
+!! #define S_base0         #657b83
+!! #define S_base1         #586e75
+!! #define S_base2         #073642
+!! #define S_base3         #002b36
+!
+!
+!! To only apply colors to your terminal, for example, prefix
+!! the color assignment statement with its name. Example:
+!!
+!! URxvt*background:            S_base03
+!
+!*background:              S_base03
+!*foreground:              S_base0
+!*fading:                  40
+!*fadeColor:               S_base03
+!*cursorColor:             S_base1
+!*pointerColorBackground:  S_base01
+!*pointerColorForeground:  S_base1
+!
+!*color0:                  S_base02
+!*color1:                  S_red
+!*color2:                  S_green
+!*color3:                  S_yellow
+!*color4:                  S_blue
+!*color5:                  S_magenta
+!*color6:                  S_cyan
+!*color7:                  S_base2
+!*color9:                  S_orange
+!*color8:                  S_base03
+!*color10:                 S_base01
+!*color11:                 S_base00
+!*color12:                 S_base0
+!*color13:                 S_violet
+!*color14:                 S_base1
+!*color15:                 S_base3
+
+!--------------------------------------------------------------------
+!*customization: -color
+!/etc/X11/rgb.txt
+
+! fosforoverde
+!#define S_light #e6fffa
+!#define S_dark  #99ffeb
+! gulf
+!#define S_light #e6faff
+#define S_light ghostwhite
+!#define S_dark  #99ebff
+#define S_dark  powderblue
+
+*background:   #121212
+!*foreground:   mintcream
+!*foreground:   white
+*foreground:   S_light
+*cursorColor:  royalblue
+*cursorColor2: black
+
+*color0:       black
+*color1:       red3
+*color2:       green4
+*color3:       yellow3
+!*color4:       blue
+*color4:       royalblue
+*color5:       magenta3
+*color6:       cyan4
+*color7:       S_dark
+!*color7:       lightgrey
+!*color7:       gray86
+!*color7:       antiquewhite
+*color8:       darkgray
+!*color8:       grey25
+*color9:       red
+*color10:      green1
+!*color10:      green
+*color11:      yellow
+!*color12:      cornflowerblue
+*color12:      skyblue1
+*color13:      magenta1
+!*color13:      magenta
+*color14:      cyan
+*color15:      white
+
+*highlightColorMode: true
+*highlightReverse:   false
+*highlightTextColor: black
+!*highlightColor:     mintcream
+!*highlightColor:     white
+*highlightColor:     S_dark
+
+!--------------------------------------------------------------------
+!ORIG
+!*background:   black
+!*foreground:   white
+!
+!xterm*color0:       black
+!xterm*color1:       red3
+!xterm*color2:       green3
+!xterm*color3:       yellow3
+!xterm*color4:       blue2
+!xterm*color5:       magenta3
+!xterm*color6:       cyan3
+!xterm*color7:       gray
+!xterm*color8:       darkgray
+!xterm*color9:       red
+!xterm*color10:      green1
+!xterm*color11:      yellow
+!xterm*color12:      cornflowerblue
+!xterm*color13:      magenta1
+!xterm*color14:      cyan
+!xterm*color15:      white
+!*cursorColor:  red
+
+!--------------------------------------------------------------------
+!http://www.flickr.com/photos/jasonwryan/4273714022/
+!http://en.wikipedia.org/wiki/X11_color_names
+!*background:   black
+!*foreground:   #E0FFFF
+!*cursorColor:  red
+!!black
+!*color0: black
+!*color8: #7F7F7F
+!!red
+!*color1: #8C4665
+!*color9: #BF4D80
+!!green
+!*color2: #2E8B57
+!*color10: #8FBC8F
+!!yellow
+!*color3: #808000
+!*color11: #9ACD32
+!!blue
+!*color4: #395573
+!*color12: #477AB3
+!!magenta
+!*color5: #5E468C
+!*color13: #7E62B3
+!!cyan
+!*color6: darkcyan
+!*color14: cyan
+!!white
+!*color7: #899CA1
+!*color15: white
+
+
+!--------------------------------------------------------------------
+!!GREEN
+!!http://www.colorhunter.com
+!*background:   rgb:00/00/00
+!*foreground:   rgb:93/e9/b8
+!*color0:       rgb:00/00/00
+!*color1:       rgb:4b/70/59
+!*color2:       rgb:5b/90/71
+!*color3:       rgb:3d/80/54
+!*color4:       rgb:30/a1/63
+!*color5:       rgb:59/d3/93
+!*color6:       rgb:93/e9/b8
+!*color7:       rgb:aa/aa/aa
+!*color8:       rgb:21/56/35
+!*color9:       rgb:2f/8c/53
+!*color10:      rgb:2f/b4/66
+!*color11:      rgb:00/a0/32
+!*color12:      rgb:00/ca/2e
+!*color13:      rgb:00/ff/67
+!*color14:      rgb:4b/ff/a8
+!*color15:      rgb:ff/ff/ff
+!*cursorColor:  rgb:ff/00/00
+
+!*color0:  rgb:00/00/00
+!*color1:  rgb:cd/5c/5c
+!*color2:  rgb:8e/ae/71
+!*color3:  rgb:d2/b4/8c
+!*color4:  rgb:5f/7b/8a
+!*color5:  rgb:cd/cd/b4
+!*color6:  rgb:68/68/68
+!*color7:  rgb:ff/ff/ff
+!*color8:  rgb:00/00/00
+!*color9:  rgb:ee/63/63
+!*color10: rgb:95/c7/49
+!*color11: rgb:cd/cd/c1
+!*color12: rgb:6b/7b/8a
+!*color13: rgb:cd/cd/b4
+!*color14: rgb:77/87/98
+!*color15: rgb:ca/ca/ca
+
+!--------------------------------------------------------------------
+!Colors
+!xterm*background:   black
+!xterm*foreground:   white
+! ANSI black
+!xterm*color0:       darkslategray
+! ANSI red
+!xterm*color1:       tomato
+! ANSI green
+!xterm*color2:       aquamarine
+! ANSI yellow
+!xterm*color3:       yellow
+! ANSI blue
+!xterm*color4:       lightskyblue
+! ANSI magenta
+!xterm*color5:       thistle
+! ANSI cyan
+!xterm*color6:       paleturquoise1
+! ANSI white
+!xterm*color7:       white
+! ANSI black bold
+!xterm*color8:       black
+! ANSI red bold
+!xterm*color9:       orangered
+! ANSI green  bold
+!xterm*color10:      turquoise
+! ANSI yellow bold
+!xterm*color11:      orange
+! ANSI blue bold
+!xterm*color12:      deepskyblue
+! ANSI magenta bold
+!xterm*color13:      plum
+! ANSI cyan bold
+!xterm*color14:      cyan
+! ANSI white bold
+!xterm*color15:      mintcream
+
+
+!!!*StringConversionWarnings: on
+
+*saveLines: 10000
+*scrollBar: false
+
+!!!*backarrowKey: true
+!!!*backarrowKeyIsErase: true
+
+
+! add "!#%+-./~" to charClass (word selection at doubleclick)
+*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,126:48
+!           !     #     %     +     -./      @     ~
+! make xterm treats URLs as a single word:
+!XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! cssh (clusterssh  ----------------------------------------------------------
+CSSH*background: #121212
+CSSH*foreground: S_light
+
+! xterm ----------------------------------------------------------------------
+xterm*termName:  xterm-256color
+*termtype:     vt100
+
+*VT100.Translations:       #override \n \
+    Ctrl <Key>F1:         string("\033[1;5P") \n \
+    <Key>BackSpace:       string(0x7F) \n \
+    Ctrl <KeyPress>Left:  string("\033[90~")  \n \
+    Ctrl <KeyPress>Right: string("\033[91~")  \n \
+    Ctrl <KeyPress>Up:    string("\033[92~")  \n \
+    Ctrl <KeyPress>Down:  string("\033[93~")  \n \
+    Shift <Key>Left:      string("\033[1;2D") \n \
+    Shift <Key>Right:     string("\033[1;2C") \n \
+    Shift <Key>Up:        scroll-back(1,line) \n \
+    Shift <Key>Down:      scroll-forw(1,line) \n \
+    Shift <Key>Return:    string("\033[24$")  \n \
+    Ctrl <Key>Tab:        string(0x1b) string("[rC;TAB~")
+!    Ctrl <Key>BackSpace:  string(0x1b) string("[rC;BS~")
+
+!*VT100*translations:    #override \n\
+!    Shift~Ctrl<Btn2Up>:  insert-selection(CLIPBOARD, CUT_BUFFER1) \n\
+!    Shift<BtnUp>:        select-end(CLIPBOARD, CUT_BUFFER1)
+
+! makes xterm run x-www-browser on the selection when it receives Alt + left click. (Adjust for whatever your Meta key is.)
+!*VT100*translations: #override Meta <Btn1Up>: exec-formatted("x-www-browser '%t'", PRIMARY)
+
+! run 'xfontsel'
+xterm*faceName:           terminus:medium:pixelsize=12
+!xterm*faceName:           inconsolata:medium:pixelsize=12
+!*font: -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+!*font: -*-proggycleansz-*-*-*-*-*-*-*-*-*-*-*-*
+!xterm*faceName: ProggyCleanTTSZ
+!xterm*faceSize: 12
+!*font: xft:ProggyCleanTTSZ:pixelsize=12
+!*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!!*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!xterm*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!xterm*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!!*wideChars: false
+!xterm*boldMode:  False
+!xterm*alwaysBoldMode: False
+!xterm*boldColors: False
+!xterm*colorBDMode: true
+!xterm*colorBD: white
+!xterm*dynamicColors: true
+
+XTerm*bellIsUrgent: true
+*borderWidth: 0
+*metaSendsEscape: true
+
+! Xft ------------------------------------------------------------------------
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintlight
+!Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb
+
+! rxvt-unicode ---------------------------------------------------------------
+urxvt*VT100.Translations:       #override \n \
+    Shift <Key>Space:     string("\033[23$")
+
+! man 7 urxvt
+URxvt.colorBD:       S_dark
+URxvt.colorUL:       S_dark
+URxvt.colorIT:       S_dark
+!urxvt*font:          terminus-12
+!URxvt*termName: rxvt-unicode
+!URxvt*termName: xterm-256color
+!URxvt.font:-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+URxvt.depth: 32
+!URxvt.font: xft:Terminus-9
+!!URxvt.font: xft:Terminus:size=9
+!!URxvt.boldFont: xft:Terminus:bold:size=9
+!!URxvt.italicFont: xft:Terminus:italic:size=9
+!!URxvt.boldItalicFont: xft:Terminus:bold:italic:size=9
+
+! http://git.ak-online.be/kandre/xsession/tree
+
+URxvt*font: terminus-12,xft:Terminus for Powerline:style=Medium,xft:Code2000:antialias=false
+URxvt*boldFont: terminus-bold-12,xft:Terminus for Powerline:style=Bold,xft:Code2000:style=Bold:antialias=false
+!URxvt*font: terminus-12,xft:Terminus for Powerline:antialias=false
+!URxvt*boldFont: terminus-bold-12,xft:Terminus for Powerline:style=Bold:antialias=false
+!URxvt*italicFont: -xos4-terminus-medium-o-normal--12-120-72-72-c-60-iso10646-1
+!URxvt*boldItalicFont: -xos4-terminus-bold-o-normal--0-0-72-72-c-0-iso10646-1
+!URxvt.letterSpace: -1
+URxvt.iso14755: False
+URxvt*buffered: true
+!URxvt*font:     xft:terminus:pixelsize=12:antialias=false, \
+!                xft:inconsolata:bold:pixelsize=14
+!URxvt*boldFont:     xft:inconsolata:bold:pixelsize=14
+!URxvt*italicFont:     xft:inconsolata:italic:pixelsize=14
+!URxvt*boldItalicFont:     xft:inconsolata:bold:italic:pixelsize=14
+
+! -- also: set 'vbell on' in screen
+! -- set 'bell_msg' "\a in window!"
+URxvt*urgentOnBell:          True
+URxvt.mapAlert:              True
+URxvt*tripleclickwords:      True
+URxvt.loginShell:            False
+URxvt.pastableTabs:          False
+URxvt.utmpInhibit:           True
+URxvt.scrollstyle:           plain
+URxvt.scrollTtyOutput:       False
+URxvt.scrollWithBuffer:      True
+URxvt.jumpScroll:            True
+URxvt.scrollTtyKeypress:     True
+URxvt.mouseWheelScrollPage:  True
+URxvt*skipBuiltinGlyphs:     True
+URxvt.cursorBlink:           True
+URxvt.intensityStyles:      False
+
+! borderless and no scrollbar
+URxvt*scrollBar_right: false
+URxvt*scrollBar: false
+URxvt*borderLess: false
+! the transparency stuff
+!!URxvt*inheritPixmap: true
+!URxvt*transparent: True
+URxvt*tintColor: white
+!URxvt*shading: 20
+!URxvt*fading: 30
+!!URxvt*cursorUnderline: True
+! Extensions
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+urxvt*perl-ext-common: default,matcher,searchable-scrollback,bell-command,selection-autotransform
+urxvt*urlLauncher:     /usr/bin/xdg-open
+urxvt*matcher.button:  3
+urxvt*bell-command: notify-send "Beep, Beep"
+urxvt*keysym.C-Delete:  perl:matcher:last
+urxvt*keysym.M-Delete:  perl:matcher:list
+URxvt.tabbed.tabbar-fg: 0
+URxvt.tabbed.tabbar-bg: 7
+URxvt.tabbed.tab-fg:    7
+URxvt.tabbed.tab-bg:    0
+URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
+
+URxvt.keysym.M-C-1: command:\033]50;-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-2: command:\033]50;-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-3: command:\033]50;-*-terminus-*-*-*-*-18-*-*-*-*-*-*-*\007
+URxvt.keysym.C-Up: command:\033]720;1\007
+URxvt.keysym.C-Down: command:\033]721;1\007
+!URxvt.keysym.Shift-Up: command:\033]720;1\007
+!URxvt.keysym.Shift-Down: command:\033]721;1\007
+!URxvt.keysym.KP_Up: ^[[A
+!URxvt.keysym.KP_Right: ^[[C
+!URxvt.keysym.KP_Left: ^[[D
+!URxvt.keysym.KP_Down: ^[[B
+!URxvt.keysym.KP_Insert: ^[[2~
+!URxvt.keysym.KP_Delete: ^[[3~
+!URxvt.keysym.KP_Add: +
+!URxvt.keysym.KP_Subtract: -
+!URxvt.keysym.KP_Multiply: *
+!URxvt.keysym.KP_Divide: /
+!URxvt.keysym.KP_Enter: ^M
+!! map shift-space with Shift-F11, for Vim.
+!! http://vim.wikia.com/wiki/Avoid_the_escape_key
+URxvt.keysym.S-space: \033[23$
+URxvt.keysym.S-Return: \033[24$
+URxvt.keysym.Control-Tab:        \033[rC;TAB~
+!URxvt.keysym.Control-BackSpace:  \033[rC;BS~
+
+! icon path
+URxvt.iconFile:     /usr/share/pixmaps/urxvt.xpm
+
+! x11-ssh-askpass ------------------------------------------------------------
+x11-ssh-askpass*grabServer: false
+x11-ssh-askpass*grabPointer: false
+x11-ssh-askpass*grabKeyboard: false
+ssh-askpass*grabServer: false
+ssh-askpass*grabPointer: false
+ssh-askpass*grabKeyboard: false
+*grabServer: false
+*grabPointer: false
+*grabKeyboard: false
+
+! Highlight mark ends at the last character of each line
+*highlightSelection: true
+
+! yeahconsole ----------------------------------------------------------------
+!yeahconsole*screenWidth:   1200
+!!yeahconsole*xOffset:       120
+!!!yeahconsole*consoleHeight: 40
+!!!yeahconsole*toggleKey:     None+F1
+!!!yeahconsole*keyFull:       None+F2
+!!!yeahconsole*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!!!yeahconsole*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!yeahconsole*restart: 1
+!yeahconsole*stepSize: 0
+irssi*urgentOnBell:          True
+weechat*urgentOnBell:          True
+Weechat.iconFile:   /usr/share/pixmaps/weechat.xpm
+Mutt.iconFile:      /usr/share/pixmaps/mutt.xpm

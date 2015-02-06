@@ -1,0 +1,32 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .hgrc
+# Update: 20100324 12:59:35
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: mercurial config file.
+#
+##################################
+
+[default]
+addremove = --similarity 100
+
+[ui]
+username = Gustavo Yokoyama Ribeiro <gustavoyr+dotfiles AT gmail DOT com>
+editor = vim
+ignore = ~/.gyr.d/dotfiles/hgignore
+merge = vimdiff
+
+# http://archlinux.me/dusty/2012/03/15/three-way-merge-for-hg-using-vim/
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -f -d -c "wincmd J" "$output" "$local" "$base" "$other"
+
+[diff]
+git = True
+
+[extensions]
+color =
+mq =

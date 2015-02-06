@@ -1,0 +1,138 @@
+# conky configuration
+
+# set to yes if you want Conky to be forked in the background
+background yes
+
+# X font when Xft is disabled, you can pick one with program xfontsel
+#font 5x7
+#font 6x10
+#font 7x13
+#font 8x13
+#font 9x15
+#font *mintsmild.se*
+#font -*-*-*-*-*-*-34-*-*-*-*-*-*-*
+
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+#xftfont Bitstream Vera Sans Mono:size=8
+#xftfont Terminus:size=8
+xftfont Inconsolata:size=8
+
+# Text alpha when using Xft
+xftalpha 1
+
+# Print everything to console?
+# out_to_console no
+
+# mail spool
+#mail_spool $MAIL
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+#own_window_type normal
+#own_window_type desktop
+own_window_type override
+own_window_transparent yes
+#own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+draw_graph_borders yes
+# Minimum size of text area
+#minimum_size 450 5
+minimum_size 930 5
+
+# Stippled borders?
+#stippled_borders 8
+stippled_borders 0
+
+# border margins
+#border_margin 4
+#border_inner_margin 4
+
+# border width
+#border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#alignment top_right
+alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+#gap_x 450
+#gap_y 1
+gap_x 10
+gap_y 10
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+#Note: doesn't work in conky 1.2 =(
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+[SYSTEM]${hr}
+${color slate grey}Hostname: ${color }$nodename${goto 160}${color slate grey}ROOT: ${color }${fs_used /}/${fs_size /} ${fs_used_perc /}% ${fs_bar 5,100 /}${goto 440}${color slate grey}Highest CPU:${goto 600}${color slate grey}Highest MEM:${goto 760}${color slate grey}Load: ${color }$loadavg
+${color slate grey}UpTime: ${color }$uptime${goto 160}${color slate grey}WORK: ${color }${fs_used /work}/${fs_size /work} ${fs_used_perc /work}% ${fs_bar 5,100 /work}${goto 440}${color #ddaa00} ${top name 1}${top_mem cpu 1}${goto 600}${color #ddaa00} ${top_mem name 1}${top_mem mem 1}${goto 760}${color slate grey}Processes: ${color }$processes
+${color slate grey}Kernel: ${color }$kernel${goto 160}${goto 440}${color lightgrey} ${top name 2}${top cpu 2}${goto 600}${color lightgrey} ${top_mem name 2}${top_mem mem 2}${goto 760}${color slate grey}Running:   ${color }$running_processes
+${color slate grey}Arch: ${color } ${machine}${goto 160}${color slate grey}Disk I/O: ${color}${diskio}${goto 440}${color lightgrey} ${top name 3}${top cpu 3}${goto 600}${color lightgrey} ${top_mem name 3}${top_mem mem 3}${goto 760}${color slate grey}Battery: ${color } (${acpiacadapter}) ${battery_time} ${battery}
+${color slate grey}Temperature: ${color}${hwmon temp 1}C${goto 160}${diskiograph 15,250 000000 00ffff}${goto 480}${goto 600}${goto 760}${battery_bar}
+#${color slate grey}Battery: ${color } (${acpiacadapter}) ${battery_time} ${battery} ${battery_bar BAT0 5,100}
+#${color slate grey}Battery: ${color } (${acpiacadapter}) ${battery_percent BAT0}% ${battery_bar BAT0}
+[CPU/MEM]${hr}
+${color slate grey}MEM: ${color }$mem/$memmax ${memperc}% ${membar 5,90}${goto 280}${color slate grey}CPU1:${color } ${cpu cpu1}% ${cpubar cpu1 5,90}${goto 440}${color slate grey}CPU2:${color } ${cpu cpu2}% ${cpubar cpu2 5,90}${goto 600}${color slate grey}CPU3:${color } ${cpu cpu3}% ${cpubar cpu3 5,90}${goto 760}${color slate grey}CPU4:${color } ${cpu cpu4}% ${cpubar cpu4 5,90}
+${color slate grey}SWAP: ${color }$swap/$swapmax ${swapperc}% ${swapbar 5,100}${goto 280}${cpugraph cpu1 15,150 000000 ffffff} ${goto 440}${cpugraph cpu2 15,150 000000 ffffff} ${goto 600}${cpugraph cpu3 15,150 000000 ffffff} ${goto 760}${cpugraph cpu4 15,150 000000 ffffff}
+[NETWORK]${hr}
+${if_up wlan0}${color slate grey}essid: ${color }${wireless_essid wlan0}${endif}${goto 280}${color slate grey}eth0(${addr eth0}) ${if_up wlan0}${goto 440}wlan0(${addr wlan0})${endif} ${if_up tun0}${goto 600}tun0(${addr tun0})${endif}${color}
+${if_up wlan0}${color slate grey}MAC: ${color}${wireless_ap wlan0}${endif}${goto 280}Up: ${upspeed eth0}Total: ${totalup eth0} ${if_up wlan0}${goto 440}Up: ${upspeed wlan0}Total: ${totalup wlan0}${endif} ${if_up tun0}${goto 600}Up: ${upspeed tun0}Total: ${totalup tun0}${endif}
+${if_up wlan0}${color slate grey}Signal: ${color}${wireless_link_qual wlan0}/${wireless_link_qual_max wlan0}- ${wireless_link_qual_perc wlan0}% ${wireless_link_bar 5,100 wlan0}${endif}${goto 280}${upspeedgraph eth0 15,130 000000 00ff00} ${if_up wlan0}${goto 440}${upspeedgraph wlan0 15,130 000000 00ff00}${endif} ${if_up tun0}${goto 600}${upspeedgraph tun0 15,130 000000 00ff00}${endif}
+${goto 280}Down:${downspeed eth0}Total: ${totaldown eth0 }${if_up wlan0}${goto 440}Down: ${downspeed wlan0}Total: ${totaldown wlan0}${endif} ${if_up tun0}${goto 600}Down: ${downspeed tun0}Total: ${totaldown tun0}${endif}
+${goto 280}${downspeedgraph eth0 15,130 000000 ff0000} ${if_up wlan0}${goto 440}${downspeedgraph wlan0 15,130 000000 ff0000}${endif} ${if_up tun0}${goto 600}${downspeedgraph tun0 15,130 000000 ff0000}${endif}
+[MUSIC]${hr}
+${if_mpd_playing}${color slate grey}${mpd_status}: ${color }${mpd_smart} (${mpd_elapsed}/${mpd_length})${endif}
+${hr}

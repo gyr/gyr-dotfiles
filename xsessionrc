@@ -1,0 +1,14 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   . xsessionrc
+# Update: 20100323 06:25:01
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+##################################
+
+[ -f ${HOME}/.gyr.d/dotfiles/gyrprofile ] && . ${HOME}/.gyr.d/dotfiles/gyrprofile
+
+${HOME}/.gyr.d/dotfiles/xinitrc

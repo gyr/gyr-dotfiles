@@ -1,0 +1,19 @@
+# Always color, even if piping to a another program
+--color
+# lexically sort filenames
+--sort-files
+# Use "less -r" as my pager
+--pager=less -r
+# Include on search Text files, as defined by Perl's -T op
+#--text
+# Like grep
+--nogroup
+--type-add=vim=vimrc
+
+# Change all "this" to "that" in all Perl files in a tree.
+# ack-grep -f --perl | xargs perl -p -i -e's/this/that/g'
+# or
+# perl -p -i -e's/this/that/g' $(ack-grep -f --perl)
+
+--type-set=dat=.dat
+--type-set=cfg=.cfg

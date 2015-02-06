@@ -1,0 +1,18 @@
+( if
+  ( contains ( window_class ) "Pidgin" )
+  ( begin
+    ( spawn_async (str "xprop -frame -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xf0000000 -id " (window_xid) ))
+  )
+  )
+( if
+  ( contains ( window_class ) "Sametime" )
+  ( begin
+    ( spawn_async (str "xprop -frame -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xf0000000 -id " (window_xid) ))
+  )
+  )
+( if
+  ( contains ( window_class ) "Skype" )
+  ( begin
+    ( spawn_async (str "xprop -frame -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xf0000000 -id " (window_xid) ))
+  )
+  )

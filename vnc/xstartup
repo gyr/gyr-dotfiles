@@ -1,0 +1,27 @@
+#!/bin/zsh
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   xstartup
+# Update: 20070613 12:28:19
+#
+##################################
+
+xrdb ${HOME}/.Xdefault
+xsetroot -solid black
+
+if [[ ${OS} == linux ]]
+then
+     nwm &
+#    /tmp/local/bin/dwm &
+#    evilwm &
+#    twm &
+#    mwm &
+else
+    twm &
+#    dtsession &
+#    dtwm &
+fi
+xterm&
+#vncconfig -iconic &
+vncconfig -nowin &

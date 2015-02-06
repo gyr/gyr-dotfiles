@@ -1,0 +1,71 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .inputrc
+# Update: 20081027 15:20:38
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+##################################
+
+set editing-mode vi
+
+$if mode=vi
+    set keymap vi-command
+
+    set keymap vi-insert
+    "\C-x ":glob-expand-word
+    "\C-xw":glob-complete-word
+    "\C-p":menu-complete-backward
+    "\C-n":menu-complete
+    "\e[Z":dynamic-complete-history
+    # any ! combinations will be auto-expanded when you hit space.
+    #Space:magic-space
+    "\C-@":magic-space
+$endif
+
+$if Bash
+$endif
+
+$if term=xterm
+$endif
+
+"\e[2~":overwrite-mode
+"\e[3~":delete-char
+"\e[7~":beginning-of-line
+"\e[8~":end-of-line
+"\e[B":history-search-forward
+"\e[A":history-search-backward
+"\C-l":clear-screen
+
+# Completion Options
+set completion-ignore-case on
+# Exemplo: imagem => Imagem
+set completion-map-case on
+# Exemplo: lib-bla => lib_bla
+set mark-symlinked-directories on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set visible-stats on
+set completion-prefix-display-length 2
+# Exemplo:
+#$ ls
+#longFileNameLINUX-2.6.37-4  longFileNameLINUX-2.6.37-7  longFileNameLINUX-2.6.38-11  VeryCompliCATEDfileNAME.txt
+#longFileNameLINUX-2.6.37-6  longFileNameLINUX-2.6.37-8  longFileNameLINUX-2.6.38-9
+#$ ls long<TAB>
+#...7-4   ...7-6   ...7-7   ...7-8   ...8-11  ...8-9
+#$ ls longFileNameLINUX-2.6.3
+
+# Useful stuff for UTF-8
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Adds punctuation as word delimiters
+set bind-tty-special-chars off
+
+set keymap vi
+set bell-style none

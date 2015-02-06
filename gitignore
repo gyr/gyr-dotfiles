@@ -1,0 +1,39 @@
+# Vim backup files
+.*.sw*
+
+# Backup files
+*~
+
+# Object files
+*.o
+*.obj
+
+# Doxygen files
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# Python files
+*.pyc
+*.pyo
+
+# LaTeX output files
+*.aux
+*.backup
+*.bbl
+*.blg
+*.lof
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc
+
+# Tarballs and zip files
+*.tar.*
+*.zip
+
+# Vim stuff
+.netrwhist

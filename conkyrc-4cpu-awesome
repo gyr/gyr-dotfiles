@@ -1,0 +1,76 @@
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+#gap_x 450
+#gap_y 1
+#gap_x 10
+gap_y 1
+
+## Subtract file system buffers from used memory?
+#no_buffers yes
+#
+## set to yes if you want all text to be in uppercase
+#uppercase no
+#
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+minimum_size 1440
+
+if_up_strictness link
+
+# Add spaces to keep things from moving about? This only affects certain objects.
+use_spacer right
+##Note: doesn't work in conky 1.2 =(
+#
+## stuff after 'TEXT' will be formatted on screen
+#own window
+own_window yes
+own_window_type panel
+own_window_hints below,sticky,skip_taskbar,skip_pager
+TEXT
+${color slate grey}ROOT:${color}${fs_bar 4,20 /} ${fs_used_perc /}%\
+${goto 90}${color slate grey}MEM:${color} ${membar 4,20} ${memperc}%\
+${goto 175}${color slate grey}CPU1:${color}${cpugraph cpu1 7,40} ${cpu cpu1}%\
+${goto 280}${color slate grey}CPU3:${color}${cpugraph cpu3 7,40} ${cpu cpu3}%\
+${goto 385}${if_up eth0}${color slate grey}eth0:${color}\
+${goto 455}U:${upspeed eth0}${upspeedgraph eth0 7,40 00ff00 00ff00} ${totalup eth0}${endif}\
+${goto 605}${if_up wlan0}${color slate grey}wlan0:${color}\
+${goto 675}U:${upspeed wlan0}${upspeedgraph wlan0 7,40 00ff00 00ff00} ${totalup wlan0}${endif}\
+#${goto 800}${color slate grey}essid: ${color}${wireless_essid wlan0}${endif}
+${goto 825}${if_up tun0}${color slate grey}tun0: ${color}\
+${goto 900}U:${upspeed tun0}${upspeedgraph tun0 7,40 00ff00 00ff00} ${totalup tun0}${endif}\
+${goto 1050}${color slate grey}Inbound:${color} ${tcp_portmon 1 32767 count}\
+${goto 1120}${color slate grey}TOP MEM:\
+${goto 1265}TOP CPU:${color}
+#${goto 480}${color slate grey}Battery: ${color} (${acpiacadapter}) ${battery_time} ${battery_percent}% ${battery_bar}
+#---------------------------
+${color slate grey}WORK:${color}${fs_bar 4,20 /work} ${fs_used_perc /work}%\
+${goto 90}${color slate grey}SWAP:${color}${swapbar 4,20} ${swapperc}%\
+${goto 175}${color slate grey}CPU2:${color}${cpugraph cpu2 7,40} ${cpu cpu2}%\
+${goto 280}${color slate grey}CPU4:${color}${cpugraph cpu4 7,40} ${cpu cpu4}%\
+${goto 385}${if_up eth0}${addr eth0}\
+${goto 455}D:${downspeed eth0}${downspeedgraph eth0 7,40 ff0000 ff0000} ${totaldown eth0}${endif}\
+${goto 605}${if_up wlan0}${addr wlan0}\
+${goto 675}D:${downspeed wlan0}${downspeedgraph wlan0 7,40 ff0000 ff0000} ${totaldown wlan0}${endif}\
+#${goto 800}${color slate grey}Signal: ${color}${wireless_link_qual_perc wlan0}${wireless_link_bar 5,80 wlan0}${endif}
+${goto 825}${if_up tun0}${addr tun0}\
+${goto 900}D:${downspeed tun0}${downspeedgraph tun0 7,40 ff0000 ff0000} ${totaldown tun0}${endif}\
+${goto 1050}${color slate grey}Outbound:${color}${tcp_portmon 32767 65535 count}\
+${goto 1120}${top_mem name 1}${top_mem mem 1}%\
+${goto 1265}${top name 1}${top cpu 1}%
+#---------------------------

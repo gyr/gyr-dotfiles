@@ -1,0 +1,30 @@
+#http://www.linux.com/archive/feed/54498
+#https://www.ibm.com/developerworks/mydeveloperworks/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/b_c3_aa_a_b_c3_a1_do_ssh_parte_5?lang=pt
+#http://tychoish.com/rhizome/9-awesome-ssh-tricks/
+#http://tanguy.ortolo.eu/blog/article42/ssh-connection-sharing
+Host *
+ControlMaster auto
+ControlPath ~/.ssh/master-%r%h:%p
+ControlPersist 1
+ForwardAgent no
+#VisualHostKey yes
+ServerAliveInterval 200
+ForwardX11 no
+#RequestTTY force
+RequestTTY auto
+
+#Host hostmachine
+#Hostname 256.110.195.126
+#User useid
+#Port 22
+#Compression yes
+#CompressionLevel 9
+#DynamicForward 8080
+#LocalForward 5930 localhost:5900
+#
+#ssh hostmachine
+# Will conect to host 256.110.195.126 as user userid via port 22.
+# The connection will have all data compressed to the max
+# A proxy is set up on port 8080
+# Can connect to a running VNC server on the remote host at port 5900 by
+# connecting to port 5930 on our local machine.

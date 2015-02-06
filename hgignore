@@ -1,0 +1,39 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .hgignore
+# Update: 20100407 07:33:39
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: mercurial config file.
+#
+##################################
+
+# use glob syntax
+syntax: glob
+*.so
+*.o
+*.obj
+*.pyc
+*~
+*.rpm
+*.deb
+*.tar
+*.gz
+*.tgz
+*.bz
+*.zip
+*.pdf
+*.ps
+*.bmp
+*.gif
+*.jpg
+*.mp3
+*.ogg
+*.doc
+*.xls
+*.ppt
+*.exe
+*.dll
+*.rar

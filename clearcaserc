@@ -1,0 +1,63 @@
+########################################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .clearcaserc
+# Update: 20090903 10:09:44
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: Clearcase interactive shell set up.
+#
+########################################################
+
+
+###################
+#                 #
+# ENVIRONMENT     #
+#                 #
+###################
+##########
+# Prompt and xterm title
+[ -n ${CLEARCASE_ROOT} ] && VIEW_NAME=`/bin/basename ${CLEARCASE_ROOT}` && PR_CC_VIEW_NAME="[${VIEW_NAME}]"
+
+
+###################
+#                 #
+#      ALIAS      #
+#                 #
+###################
+alias ct='cleartool'
+alias sv='cleartool setview'
+alias setview='cleartool setview'
+alias xcd='xcleardiff -b -vst'
+##########
+# only load the below alias if a view is set
+if [[ -n ${CLEARCASE_ROOT} ]]; then
+    alias desc='cleartool desc'
+    alias edcs='cleartool edcs'
+    alias lsco='cleartool lsco -me'
+    alias lsgco='cleartool lsco -cview -avobs'
+    #alias lsgco='cleartool lspriv -co'
+    alias lsrco='cleartool lsco -all -cview'
+    alias lsvob='cleartool lsvob'
+    alias lsvtree='cleartool lsvtree -g'
+    alias mkbrtype='cleartool mkbrtype -nc'
+    alias pwv='cleartool pwv'
+    alias xcdp='cleartool diff -option "-b" -pre -g -vst'
+fi
+
+
+###################
+#                 #
+#    FUNCTION     #
+#                 #
+###################
+# avobs - all vobs in CLEARCASE_AVOBS
+
+
+###################
+#                 #
+# MOTOROLA SETUP  #
+#                 #
+###################
+[ -e ${GYR_PATH}/dotfiles/motorola/dotfiles/motorolarc ] && . ${GYR_PATH}/dotfiles/motorola/motorolarc

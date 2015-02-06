@@ -1,0 +1,28 @@
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gustavoyr+dotfiles AT gmail DOT com>
+# File:  archrc
+# Update: 20101122 06:45:13
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: archlinux interactive shell set up
+#
+################################################################################
+
+
+###################
+#                 #
+# ENVIRONMENT     #
+#                 #
+###################
+stty erase 
+
+###################
+#                 #
+#      ALIAS      #
+#                 #
+###################
+alias gyr-arch-update-repo='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.$(date +%Y%m%d_%H%M%S) && sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syy'
+alias gyr-arch-pacman-sort-by-size="pacman -Qi | awk '/^Name/ {pkg=$3} /Size/ {print $4$5,pkg}' | sort -n"
+alias pacmanc='pacman-color'

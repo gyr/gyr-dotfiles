@@ -1,0 +1,12 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .gyr_bash_completion
+# Update: 20080806
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+##################################
+
+complete -f cat more less tail head

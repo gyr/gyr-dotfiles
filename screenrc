@@ -1,0 +1,110 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .screenrc
+# Update: 20100823 01:27:52
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+##################################
+
+autodetach on           # detach on hangup
+startup_message off     # don't display the copyright page
+defnonblock on          # If a window goes unresponsive, don't block the whole session waiting for it.
+                        # Don't block on crappy SSH connections
+defmonitor on           # Monitor windows
+defutf8 on              # UTF-8 is just...better
+defscrollback 10000     # define scroll back buffer size in copy/scroll mode
+compacthist on          # trailing blank lines when scroll up
+#sorendition "+b kR"     # Better message colors
+#sorendition kb         # make higlighting black on blue background
+#sorendition kc         # make higlighting black on cyan background
+sorendition kr         # make higlighting black on cyan background
+#hardstatus string "%-Lw%{ck}%50>-<<%n %t>>-%{-}%+Lw%<"
+hardstatus string "%-Lw%{rk}%50>-<<%n %t>>-%{-}%+Lw%<"
+#hardstatus alwayslastline
+#bell_msg "%c:bell -> %n%f %t"
+vbell off
+vbell_msg "%c:bell -> %n%f %t"
+#vbellwait 5
+altscreen on            # get rid of content on the window left by programs, for instance,Vim
+chdir                   # go to home dir
+multiuser off
+verbose on              # Show the command for the windows when they're resurrected.
+ignorecase on           # ignore case for search in copy mode
+caption splitonly       # window bar
+
+# initialization
+#screen
+#chdir /work/debian
+#screen
+#chdir $HOME
+#screen -t 'vi' vim --servername GYR
+#screen -t 'vim' gyr-vim -v
+#select 0
+
+# Remove some stupid / dangerous key bindings
+# kill
+bind k
+bind 
+# suspend
+bind z
+bind ^z
+# lockscreen
+bind x
+bind ^x
+# kill all
+bind ''
+bind ^\
+bind \
+# syspend (xoff)
+bind s
+bind ^s
+# detach
+bind d
+bind ^d
+
+bind D detach
+bind p paste .
+bind 'w' windowlist -b
+bind 'W' windows
+bind s split
+bind v split -v
+bind x remove
+bind o only
+#bindkey [1;3A focus up
+#bindkey [1;3B focus down
+
+
+# to shit+(page up|page down) work
+# tell screen that you term can scroll
+termcapinfo xterm ti@:te@
+termcapinfo rxvt* ti@:te@
+# bind Shift+PgUp/PgDn
+bindkey -m "^[[5;2~" stuff ^b
+bindkey -m "^[[6;2~" stuff ^f
+
+#bindkey -k k3 prev
+#bind 'OD' prev
+#bindkey [1;5R hardstatus ignore "%-Lw%{Wr}%50>-<<%n %t>>-%{-}%+Lw%<"
+#bindkey -k k4 next
+#bind 'OC' next
+#bindkey [1;5S hardstatus alwayslastline "%{= wk} %=%-Lw%{wR}(%n %t)%{-}%+Lw %=[%l %d/%m %c]"
+#bindkey -k k5 other
+#bindkey [19;5~ screen -t 'vim' gyr-vim -v
+#bindkey -k k8 select vim
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo rxvt* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+# set TERM
+term screen-256color-bce
+#shelltitle "$ |${SHELL}"
+termcapinfo xterm 'bc@:bs@'
+termcapinfo rxvt* 'bc@:bs@'
+bind e redisplay

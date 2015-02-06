@@ -1,0 +1,113 @@
+# conky configuration
+
+double_buffer yes
+
+own_window yes
+#own_window_type normal
+#own_window_type desktop
+own_window_type override
+own_window_transparent yes
+#own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+use_xft yes
+# to get the font list run 'fc-list'
+xftfont ProggyCleanTTSZ:size=11
+#xftalpha 0.8
+
+maximum_width 140
+
+default_color white
+default_shade_color black
+default_outline_color white
+
+alignment bottom_left
+
+#draw_shades no
+#draw_outline no
+#draw_borders no
+#draw_graph_borders yes
+
+# set to yes if you want Conky to be forked in the background
+background yes
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Stippled borders?
+#stippled_borders 8
+stippled_borders 0
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+#gap_x 450
+#gap_y 1
+gap_x 10
+gap_y 20
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+
+# Add spaces to keep things from moving about? This only affects certain objects.
+#use_spacer right
+#Note: doesn't work in conky 1.2 =(
+
+default_bar_size 30 5
+if_up_strictness link
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+[${nodename}]${hr}
+${color slate grey}ROOT:${alignr}${color}${fs_used_perc /}% ${fs_bar 5,80 /}
+${color slate grey}WORK:${alignr}${color}${fs_used_perc /work}% ${fs_bar 5,80 /work}
+${top_io name 1}
+${color slate grey}MEM:${alignr}${color}${memperc}% ${membar 5,80}
+${color slate grey}SWAP:${alignr}${color}${swapperc}% ${swapbar 5,80}
+${top_mem name 1}${alignr}${top_mem mem 1}%
+${color slate grey}CPU1:${alignr}${color}${cpu cpu1}% ${cpubar cpu1 5,80}
+${color slate grey}CPU2:${alignr}${color}${cpu cpu2}% ${cpubar cpu2 5,80}
+${color slate grey}CPU3:${alignr}${color}${cpu cpu3}% ${cpubar cpu3 5,80}
+${color slate grey}CPU4:${alignr}${color}${cpu cpu4}% ${cpubar cpu4 5,80}
+${top name 1}${alignr}${top cpu 1}%
+${color slate grey}Batt:${color}(${acpiacadapter})${battery_time}${battery_percent}% ${battery_bar}
+${if_up eth0}${color slate grey}eth0: ${color}${addr eth0}
+Down:${downspeed eth0}${alignr}Up:${upspeed eth0}
+${downspeedgraph eth0 10,65 ffffff ff0000}${alignr}${upspeedgraph eth0 10,65 ffffff 00ff00}
+${totaldown eth0}${alignr}${totalup eth0}${endif}
+${if_up tun0}${color slate grey}tun0: ${color}${addr tun0}
+Down:${downspeed tun0}${alignr}Up:${upspeed tun0}
+${downspeedgraph tun0 10,65 ffffff ff0000}${alignr}${upspeedgraph tun0 10,65 ffffff 00ff00}
+${totaldown tun0}${alignr}${totalup tun0}${endif}
+${if_up wlan0}${color slate grey}wlan0: ${color}${addr wlan0}
+Down:${downspeed wlan0}${alignr}Up:${upspeed wlan0}
+${downspeedgraph wlan0 10,65 ffffff ff0000}${alignr}${upspeedgraph wlan0 10,65 ffffff 00ff00}
+${totaldown wlan0}${alignr}${totalup wlan0}
+${color slate grey}essid: ${color}${wireless_essid wlan0}
+${color slate grey}Signal: ${color}${wireless_link_qual_perc wlan0}% ${wireless_link_bar 5,60 wlan0}
+${color slate grey}Speed: ${color}${wireless_bitrate wlan0}${endif}
+#${execi 30 netstat -ept | grep ESTAB | awk '{print $9}' | sort | uniq -c | sort -nr | tr -s ' '}
+Inbound: ${tcp_portmon 1 32767 count} ${alignr}Outbound: ${tcp_portmon 32767 65535 count}
+${if_mpd_playing}${color slate grey}${mpd_status}: ${color }(${mpd_elapsed}/${mpd_length})
+${mpd_artist}
+${mpd_title}${endif}
+${hr}
