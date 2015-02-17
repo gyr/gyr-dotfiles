@@ -89,10 +89,24 @@ fi
 if hash python 2> /dev/null; then
     export PYTHONSTARTUP="${GYR_PATH}/dotfiles/pythonstartup"
 fi
+# Screen
+if hash screen 2> /dev/null; then
+    screen -q -ls
+    if [ $? -ge 10 ]; then
+        screen -ls
+    fi
+fi
+# Screen
+if hash tmux 2> /dev/null; then
+    tmux ls 2> /dev/null
+fi
 # Motorola
 #[ -f ${GYR_PATH}/dotfiles/motorola/motorolaprofile ] && . ${GYR_PATH}/dotfiles/motorola/motorolaprofile
 # IBM
 [ -f ~/.ibm.d/dotfiles/ibmprofile ] && . ~/.ibm.d/dotfiles/ibmprofile
+
+[ -f ${GYR_PATH}/scripts/3pp/screenfetch-dev ] && ${GYR_PATH}/scripts/3pp/screenfetch-dev
+
 
 #######
 # Remove duplicates entries on PATH

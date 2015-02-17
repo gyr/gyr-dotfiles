@@ -483,8 +483,6 @@ function gyr_prompt
 
 gyr_prompt
 
-[ -f ${GYR_PATH}/scripts/3pp/screenfetch-dev ] && ${GYR_PATH}/scripts/3pp/screenfetch-dev
-
 #if [ -n "${DISPLAY}" ]; then
 #    #[ -n "$WINDOWID" ] && [[ "${TERM}" =~ .*screen.* ]] && xprop -frame -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xf0000000 -id ${WINDOWID}
 #    #[[ "${TERM}" =~ .*screen.* ]] && TRANSPARENCY='0xf0000000' || TRANSPARENCY='0xd0000000'
