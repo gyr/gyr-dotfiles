@@ -1,6 +1,6 @@
 ########################################################
 #
-# Author: Gustavo Yokoyama Ribeiro <gustavoyr+dotfiles AT gmail DOT com>
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
 # File:   .profile
 # Update: 20100114 02:17:09
 # (C) Copyright 2010 Gustavo Yokoyama Ribeiro

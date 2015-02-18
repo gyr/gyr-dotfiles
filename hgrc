@@ -14,7 +14,7 @@
 addremove = --similarity 100
 
 [ui]
-username = Gustavo Yokoyama Ribeiro <gustavoyr+dotfiles AT gmail DOT com>
+username = Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
 editor = vim
 ignore = ~/.gyr.d/dotfiles/hgignore
 merge = vimdiff
