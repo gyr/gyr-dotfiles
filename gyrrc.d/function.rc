@@ -1,0 +1,22 @@
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
+# File:  function.rc
+# Update: 20150220
+# (C) Copyright 2015 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+################################################################################
+
+##########
+#vf()
+#{
+#    [ $# -eq 1 ] && vim +":find $1" || printUsage "$0 - Open file in vim, file_name shall be in vim path" "$0 <file_name>"
+#}
+
+##########
+doalarm() { perl -e 'alarm shift; exec @ARGV' "$@"; }
+# Usage: doalarm ${NUMBER_OF_SECONDS_BEFORE_ALRMING} program arg arg ...
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent

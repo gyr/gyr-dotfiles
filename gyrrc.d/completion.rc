@@ -1,0 +1,19 @@
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
+# File:  completion.rc
+# Update: 20150220
+# (C) Copyright 2015 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+#
+################################################################################
+
+complete -A hostname gyr-autossh
+complete -F _compssh gyr-autossh
+complete -A hostname gyr-ssh
+complete -F _compssh gyr-ssh
+complete -A hostname ssh-graph
+complete -F _compssh ssh-graph
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent
