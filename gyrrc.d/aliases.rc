@@ -112,7 +112,13 @@ alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
 alias mplayer1=' mplayer -ao alsa:device=hw=1.0'
 alias mv='mv --backup=t'
-alias obnam='eval $(gpg-agent --daemon) || gyr-print -e "gpg-agent: ERROR" && obnam'
+# pbpaste > texto.txt
+alias pbpaste='xclip -selection clipboard -o'
+alias pbpastes='xclip -selection primary -o'
+# pbcopy < /proc/cpuinfo
+# dmesg | pbcopy
+alias pbcopy='xclip -selection clipboard'
+alias pbcopys='xclip -selection primary'
 alias psa='ps -fU${USER}'
 alias pscpu='ps -eo pcpu,pid,user,args | sort -k 1 -nr | head -10'
 #alias pscpu='ps auxf | sort -nr -k 3 | head -10'
