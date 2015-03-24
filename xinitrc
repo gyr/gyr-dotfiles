@@ -41,6 +41,9 @@ xset b off
 # Set bind keys
 xbindkeys
 
+# Dual key config
+xcape -e 'Control_L=Escape'
+
 # Awesome WM
 # Fix Java (GUI appears gray only)
 #wmname LG3D
