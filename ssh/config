@@ -13,6 +13,13 @@ ForwardX11 no
 #RequestTTY force
 RequestTTY auto
 
+#######################################
+# github SSH connections over HTTPS
+#######################################
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+
 #Host hostmachine
 #Hostname 256.110.195.126
 #User useid
