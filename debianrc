@@ -28,18 +28,12 @@ alias gyr-apt-installed='dpkg --get-selections'
 alias gyr-deb-ati="sudo radeontool light off; sleep 1; sudo radeontool light on"
 #alias gyr-deb-conflict-upgrade='sudo apt-get update ; sudo debdelta-upgrade ; sudo apt-get -o Debug::pkgProblemResolver=yes dist-upgrade ; sudo apt-get remove --purge ; sudo apt-get autoremove --purge ; echo "Orphan packages:" ; sudo deborphan'
 # http://people.debian.org/~stapelberg//2013/11/27/pdiffs.html
-alias gyr-deb-box-update="while ! sudo aptitude update -o Acquire::Pdiffs=false -o APT::Color=true; do sleep 1m; done ; sudo debdelta-upgrade ; sudo aptitude -o APT::Color=true safe-upgrade ; sudo apt-get autoremove --purge --show-progress -o APT::Color=true ; sudo apt-get remove --purge --show-progress -o APT::Color=true ; sudo apt-get autoclean -o APT::Color=true ; sudo checkrestart ; dpkg -l | grep -v ii ; sudo deborphan; sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep \"^rc\" | tr -s ' ' | cut -d ' ' -f 2) 2> /dev/null"
 #alias gyr-deb-box-dist-upgrade="while ! sudo apt-get update; do sleep 1m; done ; sudo debdelta-upgrade ;  sudo apt-get -u dist-upgrade --show-progress; sudo apt-get autoremove --purge --show-progress; sudo apt-get remove --purge --show-progress; sudo apt-get autoclean; dpkg -l | grep -v ii ; sudo deborphan; sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep \"^rc\" | tr -s ' ' | cut -d ' ' -f 2) 2> /dev/null"
 #alias gyr-deb-box-dupdate="while ! sudo apt-get update; do sleep 1m; done ; sudo debdelta-upgrade ;  sudo apt-get -u dselect-upgrade --show-progress; sudo apt-get autoremove --purge --show-progress; sudo apt-get remove --purge --show-progress; sudo apt-get autoclean; dpkg -l | grep -v ii ; sudo deborphan; sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep \"^rc\" | tr -s ' ' | cut -d ' ' -f 2) 2> /dev/null"
 alias gyr-deb-box-cleanup="sudo apt-get autoremove --purge --show-progress -o APT::Color=true ; sudo apt-get remove --purge --show-progress -o APT::Color=true ; sudo apt-get autoclean -o APT::Color=true ; sudo apt-get clean -o APT::Color=true ; sudo deborphan; sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep \"^rc\" | tr -s ' ' | cut -d ' ' -f 2) 2> /dev/null"
 #the install alias was replaced by apt list since apt 1.0
 #alias gyr-deb-install="sudo apt-get -o Dpkg::Progress-Fancy=true install --show-progress --purge --auto-remove"
 #alias gyr-ubuntu-image-setup='vim ${GYR_PATH}/scripts/debian/gyr-ubuntu-image-conffile'
-
-#gyr-ubuntu-one-launch()
-#{
-#    /bin/sh -c '[ -d "$HOME/Ubuntu One" ] && ubuntuone-launch'
-#}
 
 #[ -z "$PS1" ] || linux_logo
 #[ $SHLVL -eq 1 ] && linux_logo
