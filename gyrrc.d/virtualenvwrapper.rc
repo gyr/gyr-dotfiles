@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
+# File:  virtualenvwrapper.rc
+# Update: 20150602
+# (C) Copyright 2015 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: 
+# Usage: 
+#
+################################################################################
+
+
+_virtualenvwrapper_sh='/usr/share/virtualenvwrapper/virtualenvwrapper.sh'
+if [ -f ${_virtualenvwrapper_sh} ]; then
+    export WORKON_HOME=${HOME}/.virtualenvs
+    source ${_virtualenvwrapper_sh}
+fi

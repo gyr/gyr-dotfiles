@@ -77,6 +77,7 @@ alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz
 alias gyr-pdb='python -m pdb'
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
+alias gyr-pyc-clean="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
 alias gyr-resolvconf-fix="sudo cp /home/gyr/.gyr.d/bkp/resolv.conf_google /etc/resolv.conf"
 alias gyr-rsync-god-gyrd='rsync-sync .gyr.d godzilla.local:/work/gyr/'
 alias gyr-rsync-god-imap='rsync-sync .sylpheed-2.0 godzilla.local:/work/gyr/'
