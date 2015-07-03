@@ -1,1 +1,2 @@
+#!/bin/sh
 feh  --bg-scale '/home/gyr/.config/awesome/dragon_twins_paper_blue_1600x900_dark.png' 

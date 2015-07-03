@@ -152,7 +152,7 @@ alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias vprint="vim +'hardcopy > /tmp/output.ps' +q"
 alias vs='gyr-vim'
 alias wget='wget -c'
-alias youtube='youtube-dl -c -t'
+alias youtube='youtube-dl -c'
 #
 ## Rádios OnLine.
 #
