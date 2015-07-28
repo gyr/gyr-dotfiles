@@ -40,6 +40,8 @@ if hash lsb_release 2> /dev/null; then
     PATH=${GYR_PATH}/scripts/debian:${PATH}
 elif hash pacman 2> /dev/null; then
     PATH=${GYR_PATH}/scripts/arch:${PATH}
+elif [ -e /etc/redhat-release ]; then
+    PATH=${GYR_PATH}/scripts/fedora:${PATH}
 fi
 
 #######
