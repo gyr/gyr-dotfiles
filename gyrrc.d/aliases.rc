@@ -52,6 +52,7 @@ alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys
 alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
 alias gyr-conky="conky -d -p 2 -c /home/gyr/.gyr.d/dotfiles/conkyrc-2cpu-awesome"
 alias gyr-conky-dual-monitor="/work/gyr/.gyr.d/scripts/gyr-set-monitor-resolution -t && conky -d -p 2 -c /home/gyr/.gyr.d/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
 alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
 alias gyr-http-server='python -m SimpleHTTPServer'
 alias gyr-ipdb='python -m ipdb'
