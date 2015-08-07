@@ -2,16 +2,27 @@
 #https://www.ibm.com/developerworks/mydeveloperworks/blogs/752a690f-8e93-4948-b7a3-c060117e8665/entry/b_c3_aa_a_b_c3_a1_do_ssh_parte_5?lang=pt
 #http://tychoish.com/rhizome/9-awesome-ssh-tricks/
 #http://tanguy.ortolo.eu/blog/article42/ssh-connection-sharing
+#http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html
+#https://github.com/FiloSottile/whosthere
+#https://github.com/FiloSottile/whosthere
+
 Host *
-ControlMaster auto
-ControlPath ~/.ssh/master-%r%h:%p
-ControlPersist 1
-ForwardAgent no
-#VisualHostKey yes
-ServerAliveInterval 200
-ForwardX11 no
-#RequestTTY force
-RequestTTY auto
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r%h:%p
+    #ControlPersist 1
+    ControlPersist 4h
+    ForwardAgent no
+    ForwardX11 no
+    ForwardX11Trusted yes
+    GSSAPIAuthentication no
+    Port 22
+    Protocol 2
+    #RequestTTY force
+    RequestTTY auto
+    TCPKeepAlive no
+    ServerAliveInterval 60
+    ServerAliveCountMax 30
+    #VisualHostKey yes
 
 #######################################
 # github SSH connections over HTTPS
@@ -19,6 +30,9 @@ RequestTTY auto
 Host github.com
     Hostname ssh.github.com
     Port 443
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/id_ecdsa
+    IdentitiesOnly yes
 
 #Host hostmachine
 #Hostname 256.110.195.126
@@ -35,3 +49,7 @@ Host github.com
 # A proxy is set up on port 8080
 # Can connect to a running VNC server on the remote host at port 5900 by
 # connecting to port 5930 on our local machine.
+
+Host *
+    IdentitiesOnly yes
+    PubkeyAuthentication no
