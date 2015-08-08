@@ -69,7 +69,9 @@ function gyr_prompt
     if [ ! -z "${SCHROOT_CHROOT_NAME}" ]; then
         PR_CHROOT="(${SCHROOT_CHROOT_NAME})"
         local PR_COLOR=${PR_YELLOW}
-    else
+    elif [ "${GYR_OS}" = 'FreeBSD' ]; then
+        local PR_COLOR=${PR_RED}
+    elif [ -e /etc/debian_version ]; then
         case "$(hostname)" in
             'tegu')
                 local PR_COLOR=${PR_WHITE}
@@ -87,10 +89,13 @@ function gyr_prompt
                 local PR_COLOR=${PR_LIGHT_CYAN}
                 ;;
             *)
-                #PR_COLOR=${PR_LIGHT_BLACK}
-                local PR_COLOR=${PR_BLUE}
+                local PR_COLOR=${PR_LIGHT_MAGENTA}
                 ;;
         esac
+    elif [ -e /etc/redhat-release ]; then
+        local PR_COLOR=${PR_BLUE}
+    else
+        local PR_COLOR=${PR_CYAN}
     fi
 
     ###if [[ ${TERM} =~ linux || "${HOSTNAME}" != "zero" || -n "${SSH_TTY}" ]]; then
@@ -265,7 +270,8 @@ function gyr_prompt
     if [ -e /etc/debian_version ]; then
         local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(__git_ps1 "(%s $(get_sha))")'${PR_HG}${PR_SCREEN}'\$'
     else
-        source /usr/share/git-core/contrib/completion/git-prompt.sh
+        source /usr/share/git-core/contrib/completion/git-prompt.sh || \
+            source /usr/local/share/git-core/contrib/completion/git-prompt.sh
         local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(declare -F __git_ps1 &>/dev/null && __git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}'\$'
     fi
     local PR_POST=${PR_NO_COLOUR}' '

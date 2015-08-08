@@ -20,10 +20,11 @@ if hash dircolors 2> /dev/null; then
     else
         eval $(dircolors -b)
     fi
-    alias l='ls -CF --group-directories-first  --color=always --time-style=long-iso'
     alias grep='grep --color=always -I -s --exclude-dir=.hg --exclude-dir=.git --exclude-dir=vim/tmp --exclude=*~ --directories=skip'
+fi
+if [ "${GYR_OS}" = 'FreeBSD' ]; then
+    alias l='ls -CFG'
 else
-    #alias l='ls -F --group-directories-first'
     alias l='ls -CF --group-directories-first  --color=always --time-style=long-iso'
 fi
 alias ag='ag --nogroup --column --pager less --skip-vcs-ignores'

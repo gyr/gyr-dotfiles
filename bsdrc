@@ -1,0 +1,35 @@
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
+# File:  bsdrc
+# Update: 20150807
+# (C) Copyright 2015 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: 
+# Usage: 
+#
+################################################################################
+
+###################
+#                 #
+#      ALIAS      #
+#                 #
+###################
+alias free='freecolor -m -o'
+
+alias gyr-bsd-box-update='sudo portsnap fetch update'
+alias gyr-bsd-box-update-apply='sudo portmaster -a'
+alias gyr-bsd-box-clean='sudo portmaster --clean-distfiles'
+alias gyr-bsd-box-list='sudo portmaster -L'
+
+
+###################
+#                 #
+#      SETUP      #
+#                 #
+###################
+[[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+    source /usr/local/share/bash-completion/bash_completion.sh
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent

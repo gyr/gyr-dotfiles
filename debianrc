@@ -37,3 +37,5 @@ alias gyr-deb-box-cleanup="sudo apt-get autoremove --purge --show-progress -o AP
 
 #[ -z "$PS1" ] || linux_logo
 #[ $SHLVL -eq 1 ] && linux_logo
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent

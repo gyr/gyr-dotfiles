@@ -9,7 +9,7 @@
 #
 ##################################
 
-#export GYR_OS=$(uname | tr LINUXSO linuxso)
+export GYR_OS=$(uname -s)
 
 #######
 # PATH
@@ -22,6 +22,10 @@ PATH=/usr/local/bin:${PATH}
 PATH=/usr/local/sbin:${PATH}
 PATH=/usr/sbin:${PATH}
 PATH=/sbin:${PATH}
+# Ruby
+if hash ruby 2> /dev/null; then
+    PATH="$(ruby -e 'print Gem.user_dir')/bin:${PATH}"
+fi
 
 GYR_PATH="${HOME}/.gyr.d"
 export GYR_PATH

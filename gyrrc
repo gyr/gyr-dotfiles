@@ -94,6 +94,8 @@ elif hash pacman 2> /dev/null; then
     . ${GYR_PATH}/dotfiles/archrc
 elif [ -e /etc/redhat-release ]; then
     . ${GYR_PATH}/dotfiles/fedorarc
+elif [ "${GYR_OS}" = 'FreeBSD' ]; then
+    . ${GYR_PATH}/dotfiles/bsdrc
 fi
 
 
