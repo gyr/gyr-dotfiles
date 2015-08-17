@@ -27,10 +27,6 @@ if [ "${GYR_OS}" = 'FreeBSD' ]; then
 else
     alias l='ls -CF --group-directories-first  --color=always --time-style=long-iso'
 fi
-alias ag='ag --nogroup --column --pager less --skip-vcs-ignores'
-alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores'
-alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores'
-alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores'
 alias autossh='TERM=xterm-256color \autossh -x -a -t'
 alias c='printf "\33[2J"'
 alias cclive='cclive --continue -s best'
@@ -56,12 +52,13 @@ alias gyr-conky-dual-monitor="/work/gyr/.gyr.d/scripts/gyr-set-monitor-resolutio
 alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
 alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
 alias gyr-http-server='python -m SimpleHTTPServer'
-alias gyr-ipdb='python -m ipdb'
 alias gyr-iptable-list='sudo /sbin/iptables -L -n -v --line-numbers'
 alias gyr-iptable-listin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias gyr-iptable-listout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias gyr-iptable-listfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
-alias gyr-ip-external='curl ifconfig.me'
+#alias gyr-ip-external='curl ifconfig.me'
+alias gyr-ip-external='dig +short myip.opendns.com @resolver1.opendns.com'
+#alias gyr-ip-external='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
 alias gyr-ip-location='function _gil(){ curl ipinfo.io/$@ ; }; _gil'
 alias gyr-kvm-network-start='sudo virsh net-start default ; sudo virsh net-autostart default'
 #alias gyr-mnt-b="sudo mount -t ecryptfs /work/gyr/Dropbox/.bbb /work/gyr/Dropbox/bkp/bkpc -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
@@ -76,18 +73,9 @@ alias gyr-nmap-local-active='nmap -n -sP -oG - 192.168.0.*/32 | grep ": Up" | cu
 alias gyr-open='xdg-open'
 alias gyr-pass-backup='tar -cz .password-store | gpg --recipient B0E4F0BA --encrypt > password-store-backup.tar.gz.gpg'
 alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz'
-alias gyr-pdb='python -m pdb'
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
-alias gyr-pyc-clean="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
 alias gyr-resolvconf-fix="sudo cp /home/gyr/.gyr.d/bkp/resolv.conf_google /etc/resolv.conf"
-alias gyr-rsync-god-gyrd='rsync-sync .gyr.d godzilla.local:/work/gyr/'
-alias gyr-rsync-god-imap='rsync-sync .sylpheed-2.0 godzilla.local:/work/gyr/'
-alias gyr-rsync-god-st='rsync-sync Documents godzilla.local:/work/gyr/'
-alias gyr-rsync-god-ibmd='rsync-sync .ibm.d godzilla.local:/work/gyr/'
-alias gyr-rsync-god-irc='rsync-sync .xchat2 godzilla.local:/work/gyr/'
-alias gyr-rsync-god-notes='rsync-sync lotus godzilla.local:/work/gyr/'
-alias gyr-rsync-god-purple='rsync-sync .purple godzilla.local:/work/gyr/'
 alias gyr-ssh-remove-server='ssh-keygen -f ~/.ssh/known_hosts -R'
 alias gyr-sound-test='aplay /usr/share/sounds/alsa/Front_Center.wav'
 alias gyr-vim-git-clone='cd ~ && git clone http://github.com/username/dotvim.git ~/.vim && cd ~/.vim && git submodule init && git submodule update'
@@ -133,14 +121,6 @@ alias psz="ps aux | awk '{ print \$8 \" \" \$2 \" \" \$11}' | grep -w Z"
 alias pur='rm -vf *~ .*~ .*.bak *.bak *backup.fm *backup.book *.keep *.mkelem *.contrib *.contrib.* findmerge.* *.merge pip__* .abe.state* .cmake.* *.inforce *.rej *.pyc'
 alias reset='reset && stty sane && clear && echo -e "\033c"'
 alias rm='rm -i'
-#alias rsync-copy-restrict='rsync -CavzHx'
-#alias rsync-move-restrict='rsync -CravzpthHx --remove-source-files'
-#alias rsync-sync-restrict='rsync -CravzpthHx --update --delete'
-#alias rsync-update-restrict='rsync -CravzpthHx --update'
-alias rsync-copy='rsync -avz --partial --progress'
-alias rsync-move='rsync -avz --remove-source-files'
-alias rsync-sync='rsync -avz --update --delete'
-alias rsync-update='rsync -CravzpthHx --update'
 alias ssh='TERM=xterm-256color \ssh -x -a -t'
 alias scptmp='function _scpt(){ scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _scpt'
 alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _ssht'
@@ -155,11 +135,15 @@ alias vprint="vim +'hardcopy > /tmp/output.ps' +q"
 alias vs='gyr-vim'
 alias wget='wget -c'
 alias youtube='youtube-dl -c'
-#
-## Rádios OnLine.
-#
-## Info: http://www.vivaolinux.com.br/dica/Ouca-a-KissFM-Radio-Rock-diretamente-de-seu-terminal/
-#
+
+# PYTHON
+alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
+alias gyr-python-ipdb='python -m ipdb'
+alias gyr-python-pylint="find . -type f -name '*.py' -exec pylint --confidence=HIGH,UNDEFINED,INFERENCE_FAILURE -E {} \;"
+alias gyr-python-pdb='python -m pdb'
+
+# RADIOS (online)
+# Info: http://www.vivaolinux.com.br/dica/Ouca-a-KissFM-Radio-Rock-diretamente-de-seu-terminal/
 alias 89fm64k='mplayer "http://173.192.34.69/89rock64k.aac"'
 #alias 89fm64k='mplayer "http://173-192-34-69.webnow.net.br/89rock64k.aac"'
 alias 89fm128k='mplayer "http://173.192.34.69/89rock128k.aac"'
@@ -170,5 +154,28 @@ alias metalmilitia='mplayer -playlist "http://www.server1.bouncestream.com.br/tu
 alias globoamsp='mplayer http://wm-sgr-live.globo.com/sgr_off_globoamsp_live.wma'
 alias cbnfmsp='mplayer http://wm-sgr-live.globo.com/sgr_off_cbnfmsp_live.wma'
 alias bandamsp='mplayer http://servidor25.crossdigital.com.br:8000/bandeirantesam'
+
+# RSYNC
+alias gyr-rsync-god-gyrd='rsync-sync .gyr.d godzilla.local:/work/gyr/'
+alias gyr-rsync-god-imap='rsync-sync .sylpheed-2.0 godzilla.local:/work/gyr/'
+alias gyr-rsync-god-st='rsync-sync Documents godzilla.local:/work/gyr/'
+alias gyr-rsync-god-ibmd='rsync-sync .ibm.d godzilla.local:/work/gyr/'
+alias gyr-rsync-god-irc='rsync-sync .xchat2 godzilla.local:/work/gyr/'
+alias gyr-rsync-god-notes='rsync-sync lotus godzilla.local:/work/gyr/'
+alias gyr-rsync-god-purple='rsync-sync .purple godzilla.local:/work/gyr/'
+#alias rsync-copy-restrict='rsync -CavzHx'
+#alias rsync-move-restrict='rsync -CravzpthHx --remove-source-files'
+#alias rsync-sync-restrict='rsync -CravzpthHx --update --delete'
+#alias rsync-update-restrict='rsync -CravzpthHx --update'
+alias rsync-copy='rsync -avz --partial --progress'
+alias rsync-move='rsync -avz --remove-source-files'
+alias rsync-sync='rsync -avz --update --delete'
+alias rsync-update='rsync -CravzpthHx --update'
+
+# SILVER SEARCHER
+alias ag='ag --nogroup --column --pager less --skip-vcs-ignores'
+alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores'
+alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores'
+alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores'
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent

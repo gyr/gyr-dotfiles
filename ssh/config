@@ -34,6 +34,20 @@ Host github.com
     IdentityFile ~/.ssh/id_ecdsa
     IdentitiesOnly yes
 
+Host bitbucket.org
+    Hostname bitbucket.org
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/id_ecdsa
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host gitlab.com
+    Hostname gitlab.com
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/id_ecdsa
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
 #Host hostmachine
 #Hostname 256.110.195.126
 #User useid
@@ -49,6 +63,20 @@ Host github.com
 # A proxy is set up on port 8080
 # Can connect to a running VNC server on the remote host at port 5900 by
 # connecting to port 5930 on our local machine.
+
+Host itegu
+    Hostname 192.168.254.1
+    User gyr
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/id_ecdsa_vm
+    IdentitiesOnly yes
+
+Host tegu
+    Hostname 192.168.122.1
+    User gyr
+    PubkeyAuthentication yes
+    IdentityFile ~/.ssh/id_ecdsa_vm
+    IdentitiesOnly yes
 
 Host *
     IdentitiesOnly yes
