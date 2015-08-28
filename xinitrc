@@ -48,44 +48,54 @@ xcape -e 'Control_L=Escape'
 # Fix Java (GUI appears gray only)
 #wmname LG3D
 
-exit 0
-# If debian exit
-hash lsb_release 2> /dev/null && exit 0
-
+#exit 0
 # ONLY FOR XINITRC
 # Disable lines below if session manager is been using!
 #
 #STARTUP="/usr/bin/startxfce4"
-#STARTUP="/usr/bin/awesome"
+STARTUP="/usr/bin/awesome"
 #
-case $1 in
-    xfce4)
-        STARTUP="/usr/bin/startxfce4"
-        ;;
-    e17)
-        STARTUP="/usr/bin/enlightenment_start"
-        ;;
-    awesome)
-        STARTUP="/usr/bin/awesome"
-        ;;
-    *)
-        STARTUP="/usr/bin/awesome"
-        ;;
-esac
+#case $1 in
+#    xfce4)
+#        STARTUP="/usr/bin/startxfce4"
+#        ;;
+#    e17)
+#        STARTUP="/usr/bin/enlightenment_start"
+#        ;;
+#    awesome)
+#        STARTUP="/usr/bin/awesome"
+#        ;;
+#    *)
+#        STARTUP="/usr/bin/awesome"
+#        ;;
+#esac
 
-# test for an existing bus daemon, just to be safe
-if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
-    # if not found, launch a new one
-    STARTUP="/usr/bin/dbus-launch --sh-syntax --exit-with-session ${STARTUP}"
-fi
+## test for an existing bus daemon, just to be safe
+#if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+#    # if not found, launch a new one
+#    STARTUP="/usr/bin/dbus-launch --sh-syntax --exit-with-session ${STARTUP}"
+#fi
+#
+## Start gpg-agent
+#killall gpg-agent
+##gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
+#
+## Start ssh-agent
+#killall ssh-agent
+##STARTUP="/usr/bin/ssh-agent ${STARTUP}"
+#
+## Window Manager
+#exec ck-launch-session ${STARTUP}
 
-# Start gpg-agent
-killall gpg-agent
-#gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
-
-# Start ssh-agent
-killall ssh-agent
-#STARTUP="/usr/bin/ssh-agent ${STARTUP}"
-
-# Window Manager
-exec ck-launch-session ${STARTUP}
+#ck-launch-session awesome
+OPTIONFILE=/etc/X11/Xsession.options
+. /etc/X11/Xsession.d/20x11-common_process-args
+. /etc/X11/Xsession.d/35x11-common_xhost-local
+. /etc/X11/Xsession.d/55awesome-javaworkaround
+. /etc/X11/Xsession.d/60xdg-user-dirs-update
+. /etc/X11/Xsession.d/75dbus_dbus-launch
+. /etc/X11/Xsession.d/90consolekit
+. /etc/X11/Xsession.d/90gpg-agent
+. /etc/X11/Xsession.d/90qt-a11y
+. /etc/X11/Xsession.d/90x11-common_ssh-agent
+. /etc/X11/Xsession.d/99x11-common_start
