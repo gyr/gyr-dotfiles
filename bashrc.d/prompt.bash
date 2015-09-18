@@ -74,7 +74,7 @@ function gyr_prompt
     elif [ -e /etc/debian_version ]; then
         case "$(hostname)" in
             'tegu')
-                local PR_COLOR=${PR_WHITE}
+                local PR_COLOR=${PR_LIGHT_RED}
                 ;;
             #'cataclysm')
             #    local PR_COLOR=${PR_YELLOW}

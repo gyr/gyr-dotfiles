@@ -40,15 +40,15 @@ if [ "${PAGER}" = 'less' ]; then
 #    LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 #    LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 #    LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-    export LESS_TERMCAP_mb=$'\E[01;34m'
-    export LESS_TERMCAP_md=$'\E[34m'
-    export LESS_TERMCAP_so=$'\E[44;01;37m'
-    export LESS_TERMCAP_us=$'\E[04;01;34m'
+#    export LESS_TERMCAP_mb=$'\E[01;34m'
+#    export LESS_TERMCAP_md=$'\E[34m'
+#    export LESS_TERMCAP_so=$'\E[44;01;37m'
+#    export LESS_TERMCAP_us=$'\E[04;01;34m'
     # Red theme
-#    LESS_TERMCAP_mb=$'\E[33m'
-#    LESS_TERMCAP_md=$'\E[01;31m'
-#    LESS_TERMCAP_so=$'\E[41;30m'
-#    LESS_TERMCAP_us=$'\E[04;31m'
+    export LESS_TERMCAP_mb=$'\E[33m'
+    export LESS_TERMCAP_md=$'\E[01;31m'
+    export LESS_TERMCAP_so=$'\E[41;30m'
+    export LESS_TERMCAP_us=$'\E[04;31m'
     # Cyan theme
 #    LESS_TERMCAP_mb=$'\E[01;34m'
 #    LESS_TERMCAP_md=$'\E[36m'

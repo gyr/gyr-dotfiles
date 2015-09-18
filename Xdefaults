@@ -37,27 +37,27 @@
 !
 !
 !! Dark
+!!
+!!#define S_base03        #002b36
+!!#define S_base02        #073642
+!!#define S_base01        #586e75
+!!#define S_base00        #657b83
+!!#define S_base0         #839496
+!!#define S_base1         #93a1a1
+!!#define S_base2         #eee8d5
+!!#define S_base3         #fdf6e3
 !
-!#define S_base03        #002b36
-!#define S_base02        #073642
-!#define S_base01        #586e75
-!#define S_base00        #657b83
-!#define S_base0         #839496
-!#define S_base1         #93a1a1
-!#define S_base2         #eee8d5
-!#define S_base3         #fdf6e3
 !
+!Light
 !
-!! Light
-!
-!! #define S_base03        #fdf6e3
-!! #define S_base02        #eee8d5
-!! #define S_base01        #93a1a1
-!! #define S_base00        #839496
-!! #define S_base0         #657b83
-!! #define S_base1         #586e75
-!! #define S_base2         #073642
-!! #define S_base3         #002b36
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #073642
+!#define S_base3         #002b36
 !
 !
 !! To only apply colors to your terminal, for example, prefix
@@ -94,53 +94,76 @@
 !*customization: -color
 !/etc/X11/rgb.txt
 
+! Common
+#define S_black         black
+#define S_darkred       red3
+#define S_darkgreen     green4
+#define S_darkyellow    yellow3
+#define S_darkblue      royalblue
+#define S_violet        magenta3
+#define S_turquoise     cyan4
+#define S_gray          lightgray
+
+#define S_darkgray      darkgray
+#define S_red           red
+#define S_green         green1
+#define S_yellow        yellow
+#define S_blue          skyblue1
+#define S_magenta       magenta1
+#define S_cyan          cyan
+#define S_white         white
+
+#define S_orange        orange
+
+
 ! fosforoverde
 !#define S_light #e6fffa
 !#define S_dark  #99ffeb
+
 ! gulf
-!#define S_light #e6faff
-#define S_light ghostwhite
-!#define S_dark  #99ebff
-#define S_dark  powderblue
+!!#define S_light #e6faff
+!#define S_light ghostwhite
+!!#define S_dark  #99ebff
+!#define S_dark  powderblue
 
-*background:   #121212
-!*foreground:   mintcream
-!*foreground:   white
-*foreground:   S_light
-*cursorColor:  royalblue
-*cursorColor2: black
+! blueish
+!#define S_light ghostwhite
+!#define S_dark  powderblue
+!*background:   #121212
+!*foreground:   S_light
+!*cursorColor:  S_darkblue
+!*cursorColor2: S_black
+!*highlightTextColor: S_black
+!*highlightColor:     S_dark
 
-*color0:       black
-*color1:       red3
-*color2:       green4
-*color3:       yellow3
-!*color4:       blue
-*color4:       royalblue
-*color5:       magenta3
-*color6:       cyan4
-*color7:       S_dark
-!*color7:       lightgrey
-!*color7:       gray86
-!*color7:       antiquewhite
-*color8:       darkgray
-!*color8:       grey25
-*color9:       red
-*color10:      green1
-!*color10:      green
-*color11:      yellow
-!*color12:      cornflowerblue
-*color12:      skyblue1
-*color13:      magenta1
-!*color13:      magenta
-*color14:      cyan
-*color15:      white
+! whitred
+*background:   S_white
+*foreground:   S_black
+*cursorColor:  S_red
+*cursorColor2: S_white
+*highlightTextColor: S_white
+*highlightColor:     S_darkgray
 
 *highlightColorMode: true
 *highlightReverse:   false
-*highlightTextColor: black
-!*highlightColor:     mintcream
-!*highlightColor:     white
-*highlightColor:     S_dark
+
+*color0:       S_black
+*color1:       S_darkred
+*color2:       S_darkgreen
+*color3:       S_darkyellow
+*color4:       S_darkblue
+*color5:       S_violet
+*color6:       S_turquoise
+*color7:       S_gray
+*color8:       S_darkgray
+*color9:       S_red
+*color10:      S_green
+*color11:      S_yellow
+*color12:      S_blue
+*color13:      S_magenta
+*color14:      S_cyan
+*color15:      S_white
+
 
 !--------------------------------------------------------------------
 !ORIG
@@ -358,9 +381,14 @@ urxvt*VT100.Translations:       #override \n \
     Shift <Key>Space:     string("\033[23$")
 
 ! man 7 urxvt
-URxvt.colorBD:       S_dark
-URxvt.colorUL:       S_dark
-URxvt.colorIT:       S_dark
+! blueish
+!URxvt.colorBD:       S_dark
+!URxvt.colorUL:       S_dark
+!URxvt.colorIT:       S_dark
+! whitred
+URxvt.colorBD:       red
+URxvt.colorUL:       red
+URxvt.colorIT:       red
 !urxvt*font:          terminus-12
 !URxvt*termName: rxvt-unicode
 !URxvt*termName: xterm-256color
@@ -414,7 +442,10 @@ URxvt*borderLess: false
 ! the transparency stuff
 !!URxvt*inheritPixmap: true
 !URxvt*transparent: True
-URxvt*tintColor: white
+!blueish
+!URxvt*tintColor: white
+! whitred
+URxvt*tintColor: black
 !URxvt*shading: 20
 !URxvt*fading: 30
 !!URxvt*cursorUnderline: True
@@ -426,9 +457,15 @@ urxvt*matcher.button:  3
 urxvt*bell-command: notify-send "Beep, Beep"
 urxvt*keysym.C-Delete:  perl:matcher:last
 urxvt*keysym.M-Delete:  perl:matcher:list
+! bluish
+!URxvt.tabbed.tabbar-fg: 0
+!URxvt.tabbed.tabbar-bg: 7
+!URxvt.tabbed.tab-fg:    7
+!URxvt.tabbed.tab-bg:    0
+! whitred
 URxvt.tabbed.tabbar-fg: 0
-URxvt.tabbed.tabbar-bg: 7
-URxvt.tabbed.tab-fg:    7
+URxvt.tabbed.tabbar-bg: 9
+URxvt.tabbed.tab-fg:    9
 URxvt.tabbed.tab-bg:    0
 URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
 
