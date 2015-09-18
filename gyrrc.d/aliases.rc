@@ -132,7 +132,8 @@ alias type='type -a'
 #alias set_eh='stty erase '
 alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias vprint="vim +'hardcopy > /tmp/output.ps' +q"
-alias vs='gyr-vim'
+#alias vs='gyr-vim'
+alias vs='gvim --remote-silent'
 alias wget='wget -c'
 alias youtube='youtube-dl -c'
 
