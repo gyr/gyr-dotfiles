@@ -60,6 +60,7 @@ alias gyr-iptable-listfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
 alias gyr-ip-external='dig +short myip.opendns.com @resolver1.opendns.com'
 #alias gyr-ip-external='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
 alias gyr-ip-location='function _gil(){ curl ipinfo.io/$@ ; }; _gil'
+alias gyr-hardlink-doc='sudo /usr/bin/hardlink -t /usr/share/doc'
 alias gyr-kvm-network-start='sudo virsh net-start default ; sudo virsh net-autostart default'
 #alias gyr-mnt-b="sudo mount -t ecryptfs /work/gyr/Dropbox/.bbb /work/gyr/Dropbox/bkp/bkpc -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
 alias gyr-mnt-tmpfs='sudo mount -t tmpfs tmpfs /mnt -o size=1024m,mode=0755'

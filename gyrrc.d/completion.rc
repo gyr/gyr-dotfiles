@@ -9,11 +9,15 @@
 #
 ################################################################################
 
-complete -A hostname gyr-autossh
-complete -F _compssh gyr-autossh
-complete -A hostname gyr-ssh
-complete -F _compssh gyr-ssh
-complete -A hostname ssh-graph
-complete -F _compssh ssh-graph
+if [ "${SHELL}" = '/bin/bash' ]; then
+    complete -A hostname gyr-autossh
+    complete -F _compssh gyr-autossh
+    complete -A hostname gyr-ssh
+    complete -F _compssh gyr-ssh
+    complete -A hostname ssh-graph
+    complete -F _compssh ssh-graph
+#elif [ "${SHELL}" = '/usr/bin/zsh' ]; then
+#    # do something
+fi
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent
