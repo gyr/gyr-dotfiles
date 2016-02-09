@@ -13,8 +13,8 @@ export GYR_OS=$(uname -s)
 
 #######
 # PATH
-PATH=./:${PATH}
-PATH=${HOME}/:${PATH}
+PATH=.:${PATH}
+PATH=${HOME}:${PATH}
 PATH=/etc:${PATH}
 PATH=/usr/bin:${PATH}
 PATH=/usr/local:${PATH}
@@ -117,9 +117,10 @@ if hash keychain 2> /dev/null; then
     # allow $USER to use keys. Only enter once and it will remain enabled till
     # you delete it or reboot the server
     ###########################################################################
-    /usr/bin/keychain $HOME/.ssh/id_rsa
+    /usr/bin/keychain --agents gpg,ssh $HOME/.ssh/id_rsa_ibm B0E4F0BA
 
     source $HOME/.keychain/$HOSTNAME-sh
+    source $HOME/.keychain/$HOSTNAME-sh-gpg
 fi
 # Motorola
 #[ -f ${GYR_PATH}/dotfiles/motorola/motorolaprofile ] && . ${GYR_PATH}/dotfiles/motorola/motorolaprofile
