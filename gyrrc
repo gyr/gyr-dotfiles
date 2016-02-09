@@ -96,6 +96,8 @@ elif [ -e /etc/redhat-release ]; then
     . ${GYR_PATH}/dotfiles/fedorarc
 elif [ "${GYR_OS}" = 'FreeBSD' ]; then
     . ${GYR_PATH}/dotfiles/bsdrc
+elif [ "${GYR_OS}" = 'Darwin' ]; then
+    . ${GYR_PATH}/dotfiles/darwinrc
 fi
 
 

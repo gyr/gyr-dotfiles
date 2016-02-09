@@ -71,31 +71,14 @@ function gyr_prompt
         local PR_COLOR=${PR_YELLOW}
     elif [ "${GYR_OS}" = 'FreeBSD' ]; then
         local PR_COLOR=${PR_RED}
+    elif [ "${GYR_OS}" = 'Darwin' ]; then
+        local PR_COLOR=${PR_LIGHT_BLACK}
     elif [ -e /etc/debian_version ]; then
-        case "$(hostname)" in
-            'tegu')
-                local PR_COLOR=${PR_LIGHT_RED}
-                ;;
-            #'cataclysm')
-            #    local PR_COLOR=${PR_YELLOW}
-            #    ;;
-            'godzilla'|'shenlong')
-                local PR_COLOR=${PR_GREEN}
-                ;;
-            'zok'|'ghidorah')
-                local PR_COLOR=${PR_LIGHT_YELLOW}
-                ;;
-            'smaug'|'tiamat')
-                local PR_COLOR=${PR_LIGHT_CYAN}
-                ;;
-            *)
-                local PR_COLOR=${PR_LIGHT_MAGENTA}
-                ;;
-        esac
+        local PR_COLOR=${PR_MAGENTA}
     elif [ -e /etc/redhat-release ]; then
         local PR_COLOR=${PR_BLUE}
     else
-        local PR_COLOR=${PR_CYAN}
+        local PR_COLOR=${PR_GREEN}
     fi
 
     ###if [[ ${TERM} =~ linux || "${HOSTNAME}" != "zero" || -n "${SSH_TTY}" ]]; then
@@ -270,9 +253,16 @@ function gyr_prompt
     if [ -e /etc/debian_version ]; then
         local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(__git_ps1 "(%s $(get_sha))")'${PR_HG}${PR_SCREEN}'\$'
     else
-        source /usr/share/git-core/contrib/completion/git-prompt.sh || \
-            source /usr/local/share/git-core/contrib/completion/git-prompt.sh
-        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(declare -F __git_ps1 &>/dev/null && __git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}'\$'
+        if [ -e /usr/share/git-core/contrib/completion/git-prompt.sh \
+             -o -e /usr/local/share/git-core/contrib/completion/git-prompt.sh \
+             -o -e /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+            source /usr/share/git-core/contrib/completion/git-prompt.sh || \
+                source /usr/local/share/git-core/contrib/completion/git-prompt.sh || \
+                source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+            local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(declare -F __git_ps1 &>/dev/null && __git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}'\$'
+        else
+            local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_HG}${PR_SCREEN}'\$'
+        fi
     fi
     local PR_POST=${PR_NO_COLOUR}' '
 

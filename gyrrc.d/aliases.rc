@@ -22,17 +22,23 @@ if hash dircolors 2> /dev/null; then
     fi
     alias grep='grep --color=always -I -s --exclude-dir=.hg --exclude-dir=.git --exclude-dir=vim/tmp --exclude=*~ --directories=skip'
 fi
-if [ "${GYR_OS}" = 'FreeBSD' ]; then
+if [ "${GYR_OS}" = 'FreeBSD' -o "${GYR_OS}" = 'Darwin' ]; then
     alias l='ls -CFG'
+    alias rm='rm -i'
 else
     alias l='ls -CF --group-directories-first  --color=always --time-style=long-iso'
+    alias mv='mv --backup=t'
+    alias cp='cp --backup=t'
+    alias rm='rm -i --preserve-root'
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
 fi
 alias autossh='TERM=xterm-256color \autossh -x -a -t'
 alias c='printf "\33[2J"'
 alias cclive='cclive --continue -s best'
 alias clive='clive -f best'
 alias colordiff='colordiff -y'
-alias cp='cp --backup=t'
 #alias df='df -h'
 alias df='dfc -Ts'
 alias diff-patch='diff -Nurp'
@@ -103,7 +109,6 @@ alias man='gyr-man'
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
 alias mplayer1=' mplayer -ao alsa:device=hw=1.0'
-alias mv='mv --backup=t'
 # pbpaste > texto.txt
 alias pbpaste='xclip -selection clipboard -o'
 alias pbpastes='xclip -selection primary -o'
@@ -121,7 +126,6 @@ alias pst='pstree -Alpha'
 alias psz="ps aux | awk '{ print \$8 \" \" \$2 \" \" \$11}' | grep -w Z"
 alias pur='rm -vf *~ .*~ .*.bak *.bak *backup.fm *backup.book *.keep *.mkelem *.contrib *.contrib.* findmerge.* *.merge pip__* .abe.state* .cmake.* *.inforce *.rej *.pyc'
 alias reset='reset && stty sane && clear && echo -e "\033c"'
-alias rm='rm -i'
 alias ssh='TERM=xterm-256color \ssh -x -a -t'
 alias scptmp='function _scpt(){ scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _scpt'
 alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _ssht'
@@ -170,10 +174,10 @@ alias gyr-rsync-god-purple='rsync-sync .purple godzilla.local:/work/gyr/'
 #alias rsync-move-restrict='rsync -CravzpthHx --remove-source-files'
 #alias rsync-sync-restrict='rsync -CravzpthHx --update --delete'
 #alias rsync-update-restrict='rsync -CravzpthHx --update'
-alias rsync-copy='rsync -avz --partial --progress'
-alias rsync-move='rsync -avz --remove-source-files'
-alias rsync-sync='rsync -avz --update --delete'
-alias rsync-update='rsync -CravzpthHx --update'
+alias rsync-copy='rsync -avzh --partial --progress'
+alias rsync-move='rsync -avzh --remove-source-files --progress'
+alias rsync-sync='rsync -avzh --update --delete --progress'
+alias rsync-update='rsync -avzh --update --progress'
 
 # SILVER SEARCHER
 alias ag='ag --nogroup --column --pager less --skip-vcs-ignores'

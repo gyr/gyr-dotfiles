@@ -1,0 +1,28 @@
+################################################################################
+#
+# Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
+# File: darwinrc
+# Update: 20151217
+# (C) Copyright 2015 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: 
+# Usage: 
+#
+################################################################################
+
+###################
+#                 #
+#      SETUP      #
+#                 #
+###################
+
+export HOMEBREW_GITHUB_API_TOKEN=820a8c92eeb6f3735db8d6b1e294b38298775727
+
+export PATH=${HOME}/Library/Python/2.7/bin:${PATH}
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent
