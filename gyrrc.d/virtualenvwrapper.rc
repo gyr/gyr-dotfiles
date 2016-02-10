@@ -12,9 +12,20 @@
 #
 ################################################################################
 
+# fedora
+if [ -f '/usr/bin/virtualenvwrapper.sh' ]; then
+    _virtualenvwrapper_sh='/usr/bin/virtualenvwrapper.sh'
+# debian
+elif [ -f '/usr/share/virtualenvwrapper/virtualenvwrapper.sh' ]; then
+    _virtualenvwrapper_sh='/usr/share/virtualenvwrapper/virtualenvwrapper.sh'
+# darwin
+elif [ -f '/usr/local/bin/virtualenvwrapper.sh' ]; then
+    _virtualenvwrapper_sh='/usr/local/bin/virtualenvwrapper.sh'
+fi
 
-_virtualenvwrapper_sh='/usr/share/virtualenvwrapper/virtualenvwrapper.sh'
-if [ -f ${_virtualenvwrapper_sh} ]; then
+if [ -n "${_virtualenvwrapper_sh}" ]; then
     export WORKON_HOME=${HOME}/.virtualenvs
     source ${_virtualenvwrapper_sh}
 fi
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent

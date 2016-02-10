@@ -146,7 +146,7 @@ alias youtube='youtube-dl -c'
 alias gyr-pip-update-all="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
 alias gyr-python-ipdb='python -m ipdb'
-alias gyr-python-pylint="find . -type f -name '*.py' -exec pylint --confidence=HIGH,UNDEFINED,INFERENCE_FAILURE -E {} \;"
+alias gyr-python-pylint="find . -type f -name '*.py' -exec pylint -E {} \;"
 alias gyr-python-pdb='python -m pdb'
 
 # RADIOS (online)
