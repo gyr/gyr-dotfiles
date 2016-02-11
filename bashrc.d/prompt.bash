@@ -120,8 +120,8 @@ function gyr_prompt
         [ ${LAST_COMMAND_STATUS} -ne 0 ] && LAST_COMMAND_PROMPT_STATUS="[${LAST_COMMAND_STATUS}]" || LAST_COMMAND_PROMPT_STATUS=''
 
         # Number of jobs
-        ###JOB_NUMBER="$(jobs -s | tail -n1 | cut -d' ' -f1 | sed 's/\(\[[0-9]*\]\)+/\1/')"
-        JOB_NUMBER="$(jobs -s | wc -l | sed 's/0//;s/\([1-9]\+\)/[\1]/')"
+        JOB_NUMBER="$(jobs -s | wc -l | tr -d ' ' | sed 's/\([1-9]\+\)/\1/')"
+        [ "${JOB_NUMBER}" != '0' ] && JOB_NUMBER="[${JOB_NUMBER}]" || JOB_NUMBER=''
 
         # Battery
         #if hash acpi 2> /dev/null; then
@@ -250,19 +250,20 @@ function gyr_prompt
     #    fi
     #fi
     ###local PR_BASE=${PR_COLOR}${zg3}[${debian_chroot:+($debian_chroot)}${PR_USER}'@'${PR_HOST}'$(__git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}]'\$'
-    if [ -e /etc/debian_version ]; then
+
+    # Darwin
+    if [ -e /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
+        source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+    # Fedora
+    elif [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+        source /usr/share/git-core/contrib/completion/git-prompt.sh
+    fi
+    # Debian sources git-prompt.sh out-of-the-box :)
+
+    if declare -F __git_ps1 &>/dev/null; then
         local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(__git_ps1 "(%s $(get_sha))")'${PR_HG}${PR_SCREEN}'\$'
     else
-        if [ -e /usr/share/git-core/contrib/completion/git-prompt.sh \
-             -o -e /usr/local/share/git-core/contrib/completion/git-prompt.sh \
-             -o -e /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
-            source /usr/share/git-core/contrib/completion/git-prompt.sh || \
-                source /usr/local/share/git-core/contrib/completion/git-prompt.sh || \
-                source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-            local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(declare -F __git_ps1 &>/dev/null && __git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}'\$'
-        else
-            local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_HG}${PR_SCREEN}'\$'
-        fi
+        local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_HG}${PR_SCREEN}'\$'
     fi
     local PR_POST=${PR_NO_COLOUR}' '
 
