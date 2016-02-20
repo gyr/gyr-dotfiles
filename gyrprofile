@@ -9,7 +9,20 @@
 #
 ##################################
 
-export GYR_OS=$(uname -s)
+GYR_OS=$(uname -s)
+if [ "${GYR_OS}" = 'Linux' ]; then
+    # Debian/Ubuntu
+    if hash lsb_release 2> /dev/null; then
+        GYR_OS='Debian'
+    # Arch
+    elif hash pacman 2> /dev/null; then
+        GYR_OS='Arch'
+    # RedHat/Fedora
+    elif [ -e /etc/redhat-release ]; then
+        GYR_OS='RedHat'
+    fi
+fi
+export GYR_OS
 
 #######
 # PATH
@@ -39,13 +52,25 @@ PATH=${GYR_PATH}:${PATH}
 [ -d ${GYR_PATH}/scripts/3pp ] && PATH=${GYR_PATH}/scripts/3pp:${PATH}
 # Clearcase
 #[ -f /usr/atria/bin/cleartool -o "${CLEARCASE_PRIMARY_GROUP}" = 'staff' ] && PATH=${GYR_PATH}/scripts/clearcase:${PATH}
+
+#######
 # Debian/Ubuntu
-if hash lsb_release 2> /dev/null; then
+if [ "${GYR_OS}" = 'Debian' ]; then
     PATH=${GYR_PATH}/scripts/debian:${PATH}
-elif hash pacman 2> /dev/null; then
+    export DEBEMAIL=${EMAIL}
+    export DEBFULLNAME="${FULLNAME}"
+#######
+# Arch
+elif [ "${GYR_OS}" = 'Arch' ]; then
     PATH=${GYR_PATH}/scripts/arch:${PATH}
-elif [ -e /etc/redhat-release ]; then
+#######
+# RedHat/Fedora
+elif [ "${GYR_OS}" = 'RedHat' ]; then
     PATH=${GYR_PATH}/scripts/fedora:${PATH}
+#######
+# Darwin
+elif [ "${GYR_OS}" = 'Darwin' ];then
+    PATH=${GYR_PATH}/scripts/darwin:${PATH}
 fi
 
 #######
@@ -79,11 +104,6 @@ export FULLNAME='Gustavo Yokoyama Ribeiro'
 # (http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html)
 export AUTOSSH_PORT=0
 
-# Debian
-if [ -e /etc/debian_version ]; then
-    export DEBEMAIL=${EMAIL}
-    export DEBFULLNAME="${FULLNAME}"
-fi
 # Git
 if hash git 2> /dev/null; then
     export GIT_AUTHOR_EMAIL=${EMAIL}

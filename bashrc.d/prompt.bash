@@ -73,10 +73,12 @@ function gyr_prompt
         local PR_COLOR=${PR_RED}
     elif [ "${GYR_OS}" = 'Darwin' ]; then
         local PR_COLOR=${PR_LIGHT_BLACK}
-    elif [ -e /etc/debian_version ]; then
+    elif [ "${GYR_OS}" = 'Debian' ]; then
         local PR_COLOR=${PR_MAGENTA}
-    elif [ -e /etc/redhat-release ]; then
+    elif [ "${GYR_OS}" = 'RedHat' ]; then
         local PR_COLOR=${PR_BLUE}
+    elif [ "${GYR_OS}" = 'Arch' ]; then
+        local PR_COLOR=${PR_CYAN}
     else
         local PR_COLOR=${PR_GREEN}
     fi
