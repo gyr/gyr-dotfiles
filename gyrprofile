@@ -11,23 +11,22 @@
 
 GYR_OS=$(uname -s)
 if [ "${GYR_OS}" = 'Linux' ]; then
-    # Debian/Ubuntu
-    if hash lsb_release 2> /dev/null; then
-        GYR_OS='Debian'
+    #######
+    # Linux
+    export GZIP='--rsyncable'
+
     # Arch
-    elif hash pacman 2> /dev/null; then
+    if hash pacman 2> /dev/null; then
         GYR_OS='Arch'
-    # RedHat/Fedora
-    elif [ -e /etc/redhat-release ]; then
-        GYR_OS='RedHat'
+    # Debian/Ubuntu/RedHat/Fedora/CentOS
+    elif [ -e /etc/os-release ]; then
+        GYR_OS="$(grep '^ID=' /etc/os-release | cut -d'=' -f2 | tr -d '\"')"
     fi
 fi
 export GYR_OS
 
 #######
 # PATH
-PATH=.:${PATH}
-PATH=${HOME}:${PATH}
 PATH=/etc:${PATH}
 PATH=/usr/bin:${PATH}
 PATH=/usr/local:${PATH}
@@ -55,7 +54,7 @@ PATH=${GYR_PATH}:${PATH}
 
 #######
 # Debian/Ubuntu
-if [ "${GYR_OS}" = 'Debian' ]; then
+if [ "${GYR_OS}" = 'debian' ]; then
     PATH=${GYR_PATH}/scripts/debian:${PATH}
     export DEBEMAIL=${EMAIL}
     export DEBFULLNAME="${FULLNAME}"
@@ -65,7 +64,7 @@ elif [ "${GYR_OS}" = 'Arch' ]; then
     PATH=${GYR_PATH}/scripts/arch:${PATH}
 #######
 # RedHat/Fedora
-elif [ "${GYR_OS}" = 'RedHat' ]; then
+elif [ "${GYR_OS}" = 'fedora' -o "${GYR_OS}" = 'centos' ]; then
     PATH=${GYR_PATH}/scripts/fedora:${PATH}
 #######
 # Darwin
@@ -99,7 +98,6 @@ export LESS='-FXRS#3Mgi'
 export RST_IFS=${IFS}
 export GREP_COLOR=31
 export CVS_RSH=ssh
-export GZIP='--rsyncable'
 export TZ='America/Sao_Paulo'
 export BC_ENV_ARGS="${GYR_PATH}/dotfiles/bcrc"
 

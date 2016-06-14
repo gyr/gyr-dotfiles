@@ -68,15 +68,17 @@ function gyr_prompt
 
     if [ ! -z "${SCHROOT_CHROOT_NAME}" ]; then
         PR_CHROOT="(${SCHROOT_CHROOT_NAME})"
-        local PR_COLOR=${PR_YELLOW}
+        local PR_COLOR=${PR_WHITE}
     elif [ "${GYR_OS}" = 'FreeBSD' ]; then
         local PR_COLOR=${PR_RED}
     elif [ "${GYR_OS}" = 'Darwin' ]; then
         local PR_COLOR=${PR_LIGHT_BLACK}
-    elif [ "${GYR_OS}" = 'Debian' ]; then
+    elif [ "${GYR_OS}" = 'debian' ]; then
         local PR_COLOR=${PR_MAGENTA}
-    elif [ "${GYR_OS}" = 'RedHat' ]; then
+    elif [ "${GYR_OS}" = 'fedora' ]; then
         local PR_COLOR=${PR_BLUE}
+    elif [ "${GYR_OS}" = 'centos' ]; then
+        local PR_COLOR=${PR_YELLOW}
     elif [ "${GYR_OS}" = 'Arch' ]; then
         local PR_COLOR=${PR_CYAN}
     else

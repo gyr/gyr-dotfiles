@@ -88,11 +88,11 @@ unset -v config
 #                 #
 ###################
 #if hash lsb_release 2> /dev/null; then
-if [ "${GYR_OS}" = 'Debian' ]; then
+if [ "${GYR_OS}" = 'debian' ]; then
     . ${GYR_PATH}/dotfiles/debianrc
 elif [ "${GYR_OS}" = 'Arch' ]; then
     . ${GYR_PATH}/dotfiles/archrc
-elif [ "${GYR_OS}" = 'RedHat' ]; then
+elif [  "${GYR_OS}" = 'fedora' -o "${GYR_OS}" = 'centos' ]; then
     . ${GYR_PATH}/dotfiles/fedorarc
 elif [ "${GYR_OS}" = 'FreeBSD' ]; then
     . ${GYR_PATH}/dotfiles/bsdrc
