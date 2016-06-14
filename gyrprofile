@@ -34,6 +34,9 @@ PATH=/usr/local/bin:${PATH}
 PATH=/usr/local/sbin:${PATH}
 PATH=/usr/sbin:${PATH}
 PATH=/sbin:${PATH}
+PATH=.:${PATH}
+PATH=${HOME}:${PATH}
+PATH=${HOME}/.local/bin:${PATH}
 # Ruby
 if hash ruby 2> /dev/null; then
     PATH="$(ruby -e 'print Gem.user_dir')/bin:${PATH}"
