@@ -180,9 +180,9 @@ alias rsync-sync='rsync -avzh --update --delete --progress'
 alias rsync-update='rsync -avzh --update --progress'
 
 # SILVER SEARCHER
-alias ag='ag --nogroup --column --pager less --skip-vcs-ignores'
-alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores'
-alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores'
-alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores'
+alias ag='ag --nogroup --column --pager less --skip-vcs-ignores --hidden'
+alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores --hidden'
+alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores --hidden'
+alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores --hidden'
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent

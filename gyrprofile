@@ -144,7 +144,7 @@ if hash keychain 2> /dev/null; then
     # allow $USER to use keys. Only enter once and it will remain enabled till
     # you delete it or reboot the server
     ###########################################################################
-    /usr/bin/keychain --agents gpg,ssh $HOME/.ssh/id_rsa_ibm B0E4F0BA
+    keychain --agents gpg,ssh $HOME/.ssh/id_rsa_ibm B0E4F0BA
 
     source $HOME/.keychain/$HOSTNAME-sh
     source $HOME/.keychain/$HOSTNAME-sh-gpg
@@ -154,7 +154,10 @@ fi
 # IBM
 [ -f ~/.ibm.d/dotfiles/ibmprofile ] && . ~/.ibm.d/dotfiles/ibmprofile
 
-[ -f ${GYR_PATH}/scripts/3pp/screenfetch-dev ] && ${GYR_PATH}/scripts/3pp/screenfetch-dev
+# screenfetch
+if ! screenfetch 2> /dev/null; then
+    [ -f ${GYR_PATH}/scripts/3pp/screenfetch-dev ] && ${GYR_PATH}/scripts/3pp/screenfetch-dev
+fi
 
 
 #######
