@@ -18,10 +18,11 @@
 ###################
 alias free='freecolor -m -o'
 
-alias gyr-bsd-box-update='sudo portsnap fetch update'
-alias gyr-bsd-box-update-apply='sudo portmaster -a'
-alias gyr-bsd-box-clean='sudo portmaster --clean-distfiles'
-alias gyr-bsd-box-list='sudo portmaster -L'
+alias gyr-bsd-box-port-update='sudo portsnap fetch update'
+alias gyr-bsd-box-port-update-apply='sudo portmaster -a'
+alias gyr-bsd-box-port-clean='sudo portmaster --clean-distfiles'
+alias gyr-bsd-box-port-list='sudo portmaster -L'
+alias gyr-bsd-box-update='sudo pkg update && sudo pkg upgrade && sudo pkg clean && sudo pkg autoremove && sudo pkg audit -F'
 
 
 ###################

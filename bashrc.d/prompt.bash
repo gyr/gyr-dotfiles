@@ -258,6 +258,9 @@ function gyr_prompt
     # Darwin
     if [ -e /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
         source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+    # FreeBSD
+    elif [ -e /usr/local/share/git-core/contrib/completion/git-prompt.sh ]; then
+        source /usr/local/share/git-core/contrib/completion/git-prompt.sh
     # Fedora
     elif [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
         source /usr/share/git-core/contrib/completion/git-prompt.sh
