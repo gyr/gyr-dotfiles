@@ -185,4 +185,8 @@ alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores --hidde
 alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores --hidden'
 alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores --hidden'
 
+# docker
+alias gyr-docker-cleanup-containers="docker ps -q -f status=exited | xargs docker rm"
+alias gyr-docker-cleanup-images="docker images -q -f dangling=true | xargs docker rmi"
+
 # vim: set filetype=sh fileformat=unix foldmethod=indent
