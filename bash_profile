@@ -44,3 +44,5 @@ fi
 if [ -d ~/bin ] ; then
     PATH="~/bin:$PATH"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
