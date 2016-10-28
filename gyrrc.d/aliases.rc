@@ -34,7 +34,7 @@ else
     alias chmod='chmod --preserve-root'
     alias chgrp='chgrp --preserve-root'
 fi
-alias autossh='TERM=xterm-256color \autossh -x -a -t'
+alias autossh='AUTOSSH_FIRST_POLL=5 AUTOSSH_POLL=5 TERM=xterm-256color \autossh -x -a -t'
 alias c='printf "\33[2J"'
 alias cclive='cclive --continue -s best'
 alias clive='clive -f best'
@@ -86,7 +86,7 @@ alias gyr-resolvconf-fix="sudo cp /home/gyr/.gyr.d/bkp/resolv.conf_google /etc/r
 alias gyr-ssh-remove-server='ssh-keygen -f ~/.ssh/known_hosts -R'
 alias gyr-sound-test='aplay /usr/share/sounds/alsa/Front_Center.wav'
 alias gyr-vim-git-clone='cd ~ && git clone http://github.com/username/dotvim.git ~/.vim && cd ~/.vim && git submodule init && git submodule update'
-alias gyr-vim-git-update='cd ~/.vim && git submodule foreach git pull origin master'
+alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
 alias gyr-wifi-quality='watch -n1 iwconfig'
 alias gyr-xdefaults='xrdb -merge ~/.gyr.d/dotfiles/Xdefaults && xrdb -load ~/.gyr.d/dotfiles/Xdefaults'
 alias gxt=". ${GYR_PATH}/scripts/gyr-xterm-dropdown 200 40"
