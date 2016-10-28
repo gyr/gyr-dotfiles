@@ -24,6 +24,14 @@ export BASH_ENV=~/.bashrc
 export SHELL=$(type -P bash)
 export INPUTRC=${GYR_PATH}/dotfiles/inputrc
 [ 'linux' = "${TERM}" ] && TERM=linux-16color
+PR_SCREEN=''
+if [ -n "${STY}" ]; then
+    # screen
+    PR_SCREEN="[${WINDOW}] "
+elif [ -n "${TMUX}" ]; then
+    # tmux
+    PR_SCREEN="[$(tmux display -p '#I')] "
+fi
 
 #if [ -f "${HOME}/.gpg-agent-info" ]; then
 #    . "${HOME}/.gpg-agent-info"

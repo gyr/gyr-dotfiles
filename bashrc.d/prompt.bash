@@ -11,9 +11,6 @@
 
 function gyr_prompt
 {
-    local PR_SCREEN=''
-    [ ! -z "${WINDOW}" ] && PR_SCREEN="[${WINDOW}]"
-
     # Reverse color
     #local PR_REV_RED="\e[0;41;30m"
     local PR_REV_RED='\[\033[0;41;30m\]'

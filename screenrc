@@ -22,7 +22,8 @@ compacthist on          # trailing blank lines when scroll up
 #sorendition kc         # make higlighting black on cyan background
 sorendition kr         # make higlighting black on cyan background
 #hardstatus string "%-Lw%{ck}%50>-<<%n %t>>-%{-}%+Lw%<"
-hardstatus string "%-Lw%{rk}%50>-<<%n %t>>-%{-}%+Lw%<"
+# red
+#hardstatus string "%-Lw%{rk}%50>-<<%n %t>>-%{-}%+Lw%<"
 #hardstatus alwayslastline
 #bell_msg "%c:bell -> %n%f %t"
 vbell off
