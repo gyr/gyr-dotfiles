@@ -12,8 +12,11 @@
 #
 ################################################################################
 
+# user local
+if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
+    _virtualenvwrapper_sh="${HOME}/.local/bin/virtualenvwrapper.sh"
 # fedora
-if [ -f '/usr/bin/virtualenvwrapper.sh' ]; then
+elif [ -f '/usr/bin/virtualenvwrapper.sh' ]; then
     _virtualenvwrapper_sh='/usr/bin/virtualenvwrapper.sh'
 # debian
 elif [ -f '/usr/share/virtualenvwrapper/virtualenvwrapper.sh' ]; then

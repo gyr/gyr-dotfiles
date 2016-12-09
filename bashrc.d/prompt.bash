@@ -12,7 +12,7 @@
 function gyr_prompt
 {
     # Reverse color
-    #local PR_REV_RED="\e[0;41;30m"
+    #local PR_REV_RED="\[\e[0;41;30m\]"
     local PR_REV_RED='\[\033[0;41;30m\]'
     local PR_REV_GREEN='\[\033[0;42;30m\]'
     local PR_REV_YELLOW='\[\033[0;43;30m\]'
@@ -22,7 +22,7 @@ function gyr_prompt
     local PR_REV_WHITE='\[\033[0;47;30m\]'
     # Regular color
     local PR_BLACK='\[\033[30m\]'
-    #local PR_RED="\e[31m"
+    #local PR_RED="\[\e[31m\]"
     local PR_RED='\[\033[31m\]'
     local PR_GREEN='\[\033[32m\]'
     local PR_YELLOW='\[\033[33m\]'
@@ -32,7 +32,7 @@ function gyr_prompt
     local PR_WHITE='\[\033[37m\]'
     # Bold color
     local PR_LIGHT_BLACK='\[\033[1;30m\]'
-    #local PR_LIGHT_RED="\e[1;31m"
+    #local PR_LIGHT_RED="\[\e[1;31m\]"
     local PR_LIGHT_RED='\[\033[1;31m\]'
     local PR_LIGHT_GREEN='\[\033[1;32m\]'
     local PR_LIGHT_YELLOW='\[\033[1;33m\]'
@@ -42,7 +42,7 @@ function gyr_prompt
     local PR_LIGHT_WHITE='\[\033[1;37m\]'
     # Underline color
     local PR_UNDER_BLACK='\[\033[4;30m\]'
-    #local PR_UNDER_RED="\e[4;31m"
+    #local PR_UNDER_RED="\[\e[4;31m\]"
     local PR_UNDER_RED='\[\033[4;31m\]'
     local PR_UNDER_GREEN='\[\033[4;32m\]'
     local PR_UNDER_YELLOW='\[\033[4;33m\]'
@@ -52,7 +52,7 @@ function gyr_prompt
     local PR_UNDER_WHITE='\[\033[4;37m\]'
     # Background color
     local PR_BACK_BLACK='\[\033[40m\]'
-    #local PR_BACK_RED="\e[41m"
+    #local PR_BACK_RED="\[\e[41m\]"
     local PR_BACK_RED='\[\033[41m\]'
     local PR_BACK_GREEN='\[\033[42m\]'
     local PR_BACK_YELLOW='\[\033[43m\]'
@@ -152,8 +152,10 @@ function gyr_prompt
 
         local DIR=$(pwd | sed -e "s:${HOME}:~:")
         local USER_HOST="${USER}@${HOSTNAME}:"
+        local VIRTUALENV_PROMPT=''
+        [ -n "${VIRTUAL_ENV}" ] && VIRTUALENV_PROMPT="(${VIRTUAL_ENV##*/}) "
         ###local PROMPT_SIZE=$((${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+3+${#JOB_NUMBER}+${#BATTERY}+10))
-        local PROMPT_SIZE=$((${#USER_HOST}+${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2+${#JOB_NUMBER}+${#BATTERY}+10))
+        local PROMPT_SIZE=$((${#VIRTUALENV_PROMPT}+${#USER_HOST}+${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2+${#JOB_NUMBER}+${#BATTERY}+10))
         #local PROMPT_SIZE=$((${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2))
         local FILL_SIZE=$((${COLUMNS}-${PROMPT_SIZE}))
         ###FILL_LINE=''
