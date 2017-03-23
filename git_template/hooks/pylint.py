@@ -35,7 +35,7 @@ def main():
 
     exit_code = 0
     for f in python_files:
-        out, ret_code = exec_cmd("pylint -E {}".format(f))
+        _, ret_code = exec_cmd("pylint -E {}".format(f))
         if ret_code != 0:
             exit_code = 1
     sys.exit(exit_code)
