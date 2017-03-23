@@ -63,10 +63,6 @@ fi
 # Specifies default options for grep
 #GREP_OPTIONS="--color=always -I --exclude=*~ --exclude-dir=.hg --exclude-dir=.git --exclude-dir=vim/tmp --directories=skip"
 
-# Requires to press "CTRL+D" twice or type "exit" once to finish the current
-# session.
-IGNOREEOF=1
-
 
 ###################
 #                 #

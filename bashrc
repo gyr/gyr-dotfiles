@@ -114,6 +114,15 @@ fi
 # sets input line and text editors
 set -o vi
 
+# Get immediate notification of background job termination
+set -o notify
+
+# Requires to press "CTRL+D" twice or type "exit" once to finish the current
+# session.
+#IGNOREEOF=1
+# Disable [CTRL-D] which is used to exit the shell
+set -o ignoreeof
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
