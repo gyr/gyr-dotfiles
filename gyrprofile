@@ -149,10 +149,19 @@ if hash keychain 2> /dev/null; then
     source $HOME/.keychain/$HOSTNAME-sh
     source $HOME/.keychain/$HOSTNAME-sh-gpg
 fi
-# Motorola
-#[ -f ${GYR_PATH}/dotfiles/motorola/motorolaprofile ] && . ${GYR_PATH}/dotfiles/motorola/motorolaprofile
-# IBM
-[ -f ~/.ibm.d/dotfiles/ibmprofile ] && . ~/.ibm.d/dotfiles/ibmprofile
+
+# projects
+for proj_dir in "${GYR_PATH}"/*.d ; do
+    if [ -d "${proj_dir}" ]; then
+        proj_rc_file=$(basename ${proj_dir})
+        proj_rc_file=${proj_dir}/${proj_rc_file%.*}profile
+        if [ -f "${proj_rc_file}" ]; then
+            . ${proj_rc_file}
+        fi
+    fi
+done
+unset -v proj_dir
+unset -v proj_rc_file
 
 # screenfetch
 if ! screenfetch 2> /dev/null; then

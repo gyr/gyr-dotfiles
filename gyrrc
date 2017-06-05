@@ -107,17 +107,19 @@ fi
 
 ###################
 #                 #
-# MOTOROLA SETUP  #
+#   PROJECTS RC   #
 #                 #
 ###################
-#[ -f ${GYR_PATH}/dotfiles/motorola/motorolarc ] && . ${GYR_PATH}/dotfiles/motorola/motorolarc
-
-
-###################
-#                 #
-#    IBM SETUP    #
-#                 #
-###################
-[ -f ~/.ibm.d/dotfiles/ibmrc ] && . ~/.ibm.d/dotfiles/ibmrc
+for proj_dir in "${GYR_PATH}"/*.d ; do
+    if [ -d "${proj_dir}" ]; then
+        proj_rc_file=$(basename ${proj_dir})
+        proj_rc_file=${proj_dir}/${proj_rc_file%.*}rc
+        if [ -f "${proj_rc_file}" ]; then
+            . ${proj_rc_file}
+        fi
+    fi
+done
+unset -v proj_dir
+unset -v proj_rc_file
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent
