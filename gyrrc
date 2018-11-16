@@ -103,14 +103,6 @@ fi
 
 ###################
 #                 #
-# CLEARCASE SETUP #
-#                 #
-###################
-#[ -f /usr/atria/bin/cleartool -o "${CLEARCASE_PRIMARY_GROUP}" = 'staff' ] && . ${GYR_PATH}/dotfiles/clearcaserc
-
-
-###################
-#                 #
 #   PROJECTS RC   #
 #                 #
 ###################

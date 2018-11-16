@@ -1,5 +1,0 @@
-# Write your default config options here!
-
-#ao=alsa:device=hw=0.0
-ao=pulse
-

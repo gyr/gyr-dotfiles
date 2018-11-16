@@ -1,7 +1,0 @@
-application/pdf: pdf: PDF file
-application/x-pdf: pdf: PDF file
-text/pdf: pdf: PDF file
-text/x-pdf: pdf: PDF file
-application/x-postscript: ps: PostScript file
-application/postscript: ps: PostScript file
-    repeat noisy swallow(evince) fill: evince "$file"
