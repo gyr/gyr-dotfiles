@@ -9,6 +9,8 @@
 #
 ##################################
 
-[ -f ${HOME}/.gyr.d/dotfiles/gyrprofile ] && . ${HOME}/.gyr.d/dotfiles/gyrprofile
+# Applying X config
+xrdb -merge ${HOME}/.gyr.d/dotfiles/Xdefaults && xrdb -load ${HOME}/.gyr.d/dotfiles/Xdefaults
+#[ -f ${HOME}/.gyr.d/dotfiles/gyrprofile ] && . ${HOME}/.gyr.d/dotfiles/gyrprofile
 
-${HOME}/.gyr.d/dotfiles/xinitrc
+#${HOME}/.gyr.d/dotfiles/xinitrc

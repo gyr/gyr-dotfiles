@@ -17,286 +17,105 @@
 
 *international: true
 
-! terminal colors ------------------------------------------------------------
+# SUSE
+#define d_black        #231f20
+#define d_red          #ff0000
+#define d_green        #63c94a
+#define d_yellow       #f78d1f
+#define d_blue         #3158af
+#define d_magenta      #d6058d
+#define d_cyan         #26b7b0
+#define d_white        #dedede
 
-!! Solarized color scheme for the X Window System
-!!
-!! http://ethanschoonover.com/solarized
-!
-!
-!! Common
-!
-!#define S_yellow        #b58900
-!#define S_orange        #cb4b16
-!#define S_red           #dc322f
-!#define S_magenta       #d33682
-!#define S_violet        #6c71c4
-!#define S_blue          #268bd2
-!#define S_cyan          #2aa198
-!#define S_green         #859900
-!
-!
-!! Dark
-!!
-!!#define S_base03        #002b36
-!!#define S_base02        #073642
-!!#define S_base01        #586e75
-!!#define S_base00        #657b83
-!!#define S_base0         #839496
-!!#define S_base1         #93a1a1
-!!#define S_base2         #eee8d5
-!!#define S_base3         #fdf6e3
-!
-!
-!! Light
-!
-!#define S_base03        #fdf6e3
-!#define S_base02        #eee8d5
-!#define S_base01        #93a1a1
-!#define S_base00        #839496
-!#define S_base0         #657b83
-!#define S_base1         #586e75
-!#define S_base2         #073642
-!#define S_base3         #002b36
-!
-!
-!! To only apply colors to your terminal, for example, prefix
-!! the color assignment statement with its name. Example:
-!!
-!! URxvt*background:            S_base03
-!
-!*background:              S_base03
-!*foreground:              S_base0
-!*fading:                  40
-!*fadeColor:               S_base03
-!*cursorColor:             S_base1
-!*pointerColorBackground:  S_base01
-!*pointerColorForeground:  S_base1
-!
-!*color0:                  S_base02
-!*color1:                  S_red
-!*color2:                  S_green
-!*color3:                  S_yellow
-!*color4:                  S_blue
-!*color5:                  S_magenta
-!*color6:                  S_cyan
-!*color7:                  S_base2
-!*color9:                  S_orange
-!*color8:                  S_base03
-!*color10:                 S_base01
-!*color11:                 S_base00
-!*color12:                 S_base0
-!*color13:                 S_violet
-!*color14:                 S_base1
-!*color15:                 S_base3
+#define l_black        #a7a6a6
+#define l_red          #ee551c
+#define l_green        #b3e763
+#define l_yellow       #fbe17e
+#define l_blue         #35bee8
+#define l_magenta      #f899d1
+#define l_cyan         #66cdda
+#define l_white        #ffffff
+
+#define s_highlight      #33b87e
+
+*background:   l_white
+*foreground:   d_black
+*cursorColor:  d_green
+*cursorColor2: d_black
+*highlightTextColor: l_white
+*highlightColor:     s_highlight
+
+*highlightColorMode: true
+*highlightReverse:   false
+
+*color0:       d_black
+*color1:       d_red
+*color2:       d_green
+*color3:       d_yellow
+*color4:       d_blue
+*color5:       d_magenta
+*color6:       d_cyan
+*color7:       d_white
+*color8:       l_black
+*color9:       l_red
+*color10:      l_green
+*color11:      l_yellow
+*color12:      l_blue
+*color13:      l_magenta
+*color14:      l_cyan
+*color15:      l_white
 
 !--------------------------------------------------------------------
 !*customization: -color
 !/etc/X11/rgb.txt
 
-! Common
-#define S_black         black
-#define S_darkred       red3
-#define S_darkgreen     green4
-#define S_darkyellow    yellow3
-#define S_darkblue      royalblue
-#define S_violet        magenta3
-#define S_turquoise     cyan4
-#define S_gray          lightgray
-
-#define S_darkgray      darkgray
-#define S_red           red
-#define S_green         green1
-#define S_yellow        yellow
-#define S_blue          skyblue1
-#define S_magenta       magenta1
-#define S_cyan          cyan
-#define S_white         white
-
-#define S_orange        orange
-
-
-! fosforoverde
-!#define S_light #e6fffa
-!#define S_dark  #99ffeb
-
-! gulf
-!!#define S_light #e6faff
-!#define S_light ghostwhite
-!!#define S_dark  #99ebff
-!#define S_dark  powderblue
-
-! blueish
-!#define S_light ghostwhite
-!#define S_dark  powderblue
-!*background:   #121212
-!*foreground:   S_light
-!*cursorColor:  S_darkblue
+! GYR
+!#define S_black         black
+!#define S_darkred       red3
+!#define S_darkgreen     green4
+!#define S_darkyellow    yellow3
+!#define S_darkblue      royalblue
+!#define S_violet        magenta3
+!#define S_turquoise     cyan4
+!#define S_gray          lightgray
+!
+!#define S_darkgray      darkgray
+!#define S_red           red
+!#define S_green         green1
+!#define S_yellow        yellow
+!#define S_blue          skyblue1
+!#define S_magenta       magenta1
+!#define S_cyan          cyan
+!#define S_white         white
+!
+!#define S_orange        orange
+!
+!*background:   S_black
+!*foreground:   S_white
+!*cursorColor:  S_green
 !*cursorColor2: S_black
 !*highlightTextColor: S_black
-!*highlightColor:     S_dark
-
-! whitred
-*background:   S_white
-*foreground:   S_black
-*cursorColor:  S_red
-*cursorColor2: S_white
-*highlightTextColor: S_white
-*highlightColor:     S_darkgray
-
-*highlightColorMode: true
-*highlightReverse:   false
-
-*color0:       S_black
-*color1:       S_darkred
-*color2:       S_darkgreen
-*color3:       S_darkyellow
-*color4:       S_darkblue
-*color5:       S_violet
-*color6:       S_turquoise
-*color7:       S_gray
-*color8:       S_darkgray
-*color9:       S_red
-*color10:      S_green
-*color11:      S_yellow
-*color12:      S_blue
-*color13:      S_magenta
-*color14:      S_cyan
-*color15:      S_white
-
-
-!--------------------------------------------------------------------
-!ORIG
-!*background:   black
-!*foreground:   white
+!*highlightColor:     S_darkgray
 !
-!xterm*color0:       black
-!xterm*color1:       red3
-!xterm*color2:       green3
-!xterm*color3:       yellow3
-!xterm*color4:       blue2
-!xterm*color5:       magenta3
-!xterm*color6:       cyan3
-!xterm*color7:       gray
-!xterm*color8:       darkgray
-!xterm*color9:       red
-!xterm*color10:      green1
-!xterm*color11:      yellow
-!xterm*color12:      cornflowerblue
-!xterm*color13:      magenta1
-!xterm*color14:      cyan
-!xterm*color15:      white
-!*cursorColor:  red
-
-!--------------------------------------------------------------------
-!http://www.flickr.com/photos/jasonwryan/4273714022/
-!http://en.wikipedia.org/wiki/X11_color_names
-!*background:   black
-!*foreground:   #E0FFFF
-!*cursorColor:  red
-!!black
-!*color0: black
-!*color8: #7F7F7F
-!!red
-!*color1: #8C4665
-!*color9: #BF4D80
-!!green
-!*color2: #2E8B57
-!*color10: #8FBC8F
-!!yellow
-!*color3: #808000
-!*color11: #9ACD32
-!!blue
-!*color4: #395573
-!*color12: #477AB3
-!!magenta
-!*color5: #5E468C
-!*color13: #7E62B3
-!!cyan
-!*color6: darkcyan
-!*color14: cyan
-!!white
-!*color7: #899CA1
-!*color15: white
-
-
-!--------------------------------------------------------------------
-!!GREEN
-!!http://www.colorhunter.com
-!*background:   rgb:00/00/00
-!*foreground:   rgb:93/e9/b8
-!*color0:       rgb:00/00/00
-!*color1:       rgb:4b/70/59
-!*color2:       rgb:5b/90/71
-!*color3:       rgb:3d/80/54
-!*color4:       rgb:30/a1/63
-!*color5:       rgb:59/d3/93
-!*color6:       rgb:93/e9/b8
-!*color7:       rgb:aa/aa/aa
-!*color8:       rgb:21/56/35
-!*color9:       rgb:2f/8c/53
-!*color10:      rgb:2f/b4/66
-!*color11:      rgb:00/a0/32
-!*color12:      rgb:00/ca/2e
-!*color13:      rgb:00/ff/67
-!*color14:      rgb:4b/ff/a8
-!*color15:      rgb:ff/ff/ff
-!*cursorColor:  rgb:ff/00/00
-
-!*color0:  rgb:00/00/00
-!*color1:  rgb:cd/5c/5c
-!*color2:  rgb:8e/ae/71
-!*color3:  rgb:d2/b4/8c
-!*color4:  rgb:5f/7b/8a
-!*color5:  rgb:cd/cd/b4
-!*color6:  rgb:68/68/68
-!*color7:  rgb:ff/ff/ff
-!*color8:  rgb:00/00/00
-!*color9:  rgb:ee/63/63
-!*color10: rgb:95/c7/49
-!*color11: rgb:cd/cd/c1
-!*color12: rgb:6b/7b/8a
-!*color13: rgb:cd/cd/b4
-!*color14: rgb:77/87/98
-!*color15: rgb:ca/ca/ca
-
-!--------------------------------------------------------------------
-!Colors
-!xterm*background:   black
-!xterm*foreground:   white
-! ANSI black
-!xterm*color0:       darkslategray
-! ANSI red
-!xterm*color1:       tomato
-! ANSI green
-!xterm*color2:       aquamarine
-! ANSI yellow
-!xterm*color3:       yellow
-! ANSI blue
-!xterm*color4:       lightskyblue
-! ANSI magenta
-!xterm*color5:       thistle
-! ANSI cyan
-!xterm*color6:       paleturquoise1
-! ANSI white
-!xterm*color7:       white
-! ANSI black bold
-!xterm*color8:       black
-! ANSI red bold
-!xterm*color9:       orangered
-! ANSI green  bold
-!xterm*color10:      turquoise
-! ANSI yellow bold
-!xterm*color11:      orange
-! ANSI blue bold
-!xterm*color12:      deepskyblue
-! ANSI magenta bold
-!xterm*color13:      plum
-! ANSI cyan bold
-!xterm*color14:      cyan
-! ANSI white bold
-!xterm*color15:      mintcream
-
+!*highlightColorMode: true
+!*highlightReverse:   false
+!
+!*color0:       S_black
+!*color1:       S_darkred
+!*color2:       S_darkgreen
+!*color3:       S_darkyellow
+!*color4:       S_darkblue
+!*color5:       S_violet
+!*color6:       S_turquoise
+!*color7:       S_gray
+!*color8:       S_darkgray
+!*color9:       S_red
+!*color10:      S_green
+!*color11:      S_yellow
+!*color12:      S_blue
+!*color13:      S_magenta
+!*color14:      S_cyan
+!*color15:      S_white
 
 !!!*StringConversionWarnings: on
 
@@ -344,8 +163,9 @@ xterm*termName:  xterm-256color
 !*VT100*translations: #override Meta <Btn1Up>: exec-formatted("x-www-browser '%t'", PRIMARY)
 
 ! run 'xfontsel'
-xterm*faceName:           terminus:medium:pixelsize=12
-!xterm*faceName:           inconsolata:medium:pixelsize=12
+!xterm*faceName:           terminus:medium:pixelsize=12
+!*font: -xos4-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+xterm*faceName:           inconsolata:medium:pixelsize=12
 !*font: -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
 !*font: -*-proggycleansz-*-*-*-*-*-*-*-*-*-*-*-*
 !xterm*faceName: ProggyCleanTTSZ

@@ -45,10 +45,15 @@ if [ "${PAGER}" = 'less' ]; then
 #    export LESS_TERMCAP_so=$'\E[44;01;37m'
 #    export LESS_TERMCAP_us=$'\E[04;01;34m'
     # Red theme
-    export LESS_TERMCAP_mb=$'\E[33m'
-    export LESS_TERMCAP_md=$'\E[01;31m'
+#    export LESS_TERMCAP_mb=$'\E[33m'
+#    export LESS_TERMCAP_md=$'\E[01;31m'
+#    export LESS_TERMCAP_so=$'\E[41;30m'
+#    export LESS_TERMCAP_us=$'\E[04;31m'
+    # Green theme
+    export LESS_TERMCAP_mb=$'\E[36m'
+    export LESS_TERMCAP_md=$'\E[01;32m'
     export LESS_TERMCAP_so=$'\E[41;30m'
-    export LESS_TERMCAP_us=$'\E[04;31m'
+    export LESS_TERMCAP_us=$'\E[04;32m'
     # Cyan theme
 #    LESS_TERMCAP_mb=$'\E[01;34m'
 #    LESS_TERMCAP_md=$'\E[36m'
