@@ -94,10 +94,6 @@ shopt -s histappend
 shopt -s histverify
 # [DISABLE] multi-line commands are saved to the history with embedded newlines rather than using semicolon separators where possible.
 shopt -u lithist
-if [ "${GYR_OS}" != 'Darwin' ]; then
-    # If a command is just a directory name, it cd's into that directory.
-    shopt -s autocd
-fi
 # Hostname expansion
 #shopt -s hostcomplete
 
@@ -148,7 +144,6 @@ fi
 #  COMMON SHELL   #
 #                 #
 ###################
-[ -z "${GYR_PATH}" ] && export GYR_PATH=${HOME}/.gyr.d
 [ -f ${GYR_PATH}/dotfiles/gyrrc ] && . ${GYR_PATH}/dotfiles/gyrrc
 
 # Load any supplementary scripts

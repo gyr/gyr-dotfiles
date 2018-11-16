@@ -22,7 +22,7 @@ if hash dircolors 2> /dev/null; then
     fi
     alias grep='grep --color=always -I -s --exclude-dir=.hg --exclude-dir=.git --exclude-dir=vim/tmp --exclude=*~ --directories=skip'
 fi
-if [ "${GYR_OS}" = 'FreeBSD' -o "${GYR_OS}" = 'Darwin' ]; then
+if [ "${GYR_OS}" = 'freebsd' -o "${GYR_OS}" = 'darwin' ]; then
     alias l='ls -CFG'
     alias rm='rm -i'
 else
@@ -53,8 +53,8 @@ alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys
 #=3 --> to free pagecache, dentries and inodes
 #alias gyr-chormium-fake='chromium-browser --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
 alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
-alias gyr-conky="conky -d -p 2 -c /home/gyr/.gyr.d/dotfiles/conkyrc-2cpu-awesome"
-alias gyr-conky-dual-monitor="/work/gyr/.gyr.d/scripts/gyr-set-monitor-resolution -t && conky -d -p 2 -c /home/gyr/.gyr.d/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
 alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
 alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
 alias gyr-http-server='python -m SimpleHTTPServer'
@@ -82,14 +82,14 @@ alias gyr-pass-backup='tar -cz .password-store | gpg --recipient B0E4F0BA --encr
 alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz'
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
-alias gyr-resolvconf-fix="sudo cp /home/gyr/.gyr.d/bkp/resolv.conf_google /etc/resolv.conf"
+alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
 alias gyr-ssh-remove-server='ssh-keygen -f ~/.ssh/known_hosts -R'
 alias gyr-sound-test='aplay /usr/share/sounds/alsa/Front_Center.wav'
 alias gyr-vim-git-clone='cd ~ && git clone http://github.com/username/dotvim.git ~/.vim && cd ~/.vim && git submodule init && git submodule update'
 alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
 alias gyr-wifi-quality='watch -n1 iwconfig'
-alias gyr-xdefaults='xrdb -merge ~/.gyr.d/dotfiles/Xdefaults && xrdb -load ~/.gyr.d/dotfiles/Xdefaults'
-alias gxt=". ${GYR_PATH}/scripts/gyr-xterm-dropdown 200 40"
+alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
+alias gxt=". ${GYR_PATH}/bin/gyr-xterm-dropdown 200 40"
 alias info='pinfo'
 alias l.='l -d .[a-zA-Z0-9]*'
 alias la='l -A'

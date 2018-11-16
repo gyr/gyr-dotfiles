@@ -1,19 +1,21 @@
 ################################################################################
 #
 # Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
-# File:  fedorarc
+# File:  rhrc
 # Update: 20150728
 # (C) Copyright 2015 Gustavo Yokoyama Ribeiro
 # Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
 # http://creativecommons.org/licenses/by-sa/3.0/ for more info.
-# Description: fedora/redhat interactive shell set up
+# Description: fedora/centos/redhat interactive shell set up
 #
 ################################################################################
 
-_virtualenvwrapper_sh='/usr/bin/virtualenvwrapper.sh'
-if [ -f ${_virtualenvwrapper_sh} ]; then
-    export WORKON_HOME=${HOME}/.virtualenvs
-    source ${_virtualenvwrapper_sh}
-fi
+
+###################
+#                 #
+#      SETUP      #
+#                 #
+###################
+export PATH=${GYR_PATH}/bin/rh:${PATH}
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent

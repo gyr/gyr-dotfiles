@@ -9,18 +9,20 @@
 #
 ##################################
 
-GYR_OS=$(uname -s)
-if [ "${GYR_OS}" = 'Linux' ]; then
-    #######
-    # Linux
-    export GZIP='--rsyncable'
-
-    # Arch
+GYR_OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+if [ "${GYR_OS}" = 'linux' ]; then
     if hash pacman 2> /dev/null; then
-        GYR_OS='Arch'
-    # Debian/Ubuntu/RedHat/Fedora/CentOS
+        GYR_OS='arch'
     elif [ -e /etc/os-release ]; then
-        GYR_OS="$(grep '^ID=' /etc/os-release | cut -d'=' -f2 | tr -d '\"')"
+        GYR_OS="$(grep '^ID=' /etc/os-release | cut -d'=' -f2 | tr -d '\"' | tr '[:upper:]' '[:lower:]')"
+        case ${GYR_OS} in
+            fedora|centos|rhel)
+                GYR_OS="rh"
+                ;;
+            opensuse*|sle)
+                GYR_OS="suse"
+                ;;
+        esac
     fi
 fi
 export GYR_OS
@@ -50,36 +52,9 @@ PATH=${GYR_PATH}:${PATH}
 #######
 # SCRIPTS
 # Common
-[ -d ${GYR_PATH}/scripts ] && PATH=${GYR_PATH}/scripts:${PATH}
-[ -d ${GYR_PATH}/scripts/3pp ] && PATH=${GYR_PATH}/scripts/3pp:${PATH}
-# Clearcase
-#[ -f /usr/atria/bin/cleartool -o "${CLEARCASE_PRIMARY_GROUP}" = 'staff' ] && PATH=${GYR_PATH}/scripts/clearcase:${PATH}
+[ -d ${GYR_PATH}/bin ] && PATH=${GYR_PATH}/bin:${PATH}
+[ -d ${GYR_PATH}/bin/3pp ] && PATH=${GYR_PATH}/bin/3pp:${PATH}
 
-#######
-# Debian/Ubuntu
-if [ "${GYR_OS}" = 'debian' ]; then
-    PATH=${GYR_PATH}/scripts/debian:${PATH}
-    export DEBEMAIL=${EMAIL}
-    export DEBFULLNAME="${FULLNAME}"
-#######
-# Arch
-elif [ "${GYR_OS}" = 'Arch' ]; then
-    PATH=${GYR_PATH}/scripts/arch:${PATH}
-#######
-# RedHat/Fedora
-elif [ "${GYR_OS}" = 'fedora' -o "${GYR_OS}" = 'centos' ]; then
-    PATH=${GYR_PATH}/scripts/fedora:${PATH}
-#######
-# Darwin
-elif [ "${GYR_OS}" = 'Darwin' ];then
-    PATH=${GYR_PATH}/scripts/darwin:${PATH}
-    [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
-    if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-        export GPG_AGENT_INFO
-    else
-        eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
-    fi
-fi
 
 #######
 # SETTINGS
@@ -165,7 +140,7 @@ unset -v proj_rc_file
 
 # screenfetch
 if ! screenfetch 2> /dev/null; then
-    [ -f ${GYR_PATH}/scripts/3pp/screenfetch-dev ] && ${GYR_PATH}/scripts/3pp/screenfetch-dev
+    [ -f ${GYR_PATH}/bin/3pp/screenfetch-dev ] && ${GYR_PATH}/bin/3pp/screenfetch-dev
 fi
 
 

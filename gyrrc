@@ -80,19 +80,18 @@ unset -v config
 
 ###################
 #                 #
-# DEBIAN SETUP    #
+# DISTRO SETUP    #
 #                 #
 ###################
-#if hash lsb_release 2> /dev/null; then
 if [ "${GYR_OS}" = 'debian' ]; then
     . ${GYR_PATH}/dotfiles/debianrc
-elif [ "${GYR_OS}" = 'Arch' ]; then
+elif [ "${GYR_OS}" = 'arch' ]; then
     . ${GYR_PATH}/dotfiles/archrc
-elif [  "${GYR_OS}" = 'fedora' -o "${GYR_OS}" = 'centos' ]; then
-    . ${GYR_PATH}/dotfiles/fedorarc
-elif [ "${GYR_OS}" = 'FreeBSD' ]; then
+elif [  "${GYR_OS}" = 'rh' ]; then
+    . ${GYR_PATH}/dotfiles/rhrc
+elif [ "${GYR_OS}" = 'freebsd' ]; then
     . ${GYR_PATH}/dotfiles/bsdrc
-elif [ "${GYR_OS}" = 'Darwin' ]; then
+elif [ "${GYR_OS}" = 'darwin' ]; then
     . ${GYR_PATH}/dotfiles/darwinrc
 fi
 

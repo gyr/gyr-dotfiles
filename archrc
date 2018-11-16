@@ -13,10 +13,12 @@
 
 ###################
 #                 #
-# ENVIRONMENT     #
+#      SETUP      #
 #                 #
 ###################
 stty erase 
+export PATH=${GYR_PATH}/bin/arch:${PATH}
+
 
 ###################
 #                 #
@@ -26,3 +28,5 @@ stty erase 
 alias gyr-arch-update-repo='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.$(date +%Y%m%d_%H%M%S) && sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syy'
 alias gyr-arch-pacman-sort-by-size="pacman -Qi | awk '/^Name/ {pkg=$3} /Size/ {print $4$5,pkg}' | sort -n"
 alias pacmanc='pacman-color'
+
+# vim: set filetype=sh fileformat=unix foldmethod=indent
