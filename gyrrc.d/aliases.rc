@@ -9,9 +9,6 @@
 #
 ################################################################################
 
-#if [ "${TERM}" != 'dumb' ] && [ -x /usr/bin/dircolors ]; then
-#    eval "`dircolors -b`"
-#    #eval `dircolors -b ${GYR_PATH}/dotfiles/dircolors_solarized`
 if hash dircolors 2> /dev/null; then
     if [ -f ~/.dir_colors ] ; then
         eval $(dircolors -b ~/.dir_colors)
@@ -36,22 +33,15 @@ else
 fi
 alias autossh='AUTOSSH_FIRST_POLL=5 AUTOSSH_POLL=5 TERM=xterm-256color \autossh -x -a -t'
 alias c='printf "\33[2J"'
-alias cclive='cclive --continue -s best'
-alias clive='clive -f best'
 alias colordiff='colordiff -y'
-#alias df='df -h'
-alias df='dfc -Ts'
+alias df='df -h'
 alias diff-patch='diff -Nurp'
 alias dmesg='dmesg -T'
 alias gyr-afuse2="afuse -o mount_template=\"sshfs -o reconnect %r: %m\" -o unmount_template=\"fusermount -u -z %m\" /work/remote/"
-alias gyr-backup-gyrd='eval $(gpg-agent --daemon) || gyr-print -e "gpg-agent: ERROR" && obnam backup --repository /home/gyr/work/Dropbox/bkp/obnam/gyrd ~/.gyr.d'
-alias gyr-backup-ibmd='eval $(gpg-agent --daemon) || gyr-print -e "gpg-agent: ERROR" && obnam backup --repository /home/gyr/work/Dropbox/bkp/obnam/ibmd ~/.ibm.d'
 alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free -h'
-#alias gyr-cache-drop='free -h && sudo sync && sudo /sbin/sysctl vm.drop_caches=3 && free -h'
 #=1 --> to free pagecache
 #=2 --> to free dentries and inodes
 #=3 --> to free pagecache, dentries and inodes
-#alias gyr-chormium-fake='chromium-browser --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
 alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
 alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
 alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
@@ -62,35 +52,26 @@ alias gyr-iptable-list='sudo /sbin/iptables -L -n -v --line-numbers'
 alias gyr-iptable-listin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias gyr-iptable-listout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias gyr-iptable-listfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
-#alias gyr-ip-external='curl ifconfig.me'
 alias gyr-ip-external='dig +short myip.opendns.com @resolver1.opendns.com'
-#alias gyr-ip-external='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
 alias gyr-ip-location='function _gil(){ curl ipinfo.io/$@ ; }; _gil'
 alias gyr-hardlink-doc='sudo /usr/bin/hardlink -t /usr/share/doc'
 alias gyr-kvm-network-start='sudo virsh net-start default ; sudo virsh net-autostart default'
-#alias gyr-mnt-b="sudo mount -t ecryptfs /work/gyr/Dropbox/.bbb /work/gyr/Dropbox/bkp/bkpc -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
 alias gyr-mnt-tmpfs='sudo mount -t tmpfs tmpfs /mnt -o size=1024m,mode=0755'
 alias gyr-mnt-m="sudo mount -t ecryptfs /work/gyr/.confm /work/gyr/dmus -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
 #alias gyr-mnt-n="encfs /work/gyr/Dropbox/.aaa /work/gyr/Dropbox/normal"
 alias gyr-mnt-boxcom="sudo mount -t davfs https://dav.box.com/dav  ~/work/Box_com"
-alias gyr-mosh-kill="kill `pidof mosh-server`"
 alias gyr-net-list-prog='lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2'
 alias gyr-nm-editor='sudo nm-connection-editor'
 alias gyr-nmap-local-active='nmap -n -sP -oG - 192.168.0.*/32 | grep ": Up" | cut -d" " -f2'
-alias gyr-open='xdg-open'
 alias gyr-pass-backup='tar -cz .password-store | gpg --recipient B0E4F0BA --encrypt > password-store-backup.tar.gz.gpg'
 alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz'
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
-alias gyr-ssh-remove-server='ssh-keygen -f ~/.ssh/known_hosts -R'
-alias gyr-sound-test='aplay /usr/share/sounds/alsa/Front_Center.wav'
-alias gyr-vim-git-clone='cd ~ && git clone http://github.com/username/dotvim.git ~/.vim && cd ~/.vim && git submodule init && git submodule update'
 alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
 alias gyr-wifi-quality='watch -n1 iwconfig'
 alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
 alias gxt=". ${GYR_PATH}/bin/gyr-xterm-dropdown 200 40"
-alias info='pinfo'
 alias l.='l -d .[a-zA-Z0-9]*'
 alias la='l -A'
 alias ldir='ls -F | grep --color /'
@@ -108,7 +89,6 @@ alias lstree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias man='gyr-man'
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
-alias mplayer1=' mplayer -ao alsa:device=hw=1.0'
 # pbpaste > texto.txt
 alias pbpaste='xclip -selection clipboard -o'
 alias pbpastes='xclip -selection primary -o'
@@ -116,28 +96,14 @@ alias pbpastes='xclip -selection primary -o'
 # dmesg | pbcopy
 alias pbcopy='xclip -selection clipboard'
 alias pbcopys='xclip -selection primary'
-alias psa='ps -fU${USER}'
-alias pscpu='ps -eo pcpu,pid,user,args | sort -k 1 -nr | head -10'
-#alias pscpu='ps auxf | sort -nr -k 3 | head -10'
-alias psg="xprop | awk '/PID/ {print \$3}' | xargs ps -p"
-alias psmem='ps -eo pmem,pid,user,args | sort -k 1 -nr | head -10'
-#alias psmem='ps auxf | sort -nr -k 4 | head -10'
-alias pst='pstree -Alpha'
-alias psz="ps aux | awk '{ print \$8 \" \" \$2 \" \" \$11}' | grep -w Z"
 alias pur='rm -vf *~ .*~ .*.bak *.bak *backup.fm *backup.book *.keep *.mkelem *.contrib *.contrib.* findmerge.* *.merge pip__* .abe.state* .cmake.* *.inforce *.rej *.pyc'
 alias reset='reset && stty sane && clear && echo -e "\033c"'
 alias ssh='TERM=xterm-256color \ssh -x -a -t'
 alias scptmp='function _scpt(){ scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _scpt'
 alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _ssht'
 alias ssh-graph=' TERM=xterm-256color \autossh -c arcfour,blowfish-cbc -YC'
-alias skype='LD_LIBRARY_PATH=/usr/lib/i386-linux-gnu/ PULSE_LATENCY_MSEC=30 /usr/bin/skype &'
-alias tree='tree -C'
-alias type='type -a'
 #alias set_e='stty erase '
 #alias set_eh='stty erase '
-alias vless='/usr/share/vim/vim74/macros/less.sh'
-alias vprint="vim +'hardcopy > /tmp/output.ps' +q"
-#alias vs='gyr-vim'
 alias vs='gvim --remote-silent'
 alias wget='wget -c'
 alias youtube='youtube-dl -c'
@@ -147,19 +113,6 @@ alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' -exec rm
 alias gyr-python-ipdb='python -m ipdb'
 alias gyr-python-pylint="find . -type f -name '*.py' -exec pylint -E {} \;"
 alias gyr-python-pdb='python -m pdb'
-
-# RADIOS (online)
-# Info: http://www.vivaolinux.com.br/dica/Ouca-a-KissFM-Radio-Rock-diretamente-de-seu-terminal/
-alias 89fm64k='mplayer "http://173.192.34.69/89rock64k.aac"'
-#alias 89fm64k='mplayer "http://173-192-34-69.webnow.net.br/89rock64k.aac"'
-alias 89fm128k='mplayer "http://173.192.34.69/89rock128k.aac"'
-alias kissfm='mplayer -playlist "http://www.crosshost.com.br/cbs/kiss/ouvir.m3u"'
-alias kissfm2='mplayer -playlist http://www.crosshost.com.br/cbs/kiss/radio.asx'
-alias kissfm3='mplayer "http://7289.live.streamtheworld.com/SAOPAULO1021AAC"'
-alias metalmilitia='mplayer -playlist "http://www.server1.bouncestream.com.br/tunein.php/metal/playlist.pls"'
-alias globoamsp='mplayer http://wm-sgr-live.globo.com/sgr_off_globoamsp_live.wma'
-alias cbnfmsp='mplayer http://wm-sgr-live.globo.com/sgr_off_cbnfmsp_live.wma'
-alias bandamsp='mplayer http://servidor25.crossdigital.com.br:8000/bandeirantesam'
 
 # RSYNC
 #alias rsync-copy-restrict='rsync -CavzHx'
