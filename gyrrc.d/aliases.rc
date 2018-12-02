@@ -37,58 +37,64 @@ alias colordiff='colordiff -y'
 alias df='df -h'
 alias diff-patch='diff -Nurp'
 alias dmesg='dmesg -T'
-alias gyr-afuse2="afuse -o mount_template=\"sshfs -o reconnect %r: %m\" -o unmount_template=\"fusermount -u -z %m\" /work/remote/"
-alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free -h'
-#=1 --> to free pagecache
-#=2 --> to free dentries and inodes
-#=3 --> to free pagecache, dentries and inodes
-alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
-alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
-alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
-alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
-alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
-alias gyr-http-server='python -m SimpleHTTPServer'
-alias gyr-iptable-list='sudo /sbin/iptables -L -n -v --line-numbers'
-alias gyr-iptable-listin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
-alias gyr-iptable-listout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
-alias gyr-iptable-listfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
-alias gyr-ip-external='dig +short myip.opendns.com @resolver1.opendns.com'
-alias gyr-ip-location='function _gil(){ curl ipinfo.io/$@ ; }; _gil'
-alias gyr-hardlink-doc='sudo /usr/bin/hardlink -t /usr/share/doc'
-alias gyr-kvm-network-start='sudo virsh net-start default ; sudo virsh net-autostart default'
-alias gyr-mnt-tmpfs='sudo mount -t tmpfs tmpfs /mnt -o size=1024m,mode=0755'
-alias gyr-mnt-m="sudo mount -t ecryptfs /work/gyr/.confm /work/gyr/dmus -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
-#alias gyr-mnt-n="encfs /work/gyr/Dropbox/.aaa /work/gyr/Dropbox/normal"
-alias gyr-mnt-boxcom="sudo mount -t davfs https://dav.box.com/dav  ~/work/Box_com"
-alias gyr-net-list-prog='lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2'
-alias gyr-nm-editor='sudo nm-connection-editor'
-alias gyr-nmap-local-active='nmap -n -sP -oG - 192.168.0.*/32 | grep ": Up" | cut -d" " -f2'
-alias gyr-pass-backup='tar -cz .password-store | gpg --recipient B0E4F0BA --encrypt > password-store-backup.tar.gz.gpg'
-alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz'
-alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
-alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
-alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
-alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
-alias gyr-wifi-quality='watch -n1 iwconfig'
-alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
-alias gxt=". ${GYR_PATH}/bin/gyr-xterm-dropdown 200 40"
 alias l.='l -d .[a-zA-Z0-9]*'
 alias la='l -A'
 alias ldir='ls -F | grep --color /'
 alias lg='ls -ACF | grep -i'
-alias ll='l -l'
 alias ll.='l -ld .[a-zA-Z0-9]*'
+alias ll='l -l'
 alias lla='l -lA'
 alias lld='ls -lAF | grep "^d"'
 alias llg='ls -lAF | grep -i'
 alias lll='ls -lAF | grep "^l"'
 alias lls='ls -l | sort -nk5'
 alias ln='ln -i'
-alias lt='l -ltrF'
 alias lstree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias lt='l -ltrF'
 alias man='gyr-man'
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
+alias reset='reset && stty sane && clear && echo -e "\033c"'
+alias ssh='TERM=xterm-256color \ssh -x -a -t'
+alias wget='wget -c'
+alias youtube='youtube-dl -c'
+
+alias gxt=". ${GYR_PATH}/bin/gyr-xterm-dropdown 200 40"
+alias gyr-afuse2="afuse -o mount_template=\"sshfs -o reconnect %r: %m\" -o unmount_template=\"fusermount -u -z %m\" /work/remote/"
+alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free -h'
+#=1 --> to free pagecache
+#=2 --> to free dentries and inodes
+#=3 --> to free pagecache, dentries and inodes
+alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
+alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
+alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
+alias gyr-hardlink-doc='sudo /usr/bin/hardlink -t /usr/share/doc'
+alias gyr-http-server='python -m SimpleHTTPServer'
+alias gyr-ip-external='dig +short myip.opendns.com @resolver1.opendns.com'
+alias gyr-ip-location='function _gil(){ curl ipinfo.io/$@ ; }; _gil'
+alias gyr-iptable-list='sudo /sbin/iptables -L -n -v --line-numbers'
+alias gyr-iptable-listfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias gyr-iptable-listin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+alias gyr-iptable-listout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias gyr-kvm-network-start='sudo virsh net-start default ; sudo virsh net-autostart default'
+alias gyr-mnt-boxcom="sudo mount -t davfs https://dav.box.com/dav  ~/work/Box_com"
+alias gyr-mnt-m="sudo mount -t ecryptfs /work/gyr/.confm /work/gyr/dmus -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=16,ecryptfs_passthrough=n,ecryptfs_enable_filename_crypto=y"
+#alias gyr-mnt-n="encfs /work/gyr/Dropbox/.aaa /work/gyr/Dropbox/normal"
+alias gyr-mnt-tmpfs='sudo mount -t tmpfs tmpfs /mnt -o size=1024m,mode=0755'
+alias gyr-net-list-prog='lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2'
+alias gyr-nm-editor='sudo nm-connection-editor'
+alias gyr-nmap-local-active='nmap -n -sP -oG - 192.168.0.*/32 | grep ": Up" | cut -d" " -f2'
+alias gyr-pass-backup='tar -cz .password-store | gpg --recipient B0E4F0BA --encrypt > password-store-backup.tar.gz.gpg'
+alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz'
+alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
+alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
+alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
+alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
+alias gyr-wifi-quality='watch -n1 iwconfig'
+alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
+
 # pbpaste > texto.txt
 alias pbpaste='xclip -selection clipboard -o'
 alias pbpastes='xclip -selection primary -o'
@@ -96,17 +102,15 @@ alias pbpastes='xclip -selection primary -o'
 # dmesg | pbcopy
 alias pbcopy='xclip -selection clipboard'
 alias pbcopys='xclip -selection primary'
+
 alias pur='rm -vf *~ .*~ .*.bak *.bak *backup.fm *backup.book *.keep *.mkelem *.contrib *.contrib.* findmerge.* *.merge pip__* .abe.state* .cmake.* *.inforce *.rej *.pyc'
-alias reset='reset && stty sane && clear && echo -e "\033c"'
-alias ssh='TERM=xterm-256color \ssh -x -a -t'
+alias vs='gvim --remote-silent'
+
 alias scptmp='function _scpt(){ scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _scpt'
-alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _ssht'
 alias ssh-graph=' TERM=xterm-256color \autossh -c arcfour,blowfish-cbc -YC'
+alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _ssht'
 #alias set_e='stty erase '
 #alias set_eh='stty erase '
-alias vs='gvim --remote-silent'
-alias wget='wget -c'
-alias youtube='youtube-dl -c'
 
 # PYTHON
 alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
