@@ -2,7 +2,7 @@
 #
 # Author: Gustavo Yokoyama Ribeiro <gyr AT protonmail DOT ch>
 # File:   prompt.bash
-# Update: 20150220
+# Update: 20181129
 # (C) Copyright 2015 Gustavo Yokoyama Ribeiro
 # Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
 # http://creativecommons.org/licenses/by-sa/3.0/ for more info.
@@ -82,16 +82,6 @@ function gyr_prompt
         local PR_COLOR=${PR_YELLOW}
     fi
 
-    ###if [[ ${TERM} =~ linux || "${HOSTNAME}" != "zero" || -n "${SSH_TTY}" ]]; then
-    ###    zg1="-"
-    ###    zg2="+"
-    ###    zg3="+"
-    ###else
-    ###    zg1="─"
-    ###    zg2="┌"
-    ###    zg3="└"
-    ###fi
-
     function promptCommand {
 
         # Last command status prompt
@@ -102,61 +92,17 @@ function gyr_prompt
         # Compartilhamento do historico do bash entre multiplas sessoes
         history -a
 
-        #if [[ ${TERM} =~ linux || "${HOSTNAME}" != "zero" || -n "${SSH_TTY}" ]]; then
-        #    local zg1="-"
-        #    local zg2="+"
-        #    #local zg3="+"
-        #    #local zg4="["
-        #    #local zg5="]"
-        #    #local zg6="|"
-        #else
-        #    local zg1="─"
-        #    local zg2="┌"
-        #    #local zg3="└"
-        #    #local zg4="┤"
-        #    #local zg5="├"
-        #    #local zg6="┊"
-        #fi
-
         [ ${LAST_COMMAND_STATUS} -ne 0 ] && LAST_COMMAND_PROMPT_STATUS="[${LAST_COMMAND_STATUS}]" || LAST_COMMAND_PROMPT_STATUS=''
 
         # Number of jobs
         JOB_NUMBER="$(jobs -s | wc -l | tr -d ' ' | sed 's/\([1-9]\+\)/\1/')"
         [ "${JOB_NUMBER}" != '0' ] && JOB_NUMBER="[${JOB_NUMBER}]" || JOB_NUMBER=''
 
-        # Battery
-        #if hash acpi 2> /dev/null; then
-        #    local BAT_VAL=$(acpi | cut -d " " -f4)
-        #    case ${BAT_VAL} in
-        #        100*)    BATTERY="-";;
-        #        9[0-9]*) BATTERY="█" ;;
-        #        8[0-9]*) BATTERY="▇" ;;
-        #        7[0-9]*) BATTERY="▆" ;;
-        #        6[0-9]*) BATTERY="▅" ;;
-        #        5[0-9]*) BATTERY="▄" ;;
-        #        4[0-9]*) BATTERY="▃" ;;
-        #        3[0-9]*) BATTERY="▂" ;;
-        #        *)       BATTERY="▁" ;;
-        #        #100*)    BATTERY=${PR_COLOR}"-";;
-        #        #9[0-9]*) BATTERY=${PR_COLOR}"█" ;;
-        #        #8[0-9]*) BATTERY=${PR_COLOR}"▇" ;;
-        #        #7[0-9]*) BATTERY=${PR_COLOR}"▆" ;;
-        #        #6[0-9]*) BATTERY=${PR_COLOR}"▅" ;;
-        #        #5[0-9]*) BATTERY=${PR_COLOR}"▄" ;;
-        #        #4[0-9]*) BATTERY=${PR_YELLOW}"▃" ;;
-        #        #3[0-9]*) BATTERY=${PR_LIGHT_YELLOW}"▂" ;;
-        #        #*)       BATTERY=${PR_RED}"▁" ;;
-        #    esac
-        #    BATTERY=${zg4}${BATTERY}${zg5}
-        #fi
-
         local DIR=$(pwd | sed -e "s:${HOME}:~:")
         local USER_HOST="${USER}@${HOSTNAME}:"
         local VIRTUALENV_PROMPT=''
         [ -n "${VIRTUAL_ENV}" ] && VIRTUALENV_PROMPT="(${VIRTUAL_ENV##*/}) "
-        ###local PROMPT_SIZE=$((${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+3+${#JOB_NUMBER}+${#BATTERY}+10))
         local PROMPT_SIZE=$((${#VIRTUALENV_PROMPT}+${#USER_HOST}+${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2+${#JOB_NUMBER}+${#BATTERY}+10))
-        #local PROMPT_SIZE=$((${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2))
         local FILL_SIZE=$((${COLUMNS}-${PROMPT_SIZE}))
         ###FILL_LINE=''
         ###while [ "${FILL_SIZE}" -gt '0' ]
@@ -167,50 +113,13 @@ function gyr_prompt
         if [ "${FILL_SIZE}" -lt '0' ]
         then
             local CUT_LINE=$((3-${FILL_SIZE}))
-            ###NEW_PWD="${zg2}[...${DIR:${CUT_LINE}:${#DIR}}]"
             NEW_PWD="[${USER_HOST}...${DIR:${CUT_LINE}:${#DIR}}]"
             FILL_LINE=''
         else
-            ###NEW_PWD="${zg2}[${DIR}]"
             NEW_PWD="[${USER_HOST}${DIR}]"
             FILL_LINE='----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
             FILL_LINE=${FILL_LINE:0:${FILL_SIZE}}
         fi
-
-        ## Git prompt
-        #if hash git 2> /dev/null; then
-        ##    local GIT_PROMPT_STATUS=$([[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*")
-        ##    PR_GIT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/<\1${GIT_PROMPT_STATUS}>/")
-        #    local INDEX=$(git status --porcelain 2> /dev/null)
-        #    local STATUS=''
-        #    if $(echo "$INDEX" | grep '^UU ' &> /dev/null); then
-        #        #STATUS="$ZSH_THEME_GIT_PROMPT_UNMERGED$STATUS"
-        #        STATUS="m${STATUS}"
-        #    fi
-        #    # Untrack
-        #    if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
-        #        STATUS="*${STATUS}"
-        #    fi
-        #    # Unstage
-        #    if $(echo "$INDEX" | grep '\(^ M \|^AM \|^ T \|^MM \)' &> /dev/null); then
-        #        STATUS="U${STATUS}"
-        #    fi
-        #    # Stage
-        #    if $(echo "$INDEX" | grep '\(^A \|^M \|^D \|^R \)' &> /dev/null); then
-        #        STATUS="S${STATUS}"
-        #    fi
-        #    PR_GIT=${STATUS}
-        #fi
-
-        ## Mercurial prompt
-        #if hash hg 2> /dev/null; then
-        #    if [ "$(hg root 2> /dev/null)" ]; then
-        #        local HG_PROMPT_STATUS=$(hg status 2> /dev/null | cut -c1 | uniq | paste -s -d'|')
-        #        PR_HG=$(hg branch 2> /dev/null | sed -e "s/\(.*\)/<\1|${HG_PROMPT_STATUS}|>/")
-        #    else
-        #        PR_HG=''
-        #    fi
-        #fi
     }
     PROMPT_COMMAND=promptCommand
 
@@ -235,24 +144,6 @@ function gyr_prompt
     local PR_PRE=
     local PR_PATH=${PR_COLOR}'${NEW_PWD}${FILL_LINE}'${PR_RED}'${LAST_COMMAND_PROMPT_STATUS}'${PR_YELLOW}'${JOB_NUMBER}'${PR_COLOR}'${BATTERY}''[\t]'
     [ $(id -u) -eq 0 ] && PR_COLOR=${PR_REV_WHITE}
-    ###local PR_USER='\u'
-    ###local PR_HOST='\h'
-    #if [[ "${TERM}" =~ (.*rxvt.*|.*screen*.) ]]; then
-    #   local PR_DEBIAN='デビアン' #katakana
-    #    if [ "${USERNAME}" = 'gyr' ]; then
-    #        local PR_USER='グト' #katakana
-    #        #local PR_USER='ぐと' #hiragana
-    #    fi
-    #    if [ "${HOSTNAME}" = 'tegu' ]; then
-    #        local PR_HOST='テグ' #katakana
-    #        #local PR_HOST='てぐ' #hiragana
-    #    fi
-    #    if [ "${HOSTNAME}" = 'zero' ]; then
-    #        local PR_HOST='ゼロ' #katakana
-    #        #local PR_HOST='ぜろ' #hiragana
-    #    fi
-    #fi
-    ###local PR_BASE=${PR_COLOR}${zg3}[${debian_chroot:+($debian_chroot)}${PR_USER}'@'${PR_HOST}'$(__git_ps1 "(%s)")'${PR_HG}${PR_SCREEN}]'\$'
 
     # Darwin
     if [ -e /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]; then
@@ -264,18 +155,23 @@ function gyr_prompt
     elif [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
         source /usr/share/git-core/contrib/completion/git-prompt.sh
     fi
-    # Debian sources git-prompt.sh out-of-the-box :)
+    # SUSE and Debian sources git-prompt.sh out-of-the-box :)
+
+    get_osc()
+    {
+        if [ -f .osc/_project ]; then
+            echo "<<$(head -n 1 .osc/_project)>>"
+        fi
+    }
 
     if declare -F __git_ps1 &>/dev/null; then
-        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(__git_ps1 "(%s $(get_sha))")'${PR_HG}${PR_SCREEN}'\$'
+        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(get_osc)''$(__git_ps1 "(%s $(get_sha))")'${PR_SCREEN}'\$'
     else
-        local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_HG}${PR_SCREEN}'\$'
+        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(get_osc)'${PR_SCREEN}'\$'
     fi
     local PR_POST=${PR_NO_COLOUR}' '
 
     PS1=${PR_PRE}${PR_PATH}'\n'${PR_BASE}${PR_POST}
-    PS2='> '
-    #PS4='+ '
     # improve shell debug
     export PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]})\t '
 

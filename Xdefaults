@@ -1,5 +1,5 @@
 ! Author: Gustavo Yokoyama Ribeiro
-! Update: 20091031 01:10:27
+! Update: 20181129 13:28:16
 ! (C) Copyright 2010 Gustavo Yokoyama Ribeiro
 ! Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
 ! http://creativecommons.org/licenses/by-sa/3.0/ for more info.
@@ -17,7 +17,7 @@
 
 *international: true
 
-# SUSE
+! SUSE
 #define d_black        #231f20
 #define d_red          #ff0000
 #define d_green        #63c94a
@@ -132,10 +132,6 @@
 ! make xterm treats URLs as a single word:
 !XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 
-! cssh (clusterssh  ----------------------------------------------------------
-CSSH*background: #121212
-CSSH*foreground: S_light
-
 ! xterm ----------------------------------------------------------------------
 xterm*termName:  xterm-256color
 *termtype:     vt100
@@ -166,15 +162,6 @@ xterm*termName:  xterm-256color
 !xterm*faceName:           terminus:medium:pixelsize=12
 !*font: -xos4-terminus-*-*-*-*-*-*-*-*-*-*-*-*
 xterm*faceName:           inconsolata:medium:pixelsize=12
-!*font: -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
-!*font: -*-proggycleansz-*-*-*-*-*-*-*-*-*-*-*-*
-!xterm*faceName: ProggyCleanTTSZ
-!xterm*faceSize: 12
-!*font: xft:ProggyCleanTTSZ:pixelsize=12
-!*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!!*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!xterm*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!xterm*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
 !!*wideChars: false
 !xterm*boldMode:  False
 !xterm*alwaysBoldMode: False
@@ -192,7 +179,6 @@ Xft.dpi:       96
 Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintlight
-!Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
 
@@ -201,41 +187,19 @@ urxvt*VT100.Translations:       #override \n \
     Shift <Key>Space:     string("\033[23$")
 
 ! man 7 urxvt
-! blueish
-!URxvt.colorBD:       S_dark
-!URxvt.colorUL:       S_dark
-!URxvt.colorIT:       S_dark
-! whitred
-URxvt.colorBD:       red
-URxvt.colorUL:       red
-URxvt.colorIT:       red
-!urxvt*font:          terminus-12
+URxvt.colorBD:       green
+URxvt.colorUL:       green
+URxvt.colorIT:       green
 !URxvt*termName: rxvt-unicode
 !URxvt*termName: xterm-256color
-!URxvt.font:-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
 URxvt.depth: 32
-!URxvt.font: xft:Terminus-9
-!!URxvt.font: xft:Terminus:size=9
-!!URxvt.boldFont: xft:Terminus:bold:size=9
-!!URxvt.italicFont: xft:Terminus:italic:size=9
-!!URxvt.boldItalicFont: xft:Terminus:bold:italic:size=9
+URxvt.font:           xft:inconsolata:size=12
 
 ! http://git.ak-online.be/kandre/xsession/tree
 
-URxvt*font: terminus-12,xft:Terminus for Powerline:style=Medium,xft:Code2000:antialias=false
-URxvt*boldFont: terminus-bold-12,xft:Terminus for Powerline:style=Bold,xft:Code2000:style=Bold:antialias=false
-!URxvt*font: terminus-12,xft:Terminus for Powerline:antialias=false
-!URxvt*boldFont: terminus-bold-12,xft:Terminus for Powerline:style=Bold:antialias=false
-!URxvt*italicFont: -xos4-terminus-medium-o-normal--12-120-72-72-c-60-iso10646-1
-!URxvt*boldItalicFont: -xos4-terminus-bold-o-normal--0-0-72-72-c-0-iso10646-1
 !URxvt.letterSpace: -1
 URxvt.iso14755: False
 URxvt*buffered: true
-!URxvt*font:     xft:terminus:pixelsize=12:antialias=false, \
-!                xft:inconsolata:bold:pixelsize=14
-!URxvt*boldFont:     xft:inconsolata:bold:pixelsize=14
-!URxvt*italicFont:     xft:inconsolata:italic:pixelsize=14
-!URxvt*boldItalicFont:     xft:inconsolata:bold:italic:pixelsize=14
 
 ! -- also: set 'vbell on' in screen
 ! -- set 'bell_msg' "\a in window!"
@@ -253,7 +217,7 @@ URxvt.scrollTtyKeypress:     True
 URxvt.mouseWheelScrollPage:  True
 URxvt*skipBuiltinGlyphs:     True
 URxvt.cursorBlink:           True
-URxvt.intensityStyles:      False
+URxvt.intensityStyles:       False
 
 ! borderless and no scrollbar
 URxvt*scrollBar_right: false
@@ -262,9 +226,6 @@ URxvt*borderLess: false
 ! the transparency stuff
 !!URxvt*inheritPixmap: true
 !URxvt*transparent: True
-!blueish
-!URxvt*tintColor: white
-! whitred
 URxvt*tintColor: black
 !URxvt*shading: 20
 !URxvt*fading: 30
@@ -277,15 +238,9 @@ urxvt*matcher.button:  3
 urxvt*bell-command: notify-send "Beep, Beep"
 urxvt*keysym.C-Delete:  perl:matcher:last
 urxvt*keysym.M-Delete:  perl:matcher:list
-! bluish
-!URxvt.tabbed.tabbar-fg: 0
-!URxvt.tabbed.tabbar-bg: 7
-!URxvt.tabbed.tab-fg:    7
-!URxvt.tabbed.tab-bg:    0
-! whitred
 URxvt.tabbed.tabbar-fg: 0
-URxvt.tabbed.tabbar-bg: 9
-URxvt.tabbed.tab-fg:    9
+URxvt.tabbed.tabbar-bg: 10
+URxvt.tabbed.tab-fg:    10
 URxvt.tabbed.tab-bg:    0
 URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
 
@@ -317,31 +272,12 @@ URxvt.keysym.Control-Tab:        \033[rC;TAB~
 ! icon path
 URxvt.iconFile:     /usr/share/pixmaps/urxvt.xpm
 
-! x11-ssh-askpass ------------------------------------------------------------
-x11-ssh-askpass*grabServer: false
-x11-ssh-askpass*grabPointer: false
-x11-ssh-askpass*grabKeyboard: false
-ssh-askpass*grabServer: false
-ssh-askpass*grabPointer: false
-ssh-askpass*grabKeyboard: false
-*grabServer: false
-*grabPointer: false
-*grabKeyboard: false
-
 ! Highlight mark ends at the last character of each line
 *highlightSelection: true
 
-! yeahconsole ----------------------------------------------------------------
-!yeahconsole*screenWidth:   1200
-!!yeahconsole*xOffset:       120
-!!!yeahconsole*consoleHeight: 40
-!!!yeahconsole*toggleKey:     None+F1
-!!!yeahconsole*keyFull:       None+F2
-!!!yeahconsole*font: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!!!yeahconsole*boldFont: -windows-proggycleansz-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!yeahconsole*restart: 1
-!yeahconsole*stepSize: 0
 irssi*urgentOnBell:          True
 weechat*urgentOnBell:          True
 Weechat.iconFile:   /usr/share/pixmaps/weechat.xpm
 Mutt.iconFile:      /usr/share/pixmaps/mutt.xpm
+
+! vim: set filetype=xdefaults fileformat=unix
