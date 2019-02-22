@@ -1,0 +1,93 @@
+##################################
+#
+# Author: Gustavo Yokoyama Ribeiro
+# File:   .gitconfig
+# Update: 20100407 06:22:22
+# (C) Copyright 2010 Gustavo Yokoyama Ribeiro
+# Licensed under CreativeCommons Attribution-ShareAlike 3.0 Unsupported
+# http://creativecommons.org/licenses/by-sa/3.0/ for more info.
+# Description: git config file.
+#
+##################################
+
+[alias]
+    st = status --short --branch
+    co = checkout
+    br = branch -vv
+    brdel = branch -D
+    brgyr = !git branch -a | grep gyr
+    pushdel = push origin --delete
+    #https://hackernoon.com/lesser-known-git-commands-151a1918a60#.uee4hhmcy
+    pushfwl = push --force-with-lease
+    rmall = !git rm $(git ls-files --deleted)
+    diffstaged = diff --cached
+#    slog = !git log | awk '/commit / {id=$2} /^ +[^- Signed-off-by:# ]/ {print id, $0}'
+    logshort = log --graph --oneline --decorate
+    logshortfile = log --graph --oneline --decorate --name-status 
+    logg = log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'
+    logfollow = log --follow
+    logdiffbranch = log --graph --oneline --decorate --no-merges
+    fp = fetch --tags --prune
+#    fp = fetch --tags --prune origin
+    subpull = submodule foreach git pull origin master
+    mff = merge --ff-only
+    #ctags = !.git/hooks/ctags
+    ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+    # http://peter.eisentraut.org/blog/2014/11/04/checking-whitespace-with-git/
+    check-whitespace = !git diff-tree --check $(git hash-object -t tree /dev/null) HEAD
+    stashunstaged = stash --keep-index
+    stashuntracked = stash --include-untracked
+    stashall = stash --all
+[core]
+    # search for core.pager in
+    # <http://www.kernel.org/pub/software/scm/git/docs/git-config.html>
+    # to see why we use this convoluted syntax
+    # +'/^---': sets the default search regex to ^--- (find --- at the
+    #           beginning of the line), so that you can easily skip to
+    #           to the next file in your pager with 'n' key.
+    #pager = less -FX -R +'/^---'
+    pager = less -FX -R
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor = vim
+    excludesfile = ~/.cvsignore
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    grep = auto
+    status = auto
+#Highlight whitespace in diffs
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[format]
+    signoff = true
+[merge]
+    # http://www.toofishes.net/blog/three-way-merging-git-using-vim/
+    tool = vimdiff3
+[mergetool "vimdiff3"]
+    cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[push]
+    default = simple
+[user]
+    name = Gustavo Yokoyama Ribeiro
+    email = gustavoyr@gmail.com
+# https://womble.decadent.org.uk/blog/securing-debcheckout-of-git-repositories.html
+[url "https://github.com/"]
+    insteadOf = http://github.com/
+[filter "lfs"]
+    smudge = git-lfs smudge %f
+    required = true
+    clean = git-lfs clean %f
