@@ -14,7 +14,7 @@ set editor              = "vim +/^$ +:s/^$/\\\\r\\\\r/ +:noh -c 'normal! k' -c '
 
 # address book
 #set query_command= "abook --mutt-query '%s'"
-set query_command= "$HOME/.gyr.d/scripts/ibm/gyr-ibm-email-search '%s'"
+set query_command= "$HOME/.gyr.d/bin/ibm/gyr-ibm-email-search '%s'"
 macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
 
 # main options
