@@ -144,14 +144,14 @@ fi
 #  COMMON SHELL   #
 #                 #
 ###################
-[ -f ${GYR_PATH}/dotfiles/gyrrc ] && . ${GYR_PATH}/dotfiles/gyrrc
-
 # Load any supplementary scripts
 if [ -d ${GYR_PATH}/dotfiles/bashrc.d ] ; then
     for config in "${GYR_PATH}"/dotfiles/bashrc.d/*.bash ; do
         source "$config"
     done
+    unset -v config
 fi
-unset -v config
+
+[ -f ${GYR_PATH}/dotfiles/gyrrc ] && . ${GYR_PATH}/dotfiles/gyrrc
 
 # vim: set filetype=sh fileformat=unix foldmethod=indent
