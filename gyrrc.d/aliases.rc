@@ -129,6 +129,12 @@ alias rsync-move='rsync -avzh --remove-source-files --progress'
 alias rsync-sync='rsync -avzh --update --delete --progress'
 alias rsync-update='rsync -avzh --update --progress'
 
+# SILVER SEARCHER
+alias ag='ag --nogroup --column --pager less --skip-vcs-ignores --hidden'
+alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores --hidden'
+alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores --hidden'
+alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores --hidden'
+
 # docker
 alias gyr-docker-cleanup-containers="docker ps -q -f status=exited | xargs docker rm"
 alias gyr-docker-cleanup-images="docker images -q -f dangling=true | xargs docker rmi"
