@@ -93,4 +93,22 @@ complete -A variable declare export readonly typeset
 # Both functions and variables
 complete -A function -A variable unset
 
+if hash fzf; then
+    if [ -f /usr/share/bash-completion/completions/fzf ]; then
+        . /usr/share/bash-completion/completions/fzf
+    fi
+    if [ -f /usr/share/bash-completion/completions/fzf-key-bindings ]; then
+        . /usr/share/bash-completion/completions/fzf-key-bindings
+    fi
+    export FZF_DEFAULT_OPS="--extended --hidden --follow"
+    if hash fd; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+        # To apply the command to CTRL-T as well
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        # To apply the command to ALT-C
+        export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+    fi
+    _fzf_setup_completion host autossh
+fi
+
 # vim: set filetype=sh fileformat=unix foldmethod=indent
