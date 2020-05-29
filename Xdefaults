@@ -18,7 +18,8 @@
 *international: true
 
 ! SUSE
-#define d_black        #231f20
+!#define d_black        #231f20
+#define d_black        #001620
 #define d_red          #ff0000
 #define d_green        #63c94a
 #define d_yellow       #f78d1f
@@ -38,8 +39,8 @@
 
 #define s_highlight      #33b87e
 
-*background:   l_white
-*foreground:   d_black
+*background:   d_black
+*foreground:   l_white
 *cursorColor:  d_green
 *cursorColor2: d_black
 *highlightTextColor: l_white
@@ -193,11 +194,15 @@ URxvt.colorIT:       green
 !URxvt*termName: rxvt-unicode
 !URxvt*termName: xterm-256color
 URxvt.depth: 32
-URxvt.font:           xft:inconsolata:size=12
+URxvt*font: xft:Source Code Pro:size=10:antialias=true:hinting=true
+URxvt*boldFont: xft:Source Code Pro:size=10:antialias=true:hinting=true
+URxvt*italicFont: xft:Source Code Pro:style=Oblique:size=10:antialias=true:hinting=true
+URxvt*boldItalicFont: xft:Source Code Pro:style=Bold Oblique:size=10:antialias=true:hinting=true
+! Font spacing
+URxvt*letterSpace: -2
 
 ! http://git.ak-online.be/kandre/xsession/tree
 
-!URxvt.letterSpace: -1
 URxvt.iso14755: False
 URxvt*buffered: true
 
@@ -209,11 +214,15 @@ URxvt*tripleclickwords:      True
 URxvt.loginShell:            False
 URxvt.pastableTabs:          False
 URxvt.utmpInhibit:           True
+
 URxvt.scrollstyle:           plain
-URxvt.scrollTtyOutput:       False
-URxvt.scrollWithBuffer:      True
+! do not scroll with output
+URxvt*scrollTtyOutput:       False
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer:      True
 URxvt.jumpScroll:            True
-URxvt.scrollTtyKeypress:     True
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress:     True
 URxvt.mouseWheelScrollPage:  True
 URxvt*skipBuiltinGlyphs:     True
 URxvt.cursorBlink:           True
@@ -231,18 +240,18 @@ URxvt*tintColor: black
 !URxvt*fading: 30
 !!URxvt*cursorUnderline: True
 ! Extensions
-urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback,bell-command,selection-autotransform
-urxvt*urlLauncher:     /usr/bin/xdg-open
-urxvt*matcher.button:  3
-urxvt*bell-command: notify-send "Beep, Beep"
-urxvt*keysym.C-Delete:  perl:matcher:last
-urxvt*keysym.M-Delete:  perl:matcher:list
+URxvt*perl-lib: /usr/lib64/urxvt/perl/
+URxvt.perl-ext-common: default,url-select,tabbed,searchable-scrollback,selection-autotransform
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
 URxvt.tabbed.tabbar-fg: 0
 URxvt.tabbed.tabbar-bg: 10
-URxvt.tabbed.tab-fg:    10
-URxvt.tabbed.tab-bg:    0
+URxvt.tabbed.tab-fg: 10
+URxvt.tabbed.tab-bg: 0
 URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\\x0d/
+!bell-command
+!URxvt*bell-command: notify-send "Beep, Beep"
 
 URxvt.keysym.M-C-1: command:\033]50;-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*\007
 URxvt.keysym.M-C-2: command:\033]50;-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*\007
