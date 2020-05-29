@@ -19,7 +19,7 @@ if [ "${GYR_OS}" = 'linux' ]; then
             fedora|centos|rhel)
                 GYR_OS="rh"
                 ;;
-            opensuse*|sle)
+            opensuse*|sle*)
                 GYR_OS="suse"
                 ;;
         esac
@@ -113,6 +113,10 @@ if hash keychain 2> /dev/null; then
 
     source $HOME/.keychain/$HOSTNAME-sh
     source $HOME/.keychain/$HOSTNAME-sh-gpg
+fi
+# ripgrep
+if hash rg 2> /dev/null; then
+    export RIPGREP_CONFIG_PATH="${GYR_PATH}/dotfiles/ripgreprc"
 fi
 
 # projects
