@@ -194,12 +194,12 @@ URxvt.colorIT:       green
 !URxvt*termName: rxvt-unicode
 !URxvt*termName: xterm-256color
 URxvt.depth: 32
-URxvt*font: xft:Source Code Pro:size=10:antialias=true:hinting=true
-URxvt*boldFont: xft:Source Code Pro:size=10:antialias=true:hinting=true
-URxvt*italicFont: xft:Source Code Pro:style=Oblique:size=10:antialias=true:hinting=true
-URxvt*boldItalicFont: xft:Source Code Pro:style=Bold Oblique:size=10:antialias=true:hinting=true
+URxvt*font: xft:hack:size=10:antialias=true:hinting=true
+URxvt*boldFont: xft:hack-bold:style=Bold:size=10:antialias=true:hinting=true
+URxvt*italicFont: xft:hack-italic:style=Italic:size=10:antialias=true:hinting=true
+URxvt*boldItalicFont: xft:hack:style=Bold Italic:size=10:antialias=true:hinting=true
 ! Font spacing
-URxvt*letterSpace: -2
+URxvt*letterSpace: -1
 
 ! http://git.ak-online.be/kandre/xsession/tree
 
@@ -237,7 +237,8 @@ URxvt*borderLess: false
 !URxvt*transparent: True
 URxvt*tintColor: black
 !URxvt*shading: 20
-!URxvt*fading: 30
+! Fade the text by the given percentage when focus is lost
+URxvt*fading: 30
 !!URxvt*cursorUnderline: True
 ! Extensions
 URxvt*perl-lib: /usr/lib64/urxvt/perl/
@@ -253,9 +254,9 @@ URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/vim +$2 \\Q$1\\E\
 !bell-command
 !URxvt*bell-command: notify-send "Beep, Beep"
 
-URxvt.keysym.M-C-1: command:\033]50;-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*\007
-URxvt.keysym.M-C-2: command:\033]50;-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*\007
-URxvt.keysym.M-C-3: command:\033]50;-*-terminus-*-*-*-*-18-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-1: command:\033]50;xft:hack:size=10:antialias=true:hinting=true\007
+URxvt.keysym.M-C-2: command:\033]50;xft:hack:size=14:antialias=true:hinting=true\007
+URxvt.keysym.M-C-3: command:\033]50;xft:hack:size=18:antialias=true:hinting=true\007
 URxvt.keysym.C-Up: command:\033]720;1\007
 URxvt.keysym.C-Down: command:\033]721;1\007
 !URxvt.keysym.Shift-Up: command:\033]720;1\007

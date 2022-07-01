@@ -23,6 +23,8 @@ Host *
     ServerAliveInterval 60
     ServerAliveCountMax 30
     #VisualHostKey yes
+    # IPv6 connections tend to be slower. 'any', 'inet' for IPv4 only, or 'inet6'
+    AddressFamily inet
 
 #######################################
 # github SSH connections over HTTPS
@@ -63,21 +65,3 @@ Host gitlab.com
 # A proxy is set up on port 8080
 # Can connect to a running VNC server on the remote host at port 5900 by
 # connecting to port 5930 on our local machine.
-
-Host itegu
-    Hostname 192.168.254.1
-    User gyr
-    PubkeyAuthentication yes
-    IdentityFile ~/.ssh/id_ecdsa_vm
-    IdentitiesOnly yes
-
-Host tegu
-    Hostname 192.168.122.1
-    User gyr
-    PubkeyAuthentication yes
-    IdentityFile ~/.ssh/id_ecdsa_vm
-    IdentitiesOnly yes
-
-Host *
-    IdentitiesOnly yes
-    PubkeyAuthentication no

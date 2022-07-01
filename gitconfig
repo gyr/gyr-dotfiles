@@ -46,7 +46,7 @@
     #           beginning of the line), so that you can easily skip to
     #           to the next file in your pager with 'n' key.
     #pager = less -FX -R +'/^---'
-    pager = less -FX -R
+    pager = delta -s
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     editor = vim
     excludesfile = ~/.cvsignore

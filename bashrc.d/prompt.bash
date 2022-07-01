@@ -154,8 +154,11 @@ function gyr_prompt
     # Fedora
     elif [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
         source /usr/share/git-core/contrib/completion/git-prompt.sh
+    # openSUSE:Tumbleweed
+    elif [ -e /usr/share/bash-completion/completions/git-prompt.sh ]; then
+        source /usr/share/bash-completion/completions/git-prompt.sh
     fi
-    # SUSE and Debian sources git-prompt.sh out-of-the-box :)
+    # Debian sources git-prompt.sh out-of-the-box :)
 
     get_osc()
     {
@@ -174,20 +177,6 @@ function gyr_prompt
     PS1=${PR_PRE}${PR_PATH}'\n'${PR_BASE}${PR_POST}
     # improve shell debug
     export PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]})\t '
-
-    case ${TERM} in
-        xterm*|*rxvt*)
-            local TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-            PS1=${TITLEBAR}${PS1}
-            ;;
-        screen*)
-            #local PS1S='\[\033k\033\\\]'
-            #PS1=${PS1}${PS1S}
-            PS1=${PS1}
-            ;;
-        linux*|vt220*)
-            PS1=${PS1}
-    esac
 }
 
 gyr_prompt
