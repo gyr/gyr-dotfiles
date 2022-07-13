@@ -93,7 +93,7 @@ complete -A variable declare export readonly typeset
 # Both functions and variables
 complete -A function -A variable unset
 
-if hash fzf; then
+if hash fzf 2> /dev/null; then
     if [ -f /usr/share/bash-completion/completions/fzf ]; then
         . /usr/share/bash-completion/completions/fzf
     fi

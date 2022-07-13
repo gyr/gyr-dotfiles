@@ -87,17 +87,6 @@ export AUTOSSH_PORT=0
 if hash python 2> /dev/null; then
     export PYTHONSTARTUP="${GYR_PATH}/dotfiles/pythonstartup"
 fi
-# Screen
-if hash screen 2> /dev/null; then
-    screen -q -ls
-    if [ $? -ge 10 ]; then
-        screen -ls
-    fi
-fi
-# Tmux
-if hash tmux 2> /dev/null; then
-    tmux ls 2> /dev/null
-fi
 # Keychain
 if hash keychain 2> /dev/null; then
     ###################################################################################
@@ -131,12 +120,6 @@ for proj_dir in "${GYR_PATH}"/*.d ; do
 done
 unset -v proj_dir
 unset -v proj_rc_file
-
-# screenfetch
-if ! screenfetch 2> /dev/null; then
-    [ -f ${GYR_PATH}/bin/3pp/screenfetch-dev ] && ${GYR_PATH}/bin/3pp/screenfetch-dev
-fi
-
 
 #######
 # Remove duplicates entries on PATH
