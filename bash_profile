@@ -20,7 +20,7 @@
 #[[ -f /bin/zsh ]] && /bin/zsh -l
 #[[ $SSH_TTY ]] && exit
 
-[ -f ~/.gyr.d/dotfiles/gyrprofile ] && . ~/.gyr.d/dotfiles/gyrprofile
+[ -z "${GYR_PATH}" ] && . ~/.gyr.d/dotfiles/gyrprofile
 
 # ~/.bash_profile: executed by the command interpreter for login shells.
 # When this file is read by bash(1), ~/.bash_login and ~/.profile are not

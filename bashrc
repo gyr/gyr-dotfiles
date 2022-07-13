@@ -9,6 +9,8 @@
 #
 ##################################
 
+[ -z "${GYR_PATH}" ] && . ~/.gyr.d/dotfiles/gyrprofile
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 # or
