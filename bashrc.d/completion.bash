@@ -100,6 +100,12 @@ if hash fzf 2> /dev/null; then
     if [ -f /usr/share/bash-completion/completions/fzf-key-bindings ]; then
         . /usr/share/bash-completion/completions/fzf-key-bindings
     fi
+    if [ -f /usr/share/fzf/shell/completion.bash ]; then
+        . /usr/share/fzf/shell/completion.bash
+    fi
+    if [ -f /usr/share/fzf/shell/key-bindings.bash ]; then
+        . /usr/share/fzf/shell/key-bindings.bash
+    fi
     export FZF_DEFAULT_OPS="--extended --hidden --follow"
     if hash fd; then
         export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
