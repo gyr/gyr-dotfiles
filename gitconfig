@@ -77,6 +77,8 @@
 [merge]
     # http://www.toofishes.net/blog/three-way-merging-git-using-vim/
     tool = vimdiff3
+    # https://www.ductile.systems/zdiff3/
+    conflictStyle = zdiff3
 [mergetool "vimdiff3"]
     cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [push]
@@ -91,3 +93,22 @@
     smudge = git-lfs smudge %f
     required = true
     clean = git-lfs clean %f
+# https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+[help]
+    autocorrect = prompt
+[commit]
+    verbose = true
+[log]
+    date = iso
+[interactive]
+    diffFilter = delta
+[diff]
+    algorithm = histogram
+# https://difftastic.wilfred.me.uk/git.html
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+    difftool = true
