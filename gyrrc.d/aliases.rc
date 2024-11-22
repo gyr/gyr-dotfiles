@@ -9,16 +9,6 @@
 #
 ################################################################################
 
-if hash dircolors 2> /dev/null; then
-    if [ -f ~/.dir_colors ] ; then
-        eval $(dircolors -b ~/.dir_colors)
-    elif [ -f /etc/DIR_COLORS ] ; then
-        eval $(dircolors -b /etc/DIR_COLORS)
-    else
-        eval $(dircolors -b)
-    fi
-    alias grep='grep --color=always -I -s --exclude-dir=.hg --exclude-dir=.git --exclude-dir=vim/tmp --exclude=*~ --directories=skip'
-fi
 if [ "${GYR_OS}" = 'freebsd' -o "${GYR_OS}" = 'darwin' ]; then
     alias l='ls -CFG'
     alias rm='rm -i'
@@ -27,7 +17,7 @@ else
     alias chmod='chmod --preserve-root'
     alias chown='chown --preserve-root'
     alias cp='cp --backup=t'
-    alias l='ls -CF --group-directories-first  --color=always --time-style=long-iso'
+    alias l='ls -CF --group-directories-first --color=always --time-style=long-iso'
     alias ln='ln --backup=t'
     alias mv='mv --backup=t'
     alias rm='rm -i --preserve-root'
@@ -41,16 +31,15 @@ alias dmesg='dmesg -T'
 alias l.='l -d .[a-zA-Z0-9]*'
 alias la='l -A'
 alias ldir='ls -F | grep --color /'
-alias lg='ls -ACF | grep -i'
-alias ll.='l -ld .[a-zA-Z0-9]*'
+alias llink='l -AF | grep "^l"'
 alias ll='l -l'
-alias lla='l -lA'
-alias lld='ls -lAF | grep "^d"'
-alias llg='ls -lAF | grep -i'
-alias lll='ls -lAF | grep "^l"'
+alias ll.='ll -d .[a-zA-Z0-9]*'
+alias lla='ll -A'
+alias lldir='ll -AF | grep "^d"'
+alias lllink='ll -AF | grep "^l"'
 alias lls='ls -l | sort -nk5'
 alias lstree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-alias lt='l -ltrF'
+alias lt='ll -trF'
 alias man='gyr-man'
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
@@ -66,8 +55,8 @@ alias gyr-cache-drop='sync ; free -h && sudo sync && echo 3 | sudo tee /proc/sys
 #=2 --> to free dentries and inodes
 #=3 --> to free pagecache, dentries and inodes
 alias gyr-chormium-fake='chromium --user-agent="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)"'
-alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
-alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc-2cpu-awesome"
+alias gyr-conky-dual-monitor="${GYR_PATH}/bin/gyr-set-monitor-resolution -t && conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc.d/conkyrc-2cpu-awesome"
+alias gyr-conky="conky -d -p 2 -c ${GYR_PATH}/dotfiles/conkyrc.d/conkyrc-2cpu-awesome"
 alias gyr-dropbox-update="cd ~ && wget -O - \"https://www.dropbox.com/download?plat=lnx.x86_64\" | tar xzf -"
 alias gyr-fixname-all="ls -1 | rename 's/\ /_/g' && ls -1 | rename 'y/A-Z/a-z/'"
 alias gyr-hardlink-doc='sudo /usr/bin/hardlink -t /usr/share/doc'
@@ -91,9 +80,10 @@ alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
-alias gyr-vim-git-update='pushd ~/.vim && git submodule foreach git pull origin master && git submodule foreach git clean -dfx && popd'
+alias gyr-vim-git-update='pushd ~/.vim && git submodule update --init --recursive --remote && git submodule foreach git clean -dfx && popd'
 alias gyr-wifi-quality='watch -n1 iwconfig'
 alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
+alias gyr-true-color="printf \"\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n\""
 
 # pbpaste > texto.txt
 alias pbpaste='xclip -selection clipboard -o'
@@ -113,9 +103,9 @@ alias sshtmp='function _ssht(){ ssh -o "ConnectTimeout 3" -o "StrictHostKeyCheck
 #alias set_eh='stty erase '
 
 # PYTHON
-alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' -exec rm {} \;"
+alias gyr-python-clean-pyc="find . -name '.git' -prune -o -name '*.pyc' | xargs rm"
 alias gyr-python-ipdb='python -m ipdb'
-alias gyr-python-pylint="find . -type f -name '*.py' -exec pylint -E {} \;"
+alias gyr-python-pylint="find . -type f -name '*.py'| xargs pylint -E "
 alias gyr-python-pdb='python -m pdb'
 
 # RSYNC

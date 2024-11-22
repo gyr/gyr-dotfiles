@@ -1,2 +1,2 @@
 #!/usr/bin/env /bin/sh
-python .git/hooks/pylint.py
+python3 .git/hooks/pylint.py
