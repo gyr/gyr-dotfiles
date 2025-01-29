@@ -1,0 +1,29 @@
+theme = "Tomorrow Night Burns"
+shell-integration-features = no-cursor
+cursor-style = block
+
+
+keybind = ctrl+a>v=new_split:right
+keybind = ctrl+a>s=new_split:down
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+
+keybind = ctrl+a>[=write_scrollback_file:open
+
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>p=previous_tab
+keybind = ctrl+a>n=next_tab
+keybind = shift+ctrl+a>p=move_tab:-1
+keybind = shift+ctrl+a>n=move_tab:1
+
+keybind = ctrl+a>f11=toggle_fullscreen
+keybind = ctrl+a>f12=toggle_window_decorations
+
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+
+window-decoration = true
