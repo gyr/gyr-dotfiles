@@ -86,6 +86,7 @@
 [user]
     name = Gustavo Yokoyama Ribeiro
     email = gustavoyr@gmail.com
+	signingkey = 54266AA16B17E09F
 # https://womble.decadent.org.uk/blog/securing-debcheckout-of-git-repositories.html
 [url "https://github.com/"]
     insteadOf = http://github.com/
@@ -98,10 +99,11 @@
     autocorrect = prompt
 [commit]
     verbose = true
+	gpgsign = true
 [log]
     date = iso
-[interactive]
-    diffFilter = delta
+#[interactive]
+#    diffFilter = delta
 [diff]
     algorithm = histogram
 # https://difftastic.wilfred.me.uk/git.html
@@ -112,3 +114,5 @@
     cmd = difft "$LOCAL" "$REMOTE"
 [pager]
     difftool = true
+[tag]
+	gpgSign = true
