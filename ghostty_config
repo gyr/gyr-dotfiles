@@ -2,6 +2,7 @@ theme = "Tomorrow Night Burns"
 shell-integration-features = no-cursor
 cursor-style = block
 
+keybind = ctrl+a>ctrl+a=text:
 
 keybind = ctrl+a>v=new_split:right
 keybind = ctrl+a>s=new_split:down
@@ -26,4 +27,5 @@ keybind = ctrl+a>f12=toggle_window_decorations
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
 
-window-decoration = true
+# https://ghostty.org/docs/install/release-notes/1-1-1
+window-decoration = server
