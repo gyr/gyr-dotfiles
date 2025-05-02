@@ -156,4 +156,12 @@ fi
 
 [ -f ${GYR_PATH}/dotfiles/gyrrc ] && . ${GYR_PATH}/dotfiles/gyrrc
 
+# https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
+export GPG_TTY=$(tty)
+
+# setup zoxide if it is available
+if hash zoxide 2> /dev/null; then
+    eval "$(zoxide init --cmd cd bash)"
+fi
+
 # vim: set filetype=sh fileformat=unix foldmethod=indent
