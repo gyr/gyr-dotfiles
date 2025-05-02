@@ -63,6 +63,8 @@ hash vim 2> /dev/null && { EDITOR=vim ; WINEDITOR=vim ; VISUAL=vim ; } || { EDIT
 export EDITOR
 export WINEDITOR
 export VISUAL
+hash nvim 2> /dev/null && GYR_EDITOR=nvim || GYR_EDITOR=vim
+export GYR_EDITOR
 hash less 2> /dev/null && PAGER=less || PAGER=more
 export PAGER
 export LESS='-FXRS#3Mgi'
@@ -74,7 +76,6 @@ export LESS='-FXRS#3Mgi'
 # g: Highlite results when searching with slash key (/)
 # i: Case insensitive in search
 export RST_IFS=${IFS}
-export GREP_COLOR=31
 export CVS_RSH=ssh
 export TZ='America/Sao_Paulo'
 export BC_ENV_ARGS="${GYR_PATH}/dotfiles/bcrc"

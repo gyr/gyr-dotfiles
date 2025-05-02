@@ -80,7 +80,6 @@ alias gyr-pass-restore='gpg --decrypt password-store-backup.tar.gz.gpg | tar -xz
 alias gyr-ports-establish="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'established' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n |xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-ports-listen="echo 'User:      Command:   Port:'; echo '----------------------------' ; lsof -i -P -n | grep -i 'listen' | awk '{print \$3, \$1, \$9}' | sed 's/ [a-z0-9\.\*]*:/ /' | sort -k 3 -n | xargs printf '%-10s %-10s %-10s\n' | uniq"
 alias gyr-resolvconf-fix="sudo cp ${GYR_PATH}/bkp/resolv.conf_google /etc/resolv.conf"
-alias gyr-vim-git-update='pushd ~/.vim && git submodule update --init --recursive --remote && git submodule foreach git clean -dfx && popd'
 alias gyr-wifi-quality='watch -n1 iwconfig'
 alias gyr-xdefaults="xrdb -merge ${GYR_PATH}/dotfiles/Xdefaults && xrdb -load ${GYR_PATH}/dotfiles/Xdefaults"
 alias gyr-true-color="printf \"\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n\""
@@ -94,7 +93,6 @@ alias pbcopy='xclip -selection clipboard'
 alias pbcopys='xclip -selection primary'
 
 alias pur='rm -vf *~ .*~ .*.bak *.bak *backup.fm *backup.book *.keep *.mkelem *.contrib *.contrib.* findmerge.* *.merge pip__* .abe.state* .cmake.* *.inforce *.rej *.pyc'
-alias vs='gvim --remote-silent'
 
 alias scptmp='function _scpt(){ scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null" -o "CheckHostIP no" $@ ; }; _scpt'
 alias ssh-graph=' TERM=xterm-256color \autossh -c arcfour,blowfish-cbc -YC'
@@ -124,6 +122,11 @@ alias ag='ag --nogroup --column --pager less --skip-vcs-ignores --hidden'
 alias agpl='ag --nogroup --column --pager less --perl --skip-vcs-ignores --hidden'
 alias agpy='ag --nogroup --column --pager less --python --skip-vcs-ignores --hidden'
 alias agsh='ag --nogroup --column --pager less --shell --skip-vcs-ignores --hidden'
+
+# vim + fzf + bat
+if hash fzf 2> /dev/null && hash rg 2> /dev/null && hash bat 2> /dev/null; then
+    alias vf='fzf --preview="bat --color=always {}" --bind "enter:become(\$GYR_EDITOR {})"'
+fi
 
 # docker
 alias gyr-docker-cleanup-containers="docker ps -q -f status=exited | xargs docker rm"
