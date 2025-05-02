@@ -99,7 +99,11 @@ function gyr_prompt
         [ "${JOB_NUMBER}" != '0' ] && JOB_NUMBER="[${JOB_NUMBER}]" || JOB_NUMBER=''
 
         local DIR=$(pwd | sed -e "s:${HOME}:~:")
-        local USER_HOST="${USER}@${HOSTNAME}:"
+        if [ -z "${CONTAINER_ID}" ]; then
+            local USER_HOST="${USER}@${HOSTNAME}:"
+        else
+            local USER_HOST="${USER}@${CONTAINER_ID}:"
+        fi
         local VIRTUALENV_PROMPT=''
         [ -n "${VIRTUAL_ENV}" ] && VIRTUALENV_PROMPT="(${VIRTUAL_ENV##*/}) "
         local PROMPT_SIZE=$((${#VIRTUALENV_PROMPT}+${#USER_HOST}+${#DIR}+${#LAST_COMMAND_PROMPT_STATUS}+2+${#JOB_NUMBER}+${#BATTERY}+10))
