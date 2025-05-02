@@ -35,7 +35,7 @@ config = {
 
     -- WINDOW
     -- Disable the title bar and border
-    window_decorations = 'NONE',
+    window_decorations = 'RESIZE',
     -- window_background_opacity = 0.95,
     window_padding = {
         left = 0,
@@ -85,6 +85,12 @@ config = {
         timeout_miliseconds = 2000,
     },
     keys = {
+        -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+        {
+            key = 'a',
+            mods = 'LEADER|CTRL',
+            action = wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
+        },
         -- copy mode
         {
             key = '[',
@@ -170,6 +176,26 @@ config = {
             key = 'o',
             mods = 'LEADER',
             action = act.ActivatePaneDirection('Next'),
+        },
+        {
+            key = 'h',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection('Left'),
+        },
+        {
+            key = 'j',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection('Down'),
+        },
+        {
+            key = 'k',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection('Up'),
+        },
+        {
+            key = 'l',
+            mods = 'LEADER',
+            action = act.ActivatePaneDirection('Right'),
         },
         {
             key = '{',
