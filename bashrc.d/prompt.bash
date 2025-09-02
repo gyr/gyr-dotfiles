@@ -171,10 +171,14 @@ function gyr_prompt
         fi
     }
 
+    if [ -v SHPOOL_SESSION_NAME ]; then
+        PR_SHPOOL="(shpool:${SHPOOL_SESSION_NAME})"
+    fi
+
     if declare -F __git_ps1 &>/dev/null; then
-        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(get_osc)''$(__git_ps1 "(%s $(get_sha))")'${PR_SCREEN}'\$'
+        local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_SHPOOL}'$(get_osc)''$(__git_ps1 "(%s $(get_sha))")'${PR_SCREEN}'\$'
     else
-        local PR_BASE=${PR_COLOR}${PR_CHROOT}'$(get_osc)'${PR_SCREEN}'\$'
+        local PR_BASE=${PR_COLOR}${PR_CHROOT}${PR_SHPOOL}'$(get_osc)'${PR_SCREEN}'\$'
     fi
     local PR_POST=${PR_NO_COLOUR}' '
 
