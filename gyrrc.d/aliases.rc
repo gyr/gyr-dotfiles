@@ -132,4 +132,7 @@ fi
 alias gyr-docker-cleanup-containers="docker ps -q -f status=exited | xargs docker rm"
 alias gyr-docker-cleanup-images="docker images -q -f dangling=true | xargs docker rmi"
 
+# shpool
+alias gyr-shpool='[ -x "${HOME}/.cargo/bin/shpool" ] &&  ${HOME}/.cargo/bin/shpool attach -f "$(hostname)$(basename $(tty))"'
+
 # vim: set filetype=sh fileformat=unix foldmethod=indent
